@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HerSets — The Digital Notebook for Lash & Nail Artists</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Inter+Tight:ital,wght@0,400;0,700;0,800;0,900;1,700;1,800;1,900&display=swap" rel="stylesheet" />
+
+  <style>
+    @font-face {
+      font-family: 'Namu';
+      src: url('fonts/NAMU-Pro.otf') format('opentype');
+      font-weight: 400 900;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Namu';
+      src: url('fonts/NAMU-1990.otf') format('opentype');
+      font-weight: 900;
+      font-style: normal;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #F2EDE8;
+      --bg2:     #EDE8E2;
+      --bg3:     #E8E2DB;
+      --ink:     #0D0D0D;
+      --ink2:    #1A1A1A;
+      --ink3:    rgba(13,13,13,0.5);
+      --ink4:    rgba(13,13,13,0.28);
+      --pink:    #E8A0BC;
+      --pink-l:  #FCF0F6;
+      --pink-m:  #F5C5D8;
+      --pink-d:  #C4507A;
+      --sage:    #8FAF9F;
+      --warn:    #E8913A;
+      --warn-l:  #FEF3E8;
+      --border:  rgba(13,13,13,0.09);
+      --border2: rgba(13,13,13,0.16);
+      --white:   #FFFFFF;
+
+      /* Phone exact ratio 3.07 w : 6.47 h */
+      --phone-w: 230px;
+      --phone-h: calc(230px * 6.47 / 3.07); /* ≈ 484px */
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAMU for Ukrainian ── */
+    .lang-uk .uk-namu {
+      font-family: 'Namu', 'Inter Tight', sans-serif !important;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center;
+      padding: 0 40px; height: 56px; gap: 0;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      margin-right: 48px; flex-shrink: 0;
+    }
+    .nav-logo-mark {
+      width: 40px; height: 40px;
+      /* background: var(--ink);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 900; font-size: 9px; letter-spacing: 0.5px;
+      color: var(--pink); text-transform: uppercase; */
+      flex-shrink: 0;
+    }
+    .nav-links { display: flex; align-items: center; gap: 32px; flex: 1; }
+    .nav-link {
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 700; font-size: 10px;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--ink3); text-decoration: none;
+    }
+    .nav-link:hover { color: var(--ink); }
+    .nav-right { display: flex; align-items: center; gap: 16px; margin-left: auto; }
+    .lang-toggle { display: flex; align-items: center; gap: 2px; background: rgba(13,13,13,0.07); border-radius: 3px; padding: 2px; }
+    .lang-btn {
+      font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 10px;
+      letter-spacing: 1px; padding: 4px 10px; border: none; background: transparent;
+      color: var(--ink3); cursor: pointer; border-radius: 2px; transition: all .15s;
+    }
+    .lang-btn.active { background: var(--ink); color: var(--white); }
+    .nav-cta {
+      background: var(--ink); color: #fff;
+      font-family: 'Inter Tight', sans-serif; font-weight: 700;
+      font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+      padding: 9px 22px; border: none; cursor: pointer; text-decoration: none;
+      display: inline-block; white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--pink-d); }
+
+    /* ── HERO ── */
+    .hero {
+      padding-top: 56px;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 0;
+      background: var(--bg);
+      overflow: hidden;
+    }
+    .hero-left {
+      padding: 80px 48px 80px 48px;
+      display: flex; flex-direction: column;
+      justify-content: center;
+    }
+    .hero-issue {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 32px;
+    }
+    .hero-issue-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--pink-d); }
+    .hero-issue-text {
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 700; font-size: 11px;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--ink3);
+    }
+    .hero-headline {
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 900;
+      font-size: clamp(64px, 8.5vw, 112px);
+      line-height: 0.88;
+      text-transform: uppercase;
+      color: var(--ink);
+      letter-spacing: -2px;
+      margin-bottom: 32px;
+    }
+    .hero-headline .artist {
+      font-style: italic;
+      color: var(--pink-d);
+    }
+    .hero-sub {
+      font-size: 15px; line-height: 1.75;
+      color: var(--ink3); max-width: 420px;
+      margin-bottom: 36px;
+    }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--ink); color: #fff;
+      font-family: 'Inter Tight', sans-serif; font-weight: 800;
+      font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+      padding: 14px 28px; border: none; cursor: pointer;
+      text-decoration: none; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--pink-d); }
+    .btn-ghost {
+      background: transparent; color: var(--ink);
+      font-family: 'Inter Tight', sans-serif; font-weight: 800;
+      font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+      padding: 13px 28px; border: 1.5px solid var(--ink);
+      cursor: pointer; text-decoration: none; display: inline-block;
+    }
+    .btn-ghost:hover { background: var(--ink); color: #fff; }
+
+    /* ── PHONE SHELL ── */
+    /* Aspect ratio: 3.07 wide × 6.47 tall */
+    .iphone {
+      width: var(--phone-w);
+      height: var(--phone-h);
+      background: #111;
+      border-radius: 40px;
+      padding: 10px;
+      position: relative;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.10),
+        0 0 0 2.5px #1e1e1e,
+        0 32px 80px rgba(0,0,0,0.28),
+        inset 0 0 0 1px rgba(255,255,255,0.04);
+      flex-shrink: 0;
+    }
+    /* Volume / power buttons */
+    .iphone::before {
+      content: '';
+      position: absolute; left: -3px; top: 100px;
+      width: 3px; height: 26px;
+      background: #2a2a2a; border-radius: 2px 0 0 2px;
+      box-shadow: 0 38px 0 #2a2a2a;
+    }
+    .iphone::after {
+      content: '';
+      position: absolute; right: -3px; top: 128px;
+      width: 3px; height: 52px;
+      background: #2a2a2a; border-radius: 0 2px 2px 0;
+    }
+    .iphone-inner {
+      width: 100%; height: 100%;
+      background: #000;
+      border-radius: 32px;
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      position: relative;
+    }
+    /* Dynamic island */
+    .iphone-island {
+      position: absolute; top: 10px; left: 50%;
+      transform: translateX(-50%);
+      width: 72px; height: 22px;
+      background: #000; border-radius: 16px;
+      z-index: 10;
+    }
+    /* Status bar */
+    .status-bar {
+      background: var(--ink);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 48px 14px 6px;
+      flex-shrink: 0;
+    }
+    .status-time {
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 800; font-size: 11px; color: #fff; letter-spacing: 0.5px;
+    }
+    .status-icons { display: flex; align-items: center; gap: 4px; }
+    .status-icon { font-size: 9px; color: rgba(255,255,255,0.7); }
+    /* Screen content fills remaining space */
+    .iphone-screen {
+      flex: 1; overflow: hidden;
+      background: var(--bg);
+      display: flex; flex-direction: column;
+    }
+    /* Bottom tab bar */
+    .tab-bar {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      display: flex;
+      padding: 8px 0 12px;
+      flex-shrink: 0;
+    }
+    .tab-item {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; gap: 3px;
+    }
+    .tab-icon { font-size: 14px; }
+    .tab-label { font-size: 6.5px; font-weight: 600; letter-spacing: 0.3px; color: var(--ink3); }
+    .tab-item.active .tab-label { color: var(--pink-d); }
+    .tab-item.active .tab-icon { filter: none; }
+
+    /* ── HERO PHONE SCREEN: TODAY ── */
+    .app-header-black {
+      background: var(--ink);
+      padding: 8px 14px 12px;
+      flex-shrink: 0;
+    }
+    .app-eyebrow {
+      font-size: 7px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--pink); margin-bottom: 2px; font-weight: 700;
+    }
+    .app-title {
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 900; font-size: 24px;
+      text-transform: uppercase; color: #fff; line-height: 1; letter-spacing: -0.5px;
+    }
+    .app-sub { font-size: 8px; color: rgba(255,255,255,0.3); margin-top: 3px; }
+    .app-scroll { flex: 1; overflow: hidden; padding: 10px; display: flex; flex-direction: column; gap: 6px; }
+
+    .voice-btn {
+      display: flex; align-items: center; gap: 8px;
+      padding: 9px 10px; background: var(--pink-l);
+      border: 1px solid var(--pink-m); border-radius: 6px;
+      flex-shrink: 0;
+    }
+    .voice-icon { font-size: 13px; }
+    .voice-title { font-size: 7.5px; font-weight: 700; color: var(--pink-d); }
+    .voice-sub { font-size: 6.5px; color: var(--ink3); margin-top: 1px; }
+
+    .appt-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 8px; padding: 10px; flex-shrink: 0;
+    }
+    .appt-time {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 9px; font-weight: 800; color: var(--pink-d);
+      letter-spacing: 0.5px; margin-bottom: 4px;
+    }
+    .appt-name {
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 800; font-size: 13px;
+      color: var(--ink); letter-spacing: 0.2px; margin-bottom: 1px;
+    }
+    .appt-service { font-size: 7.5px; color: var(--ink3); margin-bottom: 5px; }
+    .appt-note {
+      font-size: 7.5px; font-style: italic; color: var(--ink2);
+      background: var(--bg2); padding: 5px 7px; border-radius: 4px;
+      margin-bottom: 5px; line-height: 1.5;
+    }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 3px; margin-bottom: 5px; }
+    .tag {
+      font-size: 7px; font-weight: 600; padding: 2px 6px; border-radius: 2px;
+    }
+    .tag.pink { background: var(--pink-l); color: var(--pink-d); border: 1px solid var(--pink-m); }
+    .tag.muted { background: var(--bg2); color: var(--ink2); border: 1px solid var(--border2); }
+    .tag.warn { background: var(--warn-l); color: var(--warn); border: 1px solid rgba(232,145,58,0.25); }
+    .tag.new { background: var(--pink); color: var(--ink); }
+    .appt-cta {
+      display: inline-block; padding: 5px 10px; border-radius: 3px;
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 7px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;
+    }
+    .appt-cta.pink { background: var(--pink); color: var(--ink); }
+    .appt-cta.ink { background: var(--ink); color: #fff; }
+
+    /* ── HERO RIGHT (phone area) ── */
+    .hero-right {
+      display: flex; align-items: center;
+      padding: 80px 48px 80px 0;
+      position: relative;
+    }
+    /* The partial right-edge text like "VOL. I / FORMULAS" */
+    .hero-vol {
+      position: absolute; right: 0; top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      transform-origin: right center;
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 900; font-size: 10px;
+      letter-spacing: 4px; text-transform: uppercase;
+      color: var(--ink4);
+      white-space: nowrap;
+    }
+
+    /* ── TICKER ── */
+    .ticker { background: var(--pink); padding: 12px 0; overflow: hidden; white-space: nowrap; }
+    .ticker-track { display: inline-flex; animation: ticker 29s linear infinite; }
+    @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .ticker-item {
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 900; font-size: 11px;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--ink); padding: 0 20px;
+    }
+    .ticker-item::before { content: '✦'; margin-right: 20px; color: var(--pink-d); }
+
+    /* ── SECTION: EVERY DETAIL ── */
+    .detail-section { padding: 96px 48px 64px; }
+    .detail-headline {
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 900;
+      font-size: clamp(52px, 7vw, 100px);
+      line-height: 0.9; text-transform: uppercase;
+      color: var(--ink); letter-spacing: -2px;
+      margin-bottom: 0;
+    }
+    .detail-headline .remembered {
+      font-style: italic; color: var(--pink-d);
+    }
+
+    /* ── 5-PHONE SHOWCASE ── */
+    .phones-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin-top: 56px;
+      align-items: start;
+    }
+    .phone-col { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+    .phone-col-label {
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 800; font-size: 10px;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--ink); align-self: flex-start;
+    }
+    .phone-col-desc { font-size: 11px; color: var(--ink3); line-height: 1.55; align-self: flex-start; }
+
+    /* Small showcase phones — same ratio */
+    .iphone-sm {
+      --sw: 150px;
+      width: var(--sw);
+      height: calc(var(--sw) * 6.47 / 3.07);
+      background: #111;
+      border-radius: 26px;
+      padding: 6px;
+      position: relative;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.08),
+        0 0 0 1.5px #222,
+        0 16px 40px rgba(0,0,0,0.2);
+    }
+    .iphone-sm::before {
+      content: '';
+      position: absolute; left: -2px; top: 64px;
+      width: 2px; height: 16px;
+      background: #2a2a2a; border-radius: 1px 0 0 1px;
+      box-shadow: 0 24px 0 #2a2a2a;
+    }
+    .iphone-sm::after {
+      content: '';
+      position: absolute; right: -2px; top: 80px;
+      width: 2px; height: 32px;
+      background: #2a2a2a; border-radius: 0 1px 1px 0;
+    }
+    .iphone-sm-inner {
+      width: 100%; height: 100%;
+      background: #000; border-radius: 21px;
+      overflow: hidden; display: flex; flex-direction: column;
+      position: relative;
+    }
+    .iphone-sm-island {
+      position: absolute; top: 6px; left: 50%;
+      transform: translateX(-50%);
+      width: 44px; height: 13px;
+      background: #000; border-radius: 10px; z-index: 10;
+    }
+    .sm-status {
+      background: var(--ink); padding: 28px 8px 4px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .sm-time { font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 7px; color: #fff; }
+    .sm-icons { font-size: 6px; color: rgba(255,255,255,0.6); }
+    .sm-screen { flex: 1; overflow: hidden; background: var(--bg); display: flex; flex-direction: column; }
+    .sm-tab-bar {
+      background: var(--white); border-top: 1px solid var(--border);
+      display: flex; padding: 4px 0 6px; flex-shrink: 0;
+    }
+    .sm-tab { flex: 1; text-align: center; }
+    .sm-tab-icon { font-size: 9px; }
+    .sm-tab-lbl { font-size: 4.5px; font-weight: 600; color: var(--ink3); }
+    .sm-tab.active .sm-tab-lbl { color: var(--pink-d); }
+
+    /* ── CLIENTS SCREEN ── */
+    .sm-header-black { background: var(--ink); padding: 6px 8px 7px; flex-shrink: 0; }
+    .sm-title { font-family: 'Inter Tight', sans-serif; font-weight: 900; font-size: 14px; text-transform: uppercase; color: #fff; line-height: 1; letter-spacing: -0.3px; }
+    .sm-sub { font-size: 5.5px; color: rgba(255,255,255,0.3); margin-top: 1px; }
+    .sm-body { flex: 1; overflow: hidden; padding: 5px 6px; display: flex; flex-direction: column; gap: 4px; }
+    .sm-search {
+      background: var(--white); border: 1px solid var(--border2);
+      border-radius: 4px; padding: 4px 6px;
+      font-size: 5.5px; color: var(--ink3);
+    }
+    .sm-filter-row { display: flex; gap: 3px; }
+    .sm-filter {
+      font-size: 5px; font-weight: 700; padding: 2px 5px; border-radius: 2px;
+      border: 1px solid var(--border2); color: var(--ink3);
+    }
+    .sm-filter.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .sm-client-card {
+      background: var(--white); border: 1px solid var(--border); border-radius: 5px; padding: 5px 6px;
+    }
+    .sm-client-row { display: flex; align-items: center; gap: 4px; margin-bottom: 2px; }
+    .sm-avatar {
+      width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5px; font-weight: 800;
+    }
+    .sm-client-name { font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 8px; color: var(--ink); }
+    .sm-client-sub { font-size: 5px; color: var(--ink3); }
+    .sm-tags { display: flex; flex-wrap: wrap; gap: 2px; }
+    .sm-tag { font-size: 4.5px; font-weight: 600; padding: 1px 4px; border-radius: 1px; }
+    .sm-tag.pink { background: var(--pink-l); color: var(--pink-d); }
+    .sm-tag.muted { background: var(--bg2); color: var(--ink2); }
+    .sm-tag.warn { background: var(--warn-l); color: var(--warn); }
+
+    /* ── LASH MAP SCREEN (sm) ── */
+    .sm-lm-header { background: var(--bg); padding: 5px 8px 5px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+    .sm-lm-back { font-size: 9px; color: var(--ink3); }
+    .sm-lm-title { font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 10px; text-transform: uppercase; color: var(--ink); flex: 1; }
+    .sm-lm-action { font-size: 9px; color: var(--ink3); }
+    .sm-lm-body { flex: 1; overflow: hidden; padding: 5px 6px; display: flex; flex-direction: column; gap: 4px; }
+    .sm-lm-eyebrow { font-size: 5px; letter-spacing: 2px; text-transform: uppercase; color: var(--pink-d); font-weight: 700; }
+    .sm-eye-card { background: var(--white); border: 1px solid var(--border); border-radius: 5px; padding: 6px; }
+    .sm-zone-editor { border: 1px solid var(--pink); border-radius: 5px; padding: 5px 6px; background: var(--white); }
+    .sm-zone-hdr { display: flex; justify-content: space-between; margin-bottom: 4px; }
+    .sm-zone-name { font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 7px; text-transform: uppercase; color: var(--ink); }
+    .sm-zone-rm { background: var(--pink-l); font-size: 5px; font-weight: 700; color: var(--pink-d); padding: 1px 5px; border-radius: 1px; }
+    .sm-zone-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-bottom: 3px; }
+    .sm-zone-cell { background: var(--bg2); border-radius: 3px; padding: 4px 5px; }
+    .sm-zone-lbl { font-size: 4.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--ink3); margin-bottom: 1px; }
+    .sm-zone-val { font-size: 7px; font-weight: 700; color: var(--ink); }
+    .sm-color-cell { background: var(--bg2); border-radius: 3px; padding: 4px 5px; }
+    .sm-zone-btns { display: flex; gap: 3px; }
+    .sm-zone-btn { flex: 1; text-align: center; padding: 3px; font-size: 4.5px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; border-radius: 2px; }
+    .sm-zone-btn.ghost { background: var(--pink-l); color: var(--pink-d); }
+    .sm-zone-btn.solid { background: var(--ink); color: #fff; }
+    .sm-btm-btns { display: flex; gap: 3px; }
+    .sm-btm-btn { flex: 1; text-align: center; padding: 5px; font-size: 5px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; border-radius: 3px; }
+    .sm-btm-btn.ghost { border: 1px solid var(--border2); color: var(--ink); }
+    .sm-btm-btn.pink { background: var(--pink); color: var(--ink); }
+
+    /* ── NAIL DESIGN SCREEN (sm) ── */
+    .sm-nd-finger-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; margin-bottom: 4px; }
+    .sm-nd-finger { border-radius: 3px; padding: 8px 0 3px; text-align: center; background: var(--bg2); border: 1px solid var(--border); }
+    .sm-nd-finger.active { background: var(--pink-l); border-color: var(--pink); }
+    .sm-nd-finger-lbl { font-size: 4px; color: var(--ink3); margin-top: 2px; }
+    .sm-nd-formula { background: var(--white); border: 1px solid var(--border); border-radius: 4px; padding: 5px; margin-bottom: 4px; }
+    .sm-nd-formula-lbl { font-size: 4.5px; color: var(--ink3); margin-bottom: 1px; }
+    .sm-nd-formula-val { font-size: 6px; font-weight: 700; color: var(--ink); }
+    .sm-nd-addons-lbl { font-size: 5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--ink3); margin-bottom: 3px; }
+    .sm-nd-addon-chips { display: flex; flex-wrap: wrap; gap: 2px; margin-bottom: 4px; }
+    .sm-nd-addon { font-size: 4.5px; font-weight: 600; padding: 2px 5px; border-radius: 2px; background: var(--bg2); border: 1px solid var(--border2); color: var(--ink3); }
+    .sm-nd-addon.active { background: var(--pink-l); border-color: var(--pink-m); color: var(--pink-d); }
+    .sm-save-btn { width: 100%; padding: 5px; background: var(--pink); border-radius: 3px; text-align: center; font-size: 6px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--ink); }
+
+    /* ── CLIENT PROFILE SCREEN (sm) ── */
+    .sm-profile-hero { background: var(--ink); padding: 6px 8px 8px; flex-shrink: 0; }
+    .sm-profile-back { font-size: 8px; color: rgba(255,255,255,0.35); margin-bottom: 5px; }
+    .sm-profile-row { display: flex; align-items: center; gap: 5px; margin-bottom: 6px; }
+    .sm-profile-avatar { width: 22px; height: 22px; border-radius: 50%; background: var(--pink-l); display: flex; align-items: center; justify-content: center; font-size: 6px; font-weight: 800; color: var(--pink-d); flex-shrink: 0; }
+    .sm-profile-name { font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 11px; text-transform: uppercase; color: #fff; }
+    .sm-profile-since { font-size: 5px; color: rgba(255,255,255,0.3); }
+    .sm-stats { display: flex; border-top: 1px solid rgba(255,255,255,0.07); padding-top: 5px; }
+    .sm-stat { flex: 1; text-align: center; }
+    .sm-stat-val { font-family: 'Inter Tight', sans-serif; font-weight: 900; font-size: 13px; color: #fff; line-height: 1; }
+    .sm-stat-val.pink { color: var(--pink); }
+    .sm-stat-lbl { font-size: 4px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-top: 1px; }
+    .sm-tabs { display: flex; border-bottom: 1px solid var(--border); background: var(--bg); flex-shrink: 0; }
+    .sm-tab-t { flex: 1; text-align: center; padding: 5px 1px; font-size: 5px; font-weight: 600; color: var(--ink3); border-bottom: 1.5px solid transparent; }
+    .sm-tab-t.active { color: var(--ink); border-bottom-color: var(--ink); }
+    .sm-p-body { flex: 1; overflow: hidden; padding: 5px 6px; display: flex; flex-direction: column; gap: 4px; }
+    .sm-p-alert { display: flex; gap: 3px; background: var(--warn-l); border: 1px solid rgba(232,145,58,0.22); border-radius: 3px; padding: 5px; }
+    .sm-p-alert-text { font-size: 5px; color: #7A3A08; line-height: 1.5; }
+    .sm-p-eye { font-size: 5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink3); font-weight: 700; margin-bottom: 3px; }
+    .sm-p-card { background: var(--pink-l); border: 1px solid var(--pink-m); border-radius: 4px; padding: 5px; }
+    .sm-p-field { display: flex; justify-content: space-between; padding: 2px 0; border-bottom: 1px solid rgba(13,13,13,0.05); }
+    .sm-p-field:last-child { border-bottom: none; }
+    .sm-p-lbl { font-size: 5px; color: var(--ink3); }
+    .sm-p-val { font-size: 5px; font-weight: 700; color: var(--ink); }
+    .sm-visit-card { background: var(--white); border: 1px solid var(--border); border-radius: 4px; padding: 5px; }
+    .sm-visit-row { display: flex; gap: 4px; }
+    .sm-visit-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--pink-l); border: 1px solid var(--pink-m); display: flex; align-items: center; justify-content: center; font-size: 4px; font-weight: 800; color: var(--pink-d); flex-shrink: 0; }
+    .sm-visit-date { font-size: 5px; color: var(--ink3); }
+    .sm-visit-title { font-size: 5.5px; font-weight: 700; color: var(--ink); }
+
+    /* ── BOOKING SCREEN (sm) ── */
+    .sm-book-header { background: var(--ink); padding: 6px 8px 7px; flex-shrink: 0; }
+    .sm-book-title { font-family: 'Inter Tight', sans-serif; font-weight: 900; font-size: 14px; text-transform: uppercase; color: #fff; line-height: 1; }
+    .sm-book-sub { font-size: 5px; color: rgba(255,255,255,0.3); margin-top: 1px; }
+    .sm-book-body { flex: 1; overflow: hidden; padding: 5px 6px; display: flex; flex-direction: column; gap: 4px; }
+    .sm-cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px; }
+    .sm-cal-month { font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 7px; text-transform: uppercase; color: var(--ink); }
+    .sm-cal-nav { font-size: 8px; color: var(--ink3); }
+    .sm-cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; margin-bottom: 5px; }
+    .sm-cal-day-hdr { font-size: 4px; text-align: center; color: var(--ink3); font-weight: 600; padding: 2px 0; }
+    .sm-cal-day { font-size: 5px; text-align: center; padding: 2px 1px; border-radius: 2px; color: var(--ink3); }
+    .sm-cal-day.today { background: var(--ink); color: #fff; border-radius: 50%; width: 13px; height: 13px; display: flex; align-items: center; justify-content: center; margin: 0 auto; }
+    .sm-cal-day.has-appt { color: var(--ink); font-weight: 700; }
+    .sm-section-lbl { font-size: 5.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--ink3); margin-bottom: 3px; }
+    .sm-book-appt { background: var(--white); border: 1px solid var(--border); border-radius: 4px; padding: 4px 5px; margin-bottom: 3px; display: flex; align-items: center; gap: 5px; }
+    .sm-book-time { font-size: 5.5px; font-weight: 800; color: var(--pink-d); min-width: 24px; }
+    .sm-book-info { flex: 1; }
+    .sm-book-client { font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 7px; color: var(--ink); }
+    .sm-book-svc { font-size: 5px; color: var(--ink3); }
+    .sm-book-dur { font-size: 4.5px; color: var(--ink4); }
+
+    /* ── PROBLEM ── */
+    .problem-section { padding: 96px 48px; max-width: 1200px; margin: 0 auto; }
+    .eyebrow { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--ink3); margin-bottom: 16px; font-weight: 600; }
+    .section-title { font-family: 'Inter Tight', sans-serif; font-weight: 900; font-size: clamp(34px, 4vw, 56px); line-height: 0.95; text-transform: uppercase; color: var(--ink); margin-bottom: 24px; letter-spacing: -1px; }
+    .section-body { font-size: 15px; line-height: 1.75; color: var(--ink3); max-width: 560px; }
+    .chaos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 2px; margin-top: 52px; }
+    .chaos-card { background: var(--white); border: 1px solid var(--border2); padding: 22px 18px; }
+    .chaos-icon { font-size: 22px; margin-bottom: 10px; }
+    .chaos-label { font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--ink); margin-bottom: 4px; }
+    .chaos-desc { font-size: 11px; color: var(--ink3); line-height: 1.55; }
+    .chaos-card.out .chaos-label { text-decoration: line-through; color: var(--ink4); }
+    .chaos-card.solution { background: var(--ink); border-color: var(--ink); }
+    .chaos-card.solution .chaos-label { color: #fff; text-decoration: none; }
+    .chaos-card.solution .chaos-desc { color: rgba(255,255,255,0.45); }
+
+    /* ── FEATURES ── */
+    .features-bg { background: var(--ink); }
+    .features-inner { padding: 96px 48px; max-width: 1200px; margin: 0 auto; }
+    .features-inner .eyebrow { color: rgba(255,255,255,0.3); }
+    .features-inner .section-title { color: #fff; }
+    .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 56px; }
+    .feature { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 36px 32px; transition: background .2s; }
+    .feature:hover { background: rgba(232,160,188,0.05); }
+    .feature-num { font-family: 'Inter Tight', sans-serif; font-weight: 900; font-size: 44px; color: rgba(255,255,255,0.04); line-height: 1; margin-bottom: 14px; }
+    .feature-title { font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 17px; text-transform: uppercase; letter-spacing: 0.8px; color: #fff; margin-bottom: 10px; }
+    .feature-title .accent { color: var(--pink); }
+    .feature-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.7; }
+
+    /* ── TESTIMONIALS ── */
+    .proof-section { padding: 96px 48px; background: var(--bg2); }
+    .proof-inner { max-width: 1200px; margin: 0 auto; }
+    .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 52px; }
+    .proof-card { background: var(--bg); border: 1px solid var(--border2); padding: 32px 28px; }
+    .proof-stars { color: var(--pink-d); font-size: 11px; margin-bottom: 16px; letter-spacing: 2px; }
+    .proof-text { font-size: 14px; line-height: 1.7; color: var(--ink2); margin-bottom: 20px; font-style: italic; }
+    .proof-author { font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--ink); }
+    .proof-role { font-size: 10px; color: var(--ink3); margin-top: 2px; }
+
+    /* ── EARLY ACCESS ── */
+    .early-bg { background: var(--pink-d); }
+    .early-inner { padding: 96px 48px; max-width: 800px; margin: 0 auto; text-align: center; }
+    .early-eyebrow { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 16px; font-weight: 600; }
+    .early-title { font-family: 'Inter Tight', sans-serif; font-weight: 900; font-size: clamp(40px, 6vw, 72px); line-height: 0.92; text-transform: uppercase; color: #fff; margin-bottom: 20px; }
+    .early-sub { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 480px; margin: 0 auto 40px; }
+    .early-form { display: flex; max-width: 480px; margin: 0 auto; }
+    .early-form input { flex: 1; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.28); border-right: none; padding: 16px 20px; font-size: 14px; color: #fff; font-family: 'Inter', sans-serif; outline: none; }
+    .early-form input::placeholder { color: rgba(255,255,255,0.38); }
+    .early-form input:focus { background: rgba(255,255,255,0.2); }
+    .early-form button { background: var(--ink); color: #fff; border: none; padding: 16px 28px; font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; white-space: nowrap; }
+    .early-form button:hover { background: #2a2a2a; }
+    .early-perks { display: flex; gap: 28px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
+    .early-perk { display: flex; align-items: center; gap: 7px; font-size: 11px; color: rgba(255,255,255,0.6); }
+    .early-perk::before { content: ''; width: 5px; height: 5px; background: rgba(255,255,255,0.35); border-radius: 50%; flex-shrink: 0; }
+    .form-success { display: none; }
+    .form-success-title { font-family: 'Inter Tight', sans-serif; font-weight: 900; font-size: 22px; text-transform: uppercase; color: var(--pink); margin-bottom: 6px; }
+    .form-success-sub { font-size: 12px; color: rgba(255,255,255,0.4); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--ink); padding: 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 48px; }
+    .footer-logo { font-family: 'Inter Tight', sans-serif; font-weight: 900; font-size: 16px; letter-spacing: 3px; text-transform: uppercase; color: #fff; }
+    .footer-logo span { color: var(--pink); }
+    .footer-text { display: flex; flex-direction: column; font-size: 11px; color: rgba(255,255,255,0.28); text-align: right; line-height: 1.6; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-right { justify-content: center; padding: 0 48px 72px; }
+      .phones-grid { grid-template-columns: repeat(2, 1fr); }
+      .proof-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero-left, .detail-section, .problem-section, .features-inner, .proof-section, .early-inner { padding-left: 24px; padding-right: 24px; }
+      footer { padding: 40px 24px; }
+      .footer-text { text-align: left; }
+      .early-form { flex-direction: column; }
+      .early-form input { border-right: 1px solid rgba(255,255,255,0.28); }
+      .landscape-showcase { margin: 32px 24px 0; }
+    }
+    @media (max-width: 540px) {
+      /* Prevent any element from blowing out horizontal scroll */
+      html, body { overflow-x: hidden; }
+      .phones-grid { grid-template-columns: 1fr 1fr; }
+      .phone-col:last-child { display: none; }
+      /* Scale down large display headlines so Ukrainian long words fit */
+      .hero-headline { font-size: clamp(40px, 12vw, 80px); letter-spacing: -1px; }
+      .detail-headline { font-size: clamp(26px, 8.5vw, 60px); letter-spacing: -0.5px; word-break: break-word; overflow-wrap: break-word; }
+      .section-title { font-size: clamp(24px, 7.5vw, 40px); }
+      .early-title { font-size: clamp(30px, 9vw, 60px); }
+      /* Tighten hero padding on small screens */
+      .hero-left { padding: 56px 20px 40px; }
+      .hero-right { padding: 0 20px 56px; }
+      /* Landscape card stack on mobile */
+      .landscape-showcase { flex-direction: column; }
+      .landscape-showcase .ls-text { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <!-- <div class="nav-logo-mark">HS</div> -->
+    <img class="nav-logo-mark" src="Logo para Estudio Creativo Dibujado a Mano Trendy Moderno Blanco y Negro (3).png">
+  </div>
+  <div class="nav-links">
+    <a href="#features" class="nav-link" data-en="Features" data-uk="Функції">Features</a>
+    <a href="#app" class="nav-link" data-en="The App" data-uk="Додаток">The App</a>
+    <a href="#manifesto" class="nav-link" data-en="Manifesto" data-uk="Маніфест">Manifesto</a>
+    <a href="#signup" class="nav-link" data-en="Waitlist" data-uk="Список очікування">Waitlist</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('en')" id="btn-en">EN</button>
+      <button class="lang-btn" onclick="setLang('uk')" id="btn-uk">UA</button>
+    </div>
+    <a href="#signup" class="nav-cta uk-namu" data-en="Get Early Access" data-uk="Ранній доступ">Get Early Access</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="app">
+  <div class="hero-left">
+    <div class="hero-issue">
+      <div class="hero-issue-dot"></div>
+      <span class="hero-issue-text uk-namu" data-en="Issue 01 — Summer 2026" data-uk="Випуск 01 — Літо 2026">Issue 01 — Summer 2026</span>
+    </div>
+    <h1 class="hero-headline uk-namu">
+      <span data-en="I'm not<br/>a tech,<br/>I'm an<br/><em class='artist'>artist.</em>" data-uk="Я не<br/>технік,<br/>я —<br/><em class='artist'>художник.</em>">I'm not<br/>a tech,<br/>I'm an<br/><em class="artist">artist.</em></span>
+    </h1>
+    <p class="hero-sub uk-namu" data-en="HerSets is the digital notebook for lash and nail artists. Every client's preferences, formulas, maps, photos and history — in one place built for the way you actually work." data-uk="HerSets — цифровий блокнот для леш- та нейл-майстрів. Побажання, формули, карти, фото та історія кожного клієнта — в одному місці, створеному для вашого стилю роботи.">HerSets is the digital notebook for lash and nail artists. Every client's preferences, formulas, maps, photos and history — in one place built for the way you actually work.</p>
+    <div class="hero-btns" id="hero-form-wrap">
+      <a href="#signup" class="btn-primary uk-namu" data-en="Join the Waitlist" data-uk="До списку очікування">Join the Waitlist</a>
+      <a href="#app" class="btn-ghost uk-namu" data-en="See the App" data-uk="Переглянути додаток">See the App</a>
+    </div>
+    <div class="form-success" id="hero-success" style="margin-top:16px;">
+      <p class="form-success-title uk-namu" data-en="You're on the list." data-uk="Ви в списку.">You're on the list.</p>
+      <p class="form-success-sub uk-namu" data-en="We'll email your 30% discount when HerSets launches." data-uk="Ми надішлемо знижку 30% при запуску.">We'll email your 30% discount when HerSets launches.</p>
+    </div>
+  </div>
+
+  <!-- HERO PHONE: TODAY SCREEN -->
+  <div class="hero-right">
+    <div class="iphone">
+      <div class="iphone-inner">
+        <div class="iphone-island"></div>
+        <!-- Status bar -->
+        <div class="status-bar">
+          <span class="status-time">9:41</span>
+          <div class="status-icons">
+            <span class="status-icon">●●●</span>
+            <span class="status-icon">WiFi</span>
+            <span class="status-icon">▮▮▮</span>
+          </div>
+        </div>
+        <!-- Screen -->
+        <div class="iphone-screen">
+          <div class="app-header-black">
+            <div class="app-eyebrow uk-namu" data-en="Tuesday, June 28" data-uk="Вівторок, 28 червня">Tuesday, June 28</div>
+            <div class="app-title uk-namu" data-en="TODAY" data-uk="СЬОГОДНІ">TODAY</div>
+            <div class="app-sub uk-namu" data-en="5 clients · first at 10:00 AM" data-uk="5 клієнтів · перший о 10:00">5 clients · first at 10:00 AM</div>
+          </div>
+          <div class="app-scroll">
+            <div class="voice-btn">
+              <div class="voice-icon">🎙</div>
+              <div>
+                <div class="voice-title uk-namu" data-en="Quick voice note" data-uk="Голосова нотатка">Quick voice note</div>
+                <div class="voice-sub uk-namu" data-en="Tap to capture — organizes into fields" data-uk="Натисніть для запису">Tap to capture — organizes into fields</div>
+              </div>
+            </div>
+            <div class="appt-card">
+              <div class="appt-time">10:00 AM</div>
+              <div class="appt-name">Maria L.</div>
+              <div class="appt-service uk-namu" data-en="Volume fill · C curl · cat eye" data-uk="Об'ємне · вигин C · котяче">Volume fill · C curl · cat eye</div>
+              <div class="appt-note uk-namu" data-en="Left eye lost lashes faster. Check outer corner retention." data-uk="Ліве око — швидша втрата. Перевір кут.">Left eye lost lashes faster. Check outer corner retention.</div>
+              <div class="tag-row">
+                <span class="tag pink" data-en="Sensitive eyes" data-uk="Чутливі очі">Sensitive eyes</span>
+                <span class="tag warn" data-en="Retention issue" data-uk="Проблема утримання">Retention issue</span>
+              </div>
+              <span class="appt-cta pink uk-namu" data-en="START NOTES" data-uk="РОЗПОЧАТИ">START NOTES</span>
+            </div>
+            <div class="appt-card">
+              <div class="appt-time">12:00 PM</div>
+              <div class="appt-name">Jessica M.</div>
+              <div class="appt-service uk-namu" data-en="Gel-X refill · OPI NL H19 · Almond" data-uk="Gel-X · OPI NL H19 · Мигдаль">Gel-X refill · OPI NL H19 · Almond</div>
+              <div class="tag-row">
+                <span class="tag pink" data-en="Sensitive cuticles" data-uk="Чутливі кутикули">Sensitive cuticles</span>
+                <span class="tag warn" data-en="No acetone" data-uk="Без ацетону">No acetone</span>
+              </div>
+              <span class="appt-cta ink uk-namu" data-en="START NOTES" data-uk="РОЗПОЧАТИ">START NOTES</span>
+            </div>
+            <div class="appt-card" style="opacity:0.55">
+              <div class="appt-time">2:30 PM</div>
+              <div class="appt-name" style="display:flex;align-items:center;gap:5px;">Aisha K. <span class="tag new uk-namu" data-en="NEW" data-uk="НОВА">NEW</span></div>
+              <div class="appt-service uk-namu" data-en="Hybrid fill · first appointment" data-uk="Гібрид · перший запис">Hybrid fill · first appointment</div>
+            </div>
+          </div>
+        </div>
+        <!-- Tab bar -->
+        <div class="tab-bar">
+          <div class="tab-item active">
+            <div class="tab-icon">☀️</div>
+            <div class="tab-label uk-namu" data-en="TODAY" data-uk="СЬОГОДНІ">TODAY</div>
+          </div>
+          <div class="tab-item">
+            <div class="tab-icon">👤</div>
+            <div class="tab-label uk-namu" data-en="CLIENTS" data-uk="КЛІЄНТИ">CLIENTS</div>
+          </div>
+          <div class="tab-item">
+            <div class="tab-icon">📅</div>
+            <div class="tab-label uk-namu" data-en="BOOK" data-uk="ЗАПИС">BOOK</div>
+          </div>
+          <div class="tab-item">
+            <div class="tab-icon">⚙️</div>
+            <div class="tab-label uk-namu" data-en="SETTINGS" data-uk="НАЛАШ.">SETTINGS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-vol" aria-hidden="true">VOL. I · FORMULAS</div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item uk-namu" data-en="Client records" data-uk="Картки клієнтів">Client records</span>
+    <span class="ticker-item uk-namu" data-en="Lash maps" data-uk="Карти вій">Lash maps</span>
+    <span class="ticker-item uk-namu" data-en="Nail formulas" data-uk="Формули нігтів">Nail formulas</span>
+    <span class="ticker-item uk-namu" data-en="Visit history" data-uk="Історія візитів">Visit history</span>
+    <span class="ticker-item uk-namu" data-en="Sensitivities" data-uk="Чутливість">Sensitivities</span>
+    <span class="ticker-item uk-namu" data-en="Product notes" data-uk="Нотатки">Product notes</span>
+    <span class="ticker-item uk-namu" data-en="Progress photos" data-uk="Фото прогресу">Progress photos</span>
+    <span class="ticker-item uk-namu" data-en="Service templates" data-uk="Шаблони">Service templates</span>
+    <span class="ticker-item uk-namu" data-en="Client records" data-uk="Картки клієнтів">Client records</span>
+    <span class="ticker-item uk-namu" data-en="Lash maps" data-uk="Карти вій">Lash maps</span>
+    <span class="ticker-item uk-namu" data-en="Nail formulas" data-uk="Формули нігтів">Nail formulas</span>
+    <span class="ticker-item uk-namu" data-en="Visit history" data-uk="Історія візитів">Visit history</span>
+    <span class="ticker-item uk-namu" data-en="Sensitivities" data-uk="Чутливість">Sensitivities</span>
+    <span class="ticker-item uk-namu" data-en="Product notes" data-uk="Нотатки">Product notes</span>
+    <span class="ticker-item uk-namu" data-en="Progress photos" data-uk="Фото прогресу">Progress photos</span>
+    <span class="ticker-item uk-namu" data-en="Service templates" data-uk="Шаблони">Service templates</span>
+  </div>
+</div>
+
+<!-- EVERY DETAIL + 5 PHONES -->
+<div class="detail-section" id="features">
+  <h2 class="detail-headline uk-namu">
+    <span data-en="Every detail." data-uk="Кожна деталь.">Every detail.</span><br/>
+    <em class="remembered uk-namu" data-en="Remembered." data-uk="Запам'ятована.">Remembered.</em>
+  </h2>
+
+  <div class="phones-grid" id="manifesto">
+
+    <!-- 1: CLIENTS -->
+    <div class="phone-col">
+      <div class="iphone-sm">
+        <div class="iphone-sm-inner">
+          <div class="iphone-sm-island"></div>
+          <div class="sm-status">
+            <span class="sm-time">9:41</span>
+            <span class="sm-icons">●●● ▮▮</span>
+          </div>
+          <div class="sm-screen">
+            <div class="sm-header-black">
+              <div class="sm-title uk-namu" data-en="CLIENTS" data-uk="КЛІЄНТИ">CLIENTS</div>
+              <div class="sm-sub uk-namu" data-en="28 clients · 3 need follow-up" data-uk="28 клієнтів · 3 потребують уваги">28 clients · 3 need follow-up</div>
+            </div>
+            <div class="sm-body">
+              <div class="sm-search uk-namu" data-en="Search name, tag, color, curl..." data-uk="Пошук імені, тегу, кольору...">Search name, tag, color, curl...</div>
+              <div class="sm-filter-row">
+                <div class="sm-filter active uk-namu" data-en="All" data-uk="Всі">All</div>
+                <div class="sm-filter uk-namu" data-en="Lash" data-uk="Вії">Lash</div>
+                <div class="sm-filter uk-namu" data-en="Nail" data-uk="Нігті">Nail</div>
+                <div class="sm-filter uk-namu" data-en="VIP" data-uk="VIP">VIP</div>
+                <div class="sm-filter uk-namu" data-en="Due" data-uk="Пора">Due</div>
+              </div>
+              <div class="sm-client-card">
+                <div class="sm-client-row">
+                  <div class="sm-avatar" style="background:var(--pink-l);color:var(--pink-d);">ML</div>
+                  <div>
+                    <div class="sm-client-name">Maria L.</div>
+                    <div class="sm-client-sub uk-namu" data-en="Vol. fill · June 28 today" data-uk="Об. наповнення · 28 черв.">Vol. fill · June 28 today</div>
+                  </div>
+                </div>
+                <div class="sm-tags">
+                  <span class="sm-tag pink" data-en="Lash" data-uk="Вії">Lash</span>
+                  <span class="sm-tag muted">C curl · cat eye</span>
+                  <span class="sm-tag warn" data-en="Retention" data-uk="Утримання">Retention</span>
+                </div>
+              </div>
+              <div class="sm-client-card">
+                <div class="sm-client-row">
+                  <div class="sm-avatar" style="background:var(--bg2);color:var(--ink2);">JM</div>
+                  <div>
+                    <div class="sm-client-name">Jessica M.</div>
+                    <div class="sm-client-sub uk-namu" data-en="Gel-X · June 28 today" data-uk="Gel-X · 28 черв.">Gel-X · June 28 today</div>
+                  </div>
+                </div>
+                <div class="sm-tags">
+                  <span class="sm-tag muted" data-en="Nail" data-uk="Нігті">Nail</span>
+                  <span class="sm-tag muted">Almond · OPI</span>
+                  <span class="sm-tag warn" data-en="No acetone" data-uk="Без ацетону">No acetone</span>
+                </div>
+              </div>
+              <div class="sm-client-card" style="opacity:0.7">
+                <div class="sm-client-row">
+                  <div class="sm-avatar" style="background:var(--bg3);color:var(--ink3);">AK</div>
+                  <div>
+                    <div class="sm-client-name">Aisha K. <span class="sm-tag new" style="font-size:3.5px;padding:1px 3px;background:var(--pink);color:var(--ink);">NEW</span></div>
+                    <div class="sm-client-sub uk-namu" data-en="Hybrid fill · first visit" data-uk="Гібрид · перший візит">Hybrid fill · first visit</div>
+                  </div>
+                </div>
+                <div class="sm-tags">
+                  <span class="sm-tag pink">Lash</span>
+                  <span class="sm-tag muted" data-en="Patch test done" data-uk="Тест зроблено">Patch test done</span>
+                </div>
+              </div>
+              <div class="sm-client-card" style="opacity:0.5">
+                <div class="sm-client-row">
+                  <div class="sm-avatar" style="background:var(--pink-l);color:var(--pink-d);">PL</div>
+                  <div>
+                    <div class="sm-client-name">Priya L.</div>
+                    <div class="sm-client-sub uk-namu" data-en="Last visit Jun 8" data-uk="Остання 8 черв.">Last visit Jun 8</div>
+                  </div>
+                </div>
+                <div class="sm-tags">
+                  <span class="sm-tag muted">Nail</span>
+                  <span class="sm-tag warn" data-en="Balance due" data-uk="Заборгованість">Balance due</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sm-tab-bar">
+            <div class="sm-tab"><div class="sm-tab-icon">☀️</div><div class="sm-tab-lbl uk-namu" data-en="TODAY" data-uk="СЬОГОДНІ">TODAY</div></div>
+            <div class="sm-tab active"><div class="sm-tab-icon">👤</div><div class="sm-tab-lbl uk-namu" data-en="CLIENTS" data-uk="КЛІЄНТИ">CLIENTS</div></div>
+            <div class="sm-tab"><div class="sm-tab-icon">📅</div><div class="sm-tab-lbl uk-namu" data-en="BOOK" data-uk="ЗАПИС">BOOK</div></div>
+            <div class="sm-tab"><div class="sm-tab-icon">⚙️</div><div class="sm-tab-lbl uk-namu" data-en="SETTINGS" data-uk="НАЛАШ.">SETTINGS</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-col-label uk-namu" data-en="Clients" data-uk="Клієнти">Clients</div>
+      <div class="phone-col-desc uk-namu" data-en="Search by name, tag, color or curl. Filter by lash, nail, VIP or due." data-uk="Пошук за іменем, тегом, кольором або вигином.">Search by name, tag, color or curl. Filter by lash, nail, VIP or due.</div>
+    </div>
+
+    <!-- 2: LASH MAP -->
+    <div class="phone-col">
+      <div class="iphone-sm">
+        <div class="iphone-sm-inner">
+          <div class="iphone-sm-island"></div>
+          <div class="sm-status"><span class="sm-time">9:41</span><span class="sm-icons">●●● ▮▮</span></div>
+          <div class="sm-screen">
+            <div class="sm-lm-header">
+              <span class="sm-lm-back">←</span>
+              <div>
+                <div class="sm-lm-title uk-namu" data-en="LASH MAP" data-uk="КАРТА ВІЙ">LASH MAP</div>
+                <div style="font-size:4.5px;color:var(--ink3);" class="uk-namu" data-en="Maria L. · Fill #12 · tap zone to edit" data-uk="Марія Л. · №12">Maria L. · Fill #12 · tap zone to edit</div>
+              </div>
+              <span class="sm-lm-action">↔</span>
+            </div>
+            <div class="sm-lm-body">
+              <div class="sm-lm-eyebrow uk-namu" data-en="Eye diagram — L eye" data-uk="Схема — ліве">Eye diagram — L eye</div>
+              <div class="sm-eye-card">
+                <svg viewBox="0 0 200 76" width="100%" style="height:54px;" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8,38 Q50,4 100,4 Q150,4 192,38 Q150,72 100,72 Q50,72 8,38 Z" fill="none" stroke="#0D0D0D" stroke-width="1" opacity="0.15"/>
+                  <path d="M8,38 Q28,17 50,15 Q34,38 50,59 Q28,57 8,38 Z" fill="#FCF0F6" stroke="#E8A0BC" stroke-width="0.8"/>
+                  <text x="29" y="37" font-size="6" font-weight="700" fill="#C4507A" text-anchor="middle" font-family="Inter Tight,sans-serif">I</text>
+                  <text x="29" y="45" font-size="4.5" fill="#C4507A" text-anchor="middle" font-family="Inter,sans-serif">C/7</text>
+                  <path d="M50,15 Q74,6 100,5 Q92,38 100,70 Q74,69 50,59 Q34,38 50,15 Z" fill="#FDF8FB" stroke="#E8A0BC" stroke-width="0.8"/>
+                  <text x="73" y="36" font-size="6" font-weight="700" fill="#C4507A" text-anchor="middle" font-family="Inter Tight,sans-serif">IM</text>
+                  <text x="73" y="44" font-size="4.5" fill="#C4507A" text-anchor="middle" font-family="Inter,sans-serif">C/9</text>
+                  <path d="M100,5 Q118,5 133,10 Q128,38 133,66 Q118,70 100,70 Q92,38 100,5 Z" fill="#EBF4EF" stroke="#8FAF9F" stroke-width="2"/>
+                  <text x="117" y="36" font-size="6" font-weight="700" fill="#4E8C7A" text-anchor="middle" font-family="Inter Tight,sans-serif">C</text>
+                  <text x="117" y="44" font-size="4.5" fill="#4E8C7A" text-anchor="middle" font-family="Inter,sans-serif">CC/11</text>
+                  <path d="M133,10 Q158,17 178,32 Q174,46 163,57 Q148,63 133,66 Q128,38 133,10 Z" fill="#FDF8FB" stroke="#E8A0BC" stroke-width="0.8"/>
+                  <text x="156" y="38" font-size="6" font-weight="700" fill="#C4507A" text-anchor="middle" font-family="Inter Tight,sans-serif">OM</text>
+                  <text x="156" y="46" font-size="4.5" fill="#C4507A" text-anchor="middle" font-family="Inter,sans-serif">D/13</text>
+                  <path d="M178,32 Q192,36 192,38 Q192,40 178,44 Q174,46 178,32 Z" fill="#FCF0F6" stroke="#E8A0BC" stroke-width="0.8"/>
+                  <text x="184" y="40" font-size="5" font-weight="700" fill="#C4507A" text-anchor="middle" font-family="Inter Tight,sans-serif">O</text>
+                </svg>
+                <div style="display:flex;justify-content:space-between;margin-top:2px;">
+                  <span style="font-size:4.5px;color:var(--ink3);letter-spacing:0.5px;" class="uk-namu" data-en="INNER" data-uk="ВНУТР.">INNER</span>
+                  <span style="font-size:4.5px;color:var(--sage);font-weight:700;" class="uk-namu" data-en="CENTER" data-uk="ЦЕНТР">CENTER</span>
+                  <span style="font-size:4.5px;color:var(--ink3);" class="uk-namu" data-en="OUTER" data-uk="ЗОВН.">OUTER</span>
+                </div>
+              </div>
+              <div class="sm-zone-editor">
+                <div class="sm-zone-hdr">
+                  <span class="sm-zone-name uk-namu" data-en="CENTER ZONE" data-uk="ЦЕНТР">CENTER ZONE</span>
+                  <span class="sm-zone-rm uk-namu" data-en="REMOVE" data-uk="ВИДАЛИТИ">REMOVE</span>
+                </div>
+                <div class="sm-zone-grid">
+                  <div class="sm-zone-cell"><div class="sm-zone-lbl uk-namu" data-en="Curl" data-uk="Вигин">Curl</div><div class="sm-zone-val">CC</div></div>
+                  <div class="sm-zone-cell"><div class="sm-zone-lbl uk-namu" data-en="Length" data-uk="Довжина">Length</div><div class="sm-zone-val">10–12mm</div></div>
+                  <div class="sm-zone-cell"><div class="sm-zone-lbl uk-namu" data-en="Diameter" data-uk="Діаметр">Diameter</div><div class="sm-zone-val">0.05</div></div>
+                  <div class="sm-zone-cell"><div class="sm-zone-lbl uk-namu" data-en="Fan" data-uk="Пучок">Fan</div><div class="sm-zone-val">5D</div></div>
+                </div>
+                <div class="sm-color-cell" style="margin-bottom:3px;"><div class="sm-zone-lbl uk-namu" data-en="Color" data-uk="Колір">Color</div><div class="sm-zone-val" style="font-size:6px;" data-en="Black · faux mink · matte" data-uk="Чорний · матовий">Black · faux mink · matte</div></div>
+                <div class="sm-zone-btns">
+                  <div class="sm-zone-btn ghost uk-namu" data-en="+ ADD SECTION" data-uk="+ СЕКЦІЮ">+ ADD SECTION</div>
+                  <div class="sm-zone-btn solid uk-namu" data-en="SAVE ZONE" data-uk="ЗБЕРЕГТИ">SAVE ZONE</div>
+                </div>
+              </div>
+              <div class="sm-btm-btns">
+                <div class="sm-btm-btn ghost uk-namu" data-en="← REFERENCE" data-uk="← ОГЛЯД">← REFERENCE</div>
+                <div class="sm-btm-btn pink uk-namu" data-en="NEXT: FILL NOTES →" data-uk="ДАЛІ →">NEXT: FILL NOTES →</div>
+              </div>
+            </div>
+          </div>
+          <div class="sm-tab-bar">
+            <div class="sm-tab"><div class="sm-tab-icon">☀️</div><div class="sm-tab-lbl uk-namu" data-en="TODAY" data-uk="СЬОГОДНІ">TODAY</div></div>
+            <div class="sm-tab active"><div class="sm-tab-icon">👤</div><div class="sm-tab-lbl uk-namu" data-en="CLIENTS" data-uk="КЛІЄНТИ">CLIENTS</div></div>
+            <div class="sm-tab"><div class="sm-tab-icon">📅</div><div class="sm-tab-lbl uk-namu" data-en="BOOK" data-uk="ЗАПИС">BOOK</div></div>
+            <div class="sm-tab"><div class="sm-tab-icon">⚙️</div><div class="sm-tab-lbl uk-namu" data-en="SETTINGS" data-uk="НАЛАШ.">SETTINGS</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-col-label uk-namu" data-en="Lash Map" data-uk="Карта вій">Lash Map</div>
+      <div class="phone-col-desc uk-namu" data-en="A real eye diagram. Tap zones to log curl, length and retention." data-uk="Справжня схема ока. Натискайте зони для запису.">A real eye diagram. Tap zones to log curl, length and retention.</div>
+    </div>
+
+    <!-- 3: NAIL DESIGN -->
+    <div class="phone-col">
+      <div class="iphone-sm">
+        <div class="iphone-sm-inner">
+          <div class="iphone-sm-island"></div>
+          <div class="sm-status"><span class="sm-time">12:22 PM</span><span class="sm-icons">●●● ▮▮</span></div>
+          <div class="sm-screen">
+            <div class="sm-lm-header">
+              <span class="sm-lm-back">←</span>
+              <div>
+                <div class="sm-lm-title uk-namu" data-en="DESIGN BUILDER" data-uk="ДИЗАЙН БІЛДЕР">DESIGN BUILDER</div>
+                <div style="font-size:4.5px;color:var(--ink3);" class="uk-namu" data-en="Jessica M. · Visit 8" data-uk="Джесіка М. · Візит 8">Jessica M. · Visit 8</div>
+              </div>
+            </div>
+            <div class="sm-lm-body">
+              <div class="sm-lm-eyebrow uk-namu" data-en="Per finger design" data-uk="Дизайн пальця">Per finger design</div>
+              <div class="sm-nd-finger-row">
+                <div class="sm-nd-finger"><div style="font-size:6px;">👍</div><div class="sm-nd-finger-lbl" data-en="THUMB" data-uk="ВЕЛИКИЙ">THUMB</div></div>
+                <div class="sm-nd-finger"><div style="font-size:6px;">☝️</div><div class="sm-nd-finger-lbl" data-en="INDEX" data-uk="ВКАЗ.">INDEX</div></div>
+                <div class="sm-nd-finger"><div style="font-size:6px;">🖕</div><div class="sm-nd-finger-lbl" data-en="MIDDLE" data-uk="СЕРЕД.">MIDDLE</div></div>
+                <div class="sm-nd-finger active" style="background:var(--pink-l);border-color:var(--pink);"><div style="font-size:6px;">💍</div><div class="sm-nd-finger-lbl" style="color:var(--pink-d);" data-en="RING" data-uk="БЕЗІМ.">RING</div></div>
+                <div class="sm-nd-finger"><div style="font-size:6px;">🤙</div><div class="sm-nd-finger-lbl" data-en="PINKY" data-uk="МІЗИН.">PINKY</div></div>
+              </div>
+              <div class="sm-nd-formula">
+                <div class="sm-nd-formula-lbl" data-en="Thumb · Middle · Pinky" data-uk="Великий · Серед. · Мізин.">Thumb · Middle · Pinky</div>
+                <div class="sm-nd-formula-val">OPI NL H19 · solid</div>
+                <div class="sm-nd-formula-lbl" style="margin-top:3px;" data-en="Ring (accent)" data-uk="Безіменний (акцент)">Ring (accent)</div>
+                <div class="sm-nd-formula-val" data-en="Rose gold chrome" data-uk="Рожеве золото хром">Rose gold chrome</div>
+              </div>
+              <div class="sm-nd-addons-lbl uk-namu" data-en="Add-ons" data-uk="Доповнення">Add-ons</div>
+              <div class="sm-nd-addon-chips">
+                <span class="sm-nd-addon active uk-namu" data-en="Chrome ✓" data-uk="Хром ✓">Chrome ✓</span>
+                <span class="sm-nd-addon uk-namu" data-en="French" data-uk="Французький">French</span>
+                <span class="sm-nd-addon uk-namu" data-en="Rhinestones" data-uk="Стрази">Rhinestones</span>
+                <span class="sm-nd-addon uk-namu" data-en="Ombré" data-uk="Омбре">Ombré</span>
+              </div>
+              <div class="sm-save-btn uk-namu" data-en="SAVE SESSION" data-uk="ЗБЕРЕГТИ СЕСІЮ">SAVE SESSION</div>
+            </div>
+          </div>
+          <div class="sm-tab-bar">
+            <div class="sm-tab"><div class="sm-tab-icon">☀️</div><div class="sm-tab-lbl uk-namu" data-en="TODAY" data-uk="СЬОГОДНІ">TODAY</div></div>
+            <div class="sm-tab active"><div class="sm-tab-icon">👤</div><div class="sm-tab-lbl uk-namu" data-en="CLIENTS" data-uk="КЛІЄНТИ">CLIENTS</div></div>
+            <div class="sm-tab"><div class="sm-tab-icon">📅</div><div class="sm-tab-lbl uk-namu" data-en="BOOK" data-uk="ЗАПИС">BOOK</div></div>
+            <div class="sm-tab"><div class="sm-tab-icon">⚙️</div><div class="sm-tab-lbl uk-namu" data-en="SETTINGS" data-uk="НАЛАШ.">SETTINGS</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-col-label uk-namu" data-en="Nail Design" data-uk="Дизайн нігтів">Nail Design</div>
+      <div class="phone-col-desc uk-namu" data-en="Photos, finish, shape and exact formulas — saved per set." data-uk="Фото, покриття, форма та точні формули — збережені.">Photos, finish, shape and exact formulas — saved per set.</div>
+    </div>
+
+    <!-- 4: CLIENT PROFILE -->
+    <div class="phone-col">
+      <div class="iphone-sm">
+        <div class="iphone-sm-inner">
+          <div class="iphone-sm-island"></div>
+          <div class="sm-status" style="background:var(--ink);"><span class="sm-time">9:41</span><span class="sm-icons" style="color:rgba(255,255,255,0.6);">●●● ▮▮</span></div>
+          <div class="sm-screen">
+            <div class="sm-profile-hero">
+              <div class="sm-profile-back uk-namu" data-en="← Clients" data-uk="← Клієнти">← Clients</div>
+              <div class="sm-profile-row">
+                <div class="sm-profile-avatar">ML</div>
+                <div>
+                  <div class="sm-profile-name">MARIA L.</div>
+                  <div class="sm-profile-since uk-namu" data-en="Client since Mar 2024" data-uk="З бер. 2024">Client since Mar 2024</div>
+                </div>
+                <span style="margin-left:auto;font-size:10px;color:rgba(255,255,255,0.3);">⋯</span>
+              </div>
+              <div class="sm-stats">
+                <div class="sm-stat"><div class="sm-stat-val">12</div><div class="sm-stat-lbl uk-namu" data-en="FILLS" data-uk="НАПОВН.">FILLS</div></div>
+                <div class="sm-stat"><div class="sm-stat-val">16</div><div class="sm-stat-lbl uk-namu" data-en="MONTHS" data-uk="МІСЯЦІВ">MONTHS</div></div>
+                <div class="sm-stat"><div class="sm-stat-val pink">2</div><div class="sm-stat-lbl uk-namu" data-en="ALERTS" data-uk="ПОПЕР.">ALERTS</div></div>
+              </div>
+            </div>
+            <div class="sm-tabs">
+              <div class="sm-tab-t active uk-namu" data-en="OVERVIEW" data-uk="ОГЛЯД">OVERVIEW</div>
+              <div class="sm-tab-t uk-namu" data-en="LASH MAP" data-uk="КАРТА">LASH MAP</div>
+              <div class="sm-tab-t uk-namu" data-en="PERSONAL" data-uk="ОСОБ.">PERSONAL</div>
+              <div class="sm-tab-t uk-namu" data-en="PHOTOS" data-uk="ФОТО">PHOTOS</div>
+            </div>
+            <div class="sm-p-body">
+              <div class="sm-p-alert">
+                <span style="font-size:7px;">⚠️</span>
+                <span class="sm-p-alert-text uk-namu" data-en="Sensitive eyes — use sensitive adhesive, reduce fumes near client." data-uk="Чутливі очі — чутливий клей.">Sensitive eyes — use sensitive adhesive, reduce fumes near client.</span>
+              </div>
+              <div class="sm-p-eye uk-namu" data-en="LAST LASH MAP" data-uk="ОСТАННЯ КАРТА">LAST LASH MAP</div>
+              <div class="sm-p-card">
+                <div class="sm-p-field"><span class="sm-p-lbl" data-en="Style" data-uk="Стиль">Style</span><span class="sm-p-val" data-en="Volume · cat eye" data-uk="Об'єм · котяче">Volume · cat eye</span></div>
+                <div class="sm-p-field"><span class="sm-p-lbl" data-en="Curl" data-uk="Вигин">Curl</span><span class="sm-p-val">C curl · 9–13mm</span></div>
+                <div class="sm-p-field"><span class="sm-p-lbl" data-en="Diameter" data-uk="Діаметр">Diameter</span><span class="sm-p-val">0.05mm · 5D fans</span></div>
+                <div class="sm-p-field"><span class="sm-p-lbl" data-en="Adhesive" data-uk="Клей">Adhesive</span><span class="sm-p-val">Belmacil Sensitive</span></div>
+              </div>
+              <div class="sm-p-eye uk-namu" data-en="VISIT HISTORY" data-uk="ІСТОРІЯ">VISIT HISTORY</div>
+              <div class="sm-visit-card">
+                <div class="sm-visit-row" style="gap:5px;margin-bottom:5px;">
+                  <div class="sm-visit-dot">F12</div>
+                  <div><div class="sm-visit-date uk-namu" data-en="June 28, 2025 · Today" data-uk="28 черв. 2025 · Сьогодні">June 28, 2025 · Today</div><div class="sm-visit-title uk-namu" data-en="Volume fill · cat eye" data-uk="Об'єм · котяче">Volume fill · cat eye</div><div class="sm-visit-date">C curl 9–13mm · Belmacil Sensitive</div></div>
+                </div>
+                <div class="sm-visit-row" style="gap:5px;margin-bottom:5px;opacity:0.7;">
+                  <div class="sm-visit-dot" style="background:var(--bg2);border-color:var(--border2);color:var(--ink3);">F11</div>
+                  <div><div class="sm-visit-date uk-namu" data-en="June 7, 2025" data-uk="7 черв. 2025">June 7, 2025</div><div class="sm-visit-title uk-namu" data-en="Volume fill · cat eye" data-uk="Об'єм · котяче">Volume fill · cat eye</div><div class="sm-visit-date" data-en="Retention good · 3 weeks" data-uk="Добре утримання · 3 тижні">Retention good · 3 weeks</div></div>
+                </div>
+                <div class="sm-visit-row" style="gap:5px;opacity:0.5;">
+                  <div class="sm-visit-dot" style="background:var(--bg2);border-color:var(--border2);color:var(--ink3);">F10</div>
+                  <div><div class="sm-visit-date uk-namu" data-en="May 17, 2025" data-uk="17 трав. 2025">May 17, 2025</div><div class="sm-visit-title uk-namu" data-en="Volume fill" data-uk="Об'єм">Volume fill</div><div class="sm-visit-date" data-en="Adjusted outer corner shorter" data-uk="Скоротили зовн. кут">Adjusted outer corner shorter</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sm-tab-bar">
+            <div class="sm-tab"><div class="sm-tab-icon">☀️</div><div class="sm-tab-lbl uk-namu" data-en="TODAY" data-uk="СЬОГОДНІ">TODAY</div></div>
+            <div class="sm-tab active"><div class="sm-tab-icon">👤</div><div class="sm-tab-lbl uk-namu" data-en="CLIENTS" data-uk="КЛІЄНТИ">CLIENTS</div></div>
+            <div class="sm-tab"><div class="sm-tab-icon">📅</div><div class="sm-tab-lbl uk-namu" data-en="BOOK" data-uk="ЗАПИС">BOOK</div></div>
+            <div class="sm-tab"><div class="sm-tab-icon">⚙️</div><div class="sm-tab-lbl uk-namu" data-en="SETTINGS" data-uk="НАЛАШ.">SETTINGS</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-col-label uk-namu" data-en="Client Profile" data-uk="Профіль клієнта">Client Profile</div>
+      <div class="phone-col-desc uk-namu" data-en="Service history, sensitivities and personal details, organized." data-uk="Історія, чутливості та особисті деталі — організовані.">Service history, sensitivities and personal details, organized.</div>
+    </div>
+
+    <!-- 5: BOOKING -->
+    <div class="phone-col">
+      <div class="iphone-sm">
+        <div class="iphone-sm-inner">
+          <div class="iphone-sm-island"></div>
+          <div class="sm-status"><span class="sm-time">9:41</span><span class="sm-icons">●●● ▮▮</span></div>
+          <div class="sm-screen">
+            <div class="sm-book-header">
+              <div class="sm-book-title uk-namu" data-en="MY CALENDAR" data-uk="МІЙ КАЛЕНДАР">MY CALENDAR</div>
+              <div class="sm-book-sub">June 2025</div>
+            </div>
+            <div class="sm-book-body">
+              <div class="sm-cal-header">
+                <span class="sm-cal-nav">‹</span>
+                <span class="sm-cal-month uk-namu" data-en="JUNE 2025" data-uk="ЧЕРВЕНЬ 2025">JUNE 2025</span>
+                <span class="sm-cal-nav">›</span>
+              </div>
+              <div class="sm-cal-grid">
+                <div class="sm-cal-day-hdr">S</div><div class="sm-cal-day-hdr">M</div><div class="sm-cal-day-hdr">T</div><div class="sm-cal-day-hdr">W</div><div class="sm-cal-day-hdr">T</div><div class="sm-cal-day-hdr">F</div><div class="sm-cal-day-hdr">S</div>
+                <div class="sm-cal-day">25</div><div class="sm-cal-day">26</div><div class="sm-cal-day">27</div><div class="sm-cal-day has-appt">28</div><div class="sm-cal-day today">28</div><div class="sm-cal-day">29</div><div class="sm-cal-day">30</div>
+                <div class="sm-cal-day">1</div><div class="sm-cal-day has-appt">2</div><div class="sm-cal-day">3</div><div class="sm-cal-day has-appt">4</div><div class="sm-cal-day">5</div><div class="sm-cal-day has-appt">6</div><div class="sm-cal-day">7</div>
+                <div class="sm-cal-day has-appt">8</div><div class="sm-cal-day">9</div><div class="sm-cal-day has-appt">10</div><div class="sm-cal-day">11</div><div class="sm-cal-day has-appt">12</div><div class="sm-cal-day">13</div><div class="sm-cal-day">14</div>
+              </div>
+              <div class="sm-section-lbl uk-namu" data-en="JUNE 28 · TODAY" data-uk="28 ЧЕРВ. · СЬОГОДНІ">JUNE 28 · TODAY</div>
+              <div class="sm-book-appt">
+                <div class="sm-book-time">10:00 AM</div>
+                <div class="sm-book-info">
+                  <div class="sm-book-client">Maria L.</div>
+                  <div class="sm-book-svc uk-namu" data-en="Volume fill · 90 min" data-uk="Об. наповнення · 90 хв">Volume fill · 90 min</div>
+                </div>
+              </div>
+              <div class="sm-book-appt">
+                <div class="sm-book-time">12:00 PM</div>
+                <div class="sm-book-info">
+                  <div class="sm-book-client">Jessica M.</div>
+                  <div class="sm-book-svc uk-namu" data-en="Gel-X refill · 80 min" data-uk="Gel-X · 80 хв">Gel-X refill · 80 min</div>
+                </div>
+              </div>
+              <div class="sm-book-appt" style="opacity:0.6">
+                <div class="sm-book-time">2:30 PM</div>
+                <div class="sm-book-info">
+                  <div class="sm-book-client">Aisha K.</div>
+                  <div class="sm-book-svc uk-namu" data-en="Hybrid fill · 75 min" data-uk="Гібрид · 75 хв">Hybrid fill · 75 min</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sm-tab-bar">
+            <div class="sm-tab"><div class="sm-tab-icon">☀️</div><div class="sm-tab-lbl uk-namu" data-en="TODAY" data-uk="СЬОГОДНІ">TODAY</div></div>
+            <div class="sm-tab"><div class="sm-tab-icon">👤</div><div class="sm-tab-lbl uk-namu" data-en="CLIENTS" data-uk="КЛІЄНТИ">CLIENTS</div></div>
+            <div class="sm-tab active"><div class="sm-tab-icon">📅</div><div class="sm-tab-lbl uk-namu" data-en="BOOK" data-uk="ЗАПИС">BOOK</div></div>
+            <div class="sm-tab"><div class="sm-tab-icon">⚙️</div><div class="sm-tab-lbl uk-namu" data-en="SETTINGS" data-uk="НАЛАШ.">SETTINGS</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-col-label uk-namu" data-en="Booking" data-uk="Запис">Booking</div>
+      <div class="phone-col-desc uk-namu" data-en="Salon-wide view of the week, color coded by service type." data-uk="Перегляд тижня по всьому салону, розфарбований за типом послуги.">Salon-wide view of the week, color coded by service type.</div>
+    </div>
+
+  </div><!-- /phones-grid -->
+
+  <!-- LANDSCAPE LASH MAP -->
+  <div style="margin-top:56px;">
+    <p style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);font-weight:600;margin-bottom:12px;" class="uk-namu" data-en="Landscape — reference view during appointment" data-uk="Горизонтально — огляд під час роботи">Landscape — reference view during appointment</p>
+    <div class="landscape-showcase" style="background:var(--ink);border-radius:16px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.22);display:flex;align-items:stretch;">
+      <!-- Dark header -->
+      <div style="display:flex;flex-direction:column;width:100%;">
+        <div style="background:var(--ink);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.07);">
+          <span style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:2px;color:#fff;" class="uk-namu" data-en="Reference view" data-uk="Огляд мапи">Reference view</span>
+          <div style="display:flex;gap:6px;align-items:center;">
+            <span style="font-size:8px;font-weight:700;letter-spacing:1px;padding:3px 12px;border-radius:2px;background:var(--pink);color:var(--ink);" class="uk-namu" data-en="L EYE" data-uk="ЛІВЕ">L EYE</span>
+            <span style="font-size:8px;font-weight:700;letter-spacing:1px;padding:3px 12px;border-radius:2px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.45);" class="uk-namu" data-en="R EYE" data-uk="ПРАВЕ">R EYE</span>
+            <span style="font-size:14px;color:rgba(255,255,255,0.28);margin-left:8px;cursor:pointer;">✕</span>
+          </div>
+        </div>
+        <div style="background:var(--bg);padding:20px 24px 18px;display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap;">
+          <div style="flex:1;min-width:260px;">
+            <p style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);font-weight:600;margin-bottom:12px;" class="uk-namu" data-en="LEFT EYE" data-uk="ЛІВЕ ОКО">LEFT EYE</p>
+            <svg viewBox="0 0 480 140" width="100%" style="max-height:140px;" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10,70 Q120,5 240,5 Q360,5 470,70 Q360,135 240,135 Q120,135 10,70 Z" fill="none" stroke="#0D0D0D" stroke-width="1.5" opacity="0.15"/>
+              <!-- Inner -->
+              <path d="M10,70 Q45,32 88,28 Q62,70 88,110 Q45,106 10,70 Z" fill="#FCF0F6" stroke="#E8A0BC" stroke-width="1.5"/>
+              <text x="50" y="68" font-size="11" font-weight="700" fill="#C4507A" text-anchor="middle" font-family="Inter Tight,sans-serif">I</text>
+              <text x="50" y="82" font-size="9" fill="#C4507A" text-anchor="middle" font-family="Inter,sans-serif">C · 7mm</text>
+              <!-- Inner-mid -->
+              <path d="M88,28 Q148,8 240,6 Q220,70 240,134 Q148,132 88,110 Q62,70 88,28 Z" fill="#FDF8FB" stroke="#E8A0BC" stroke-width="1.5"/>
+              <text x="156" y="67" font-size="11" font-weight="700" fill="#C4507A" text-anchor="middle" font-family="Inter Tight,sans-serif">IM</text>
+              <text x="156" y="81" font-size="9" fill="#C4507A" text-anchor="middle" font-family="Inter,sans-serif">C · 9mm</text>
+              <!-- Center (selected) -->
+              <path d="M240,6 Q288,6 326,18 Q314,70 326,122 Q288,134 240,134 Q220,70 240,6 Z" fill="#EBF4EF" stroke="#8FAF9F" stroke-width="3"/>
+              <text x="283" y="67" font-size="11" font-weight="700" fill="#4E8C7A" text-anchor="middle" font-family="Inter Tight,sans-serif">C</text>
+              <text x="283" y="81" font-size="9" fill="#4E8C7A" text-anchor="middle" font-family="Inter,sans-serif">CC · 11mm</text>
+              <!-- Outer-mid -->
+              <path d="M326,18 Q392,32 432,62 Q424,86 404,106 Q378,122 326,122 Q314,70 326,18 Z" fill="#FDF8FB" stroke="#E8A0BC" stroke-width="1.5"/>
+              <text x="388" y="70" font-size="11" font-weight="700" fill="#C4507A" text-anchor="middle" font-family="Inter Tight,sans-serif">OM</text>
+              <text x="388" y="84" font-size="9" fill="#C4507A" text-anchor="middle" font-family="Inter,sans-serif">D · 13mm</text>
+              <!-- Outer -->
+              <path d="M432,62 Q470,67 470,70 Q470,73 432,78 Q424,86 432,62 Z" fill="#FCF0F6" stroke="#E8A0BC" stroke-width="1.5"/>
+              <text x="452" y="72" font-size="9" font-weight="700" fill="#C4507A" text-anchor="middle" font-family="Inter Tight,sans-serif">O</text>
+            </svg>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;min-width:180px;">
+            <div style="display:flex;gap:6px;">
+              <div style="flex:1;background:#fff;border:1px solid var(--border);border-radius:4px;padding:8px 10px;text-align:center;">
+                <div style="font-size:7px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);" class="uk-namu" data-en="Style" data-uk="Стиль">Style</div>
+                <div style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:13px;color:var(--ink);margin-top:2px;" class="uk-namu" data-en="Vol." data-uk="Об.">Vol.</div>
+              </div>
+              <div style="flex:1;background:#fff;border:1px solid var(--border);border-radius:4px;padding:8px 10px;text-align:center;">
+                <div style="font-size:7px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);" class="uk-namu" data-en="Fan" data-uk="Пучок">Fan</div>
+                <div style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:13px;color:var(--ink);margin-top:2px;">5D</div>
+              </div>
+              <div style="flex:1;background:#fff;border:1px solid var(--border);border-radius:4px;padding:8px 10px;text-align:center;">
+                <div style="font-size:7px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);" class="uk-namu" data-en="Diam." data-uk="Діам.">Diam.</div>
+                <div style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:13px;color:var(--ink);margin-top:2px;">0.05</div>
+              </div>
+              <div style="flex:1;background:#fff;border:1px solid var(--border);border-radius:4px;padding:8px 10px;text-align:center;">
+                <div style="font-size:7px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);" class="uk-namu" data-en="Glue" data-uk="Клей">Glue</div>
+                <div style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:10px;color:var(--ink);margin-top:2px;">Belm.</div>
+              </div>
+            </div>
+            <div style="background:var(--pink-l);border:1px solid var(--pink-m);border-radius:4px;padding:8px 10px;font-size:10px;font-weight:600;color:var(--pink-d);" class="uk-namu" data-en="⚠ Sensitive eyes — use sensitive adhesive, reduce fumes near client." data-uk="⚠ Чутливі очі — чутливий клей, менше випарів.">⚠ Sensitive eyes — use sensitive adhesive, reduce fumes near client.</div>
+            <div style="background:var(--bg2);border-radius:4px;padding:8px 10px;">
+              <div style="font-size:7px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);margin-bottom:4px;font-weight:600;" class="uk-namu" data-en="Set details" data-uk="Деталі сету">Set details</div>
+              <div style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--ink);" class="uk-namu" data-en="Volume · Cat eye · Fill #12" data-uk="Об'єм · Котяче · Наповнення #12">Volume · Cat eye · Fill #12</div>
+              <div style="font-size:10px;color:var(--ink3);margin-top:2px;">Maria L. · Jun 28, 2025</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- PROBLEM -->
+<div style="background:var(--bg2);">
+  <div class="problem-section">
+    <p class="eyebrow uk-namu" data-en="The problem" data-uk="Проблема">The problem</p>
+    <h2 class="section-title uk-namu" data-en="Your client details are everywhere." data-uk="Деталі ваших клієнтів — скрізь.">Your client details are everywhere.</h2>
+    <p class="section-body uk-namu" data-en="Camera rolls. Paper notebooks. Random notes apps. Booking platforms with a tiny box. Text threads. Memory. For too long, beauty technicians have been forced to keep the most important details of their work scattered across all of it." data-uk="Фотогалерея. Паперові блокноти. Випадкові нотатники. Системи бронювання з маленьким рядком. Повідомлення. Пам'ять. Надто довго майстри змушені тримати найважливіші деталі своєї роботи розкиданими по всьому.">Camera rolls. Paper notebooks. Random notes apps. Booking platforms with a tiny box. Text threads. Memory. For too long, beauty technicians have been forced to keep the most important details of their work scattered across all of it.</p>
+    <div class="chaos-grid">
+      <div class="chaos-card out"><div class="chaos-icon">📸</div><div class="chaos-label uk-namu" data-en="Camera roll" data-uk="Фотогалерея">Camera roll</div><div class="chaos-desc uk-namu" data-en="Scrolling back months for a lash map photo" data-uk="Гортати місяці заради фото карти вій">Scrolling back months for a lash map photo</div></div>
+      <div class="chaos-card out"><div class="chaos-icon">📓</div><div class="chaos-label uk-namu" data-en="Paper notebooks" data-uk="Блокноти">Paper notebooks</div><div class="chaos-desc uk-namu" data-en="Illegible, lost, or left at the salon" data-uk="Нечитабельні або загублені">Illegible, lost, or left at the salon</div></div>
+      <div class="chaos-card out"><div class="chaos-icon">📱</div><div class="chaos-label uk-namu" data-en="Random notes apps" data-uk="Випадкові нотатники">Random notes apps</div><div class="chaos-desc uk-namu" data-en="No structure, no search, no context" data-uk="Без структури та пошуку">No structure, no search, no context</div></div>
+      <div class="chaos-card out"><div class="chaos-icon">💬</div><div class="chaos-label uk-namu" data-en="Text messages" data-uk="Повідомлення">Text messages</div><div class="chaos-desc uk-namu" data-en="Client preferences buried in DMs" data-uk="Побажання поховані в повідомленнях">Client preferences buried in DMs</div></div>
+      <div class="chaos-card out"><div class="chaos-icon">📅</div><div class="chaos-label uk-namu" data-en="Booking platforms" data-uk="Бронювання">Booking platforms</div><div class="chaos-desc uk-namu" data-en="A tiny notes box not built for this" data-uk="Маленький рядочок не для цього">A tiny notes box not built for this</div></div>
+      <div class="chaos-card solution"><div class="chaos-icon">✦</div><div class="chaos-label uk-namu" data-en="HerSets" data-uk="HerSets">HerSets</div><div class="chaos-desc uk-namu" data-en="One organized place. Built for how you work." data-uk="Одне місце. Для вашого стилю роботи.">One organized place. Built for how you work.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<div class="features-bg" id="features">
+  <div class="features-inner">
+    <p class="eyebrow uk-namu" data-en="What's inside" data-uk="Що всередині">What's inside</p>
+    <h2 class="section-title uk-namu" data-en="Everything you need. Nothing you don't." data-uk="Все, що потрібно. Нічого зайвого.">Everything you need. <span style="color:var(--pink)">Nothing</span> you don't.</h2>
+    <div class="features-grid">
+      <div class="feature"><div class="feature-num">01</div><div class="feature-title uk-namu" data-en="Client <span class='accent'>Profiles</span>" data-uk="Профілі <span class='accent'>клієнтів</span>">Client <span class="accent">Profiles</span></div><p class="feature-desc uk-namu" data-en="Every preference, sensitivity, service history, and note — organized by client, searchable in seconds." data-uk="Кожна перевага, чутливість, історія послуг та нотатка — організовано за клієнтом.">Every preference, sensitivity, service history, and note — organized by client, searchable in seconds.</p></div>
+      <div class="feature"><div class="feature-num">02</div><div class="feature-title uk-namu" data-en="<span class='accent'>Lash</span> Maps" data-uk="Карти <span class='accent'>вій</span>"><span class="accent">Lash</span> Maps</div><p class="feature-desc uk-namu" data-en="Digital lash maps with curl, style, diameter, and adhesive notes per eye zone. Save templates, build on them each visit." data-uk="Цифрові карти вій із вигином, стилем, діаметром та клеєм для кожної зони.">Digital lash maps with curl, style, diameter, and adhesive notes per eye zone. Save templates, build on them each visit.</p></div>
+      <div class="feature"><div class="feature-num">03</div><div class="feature-title uk-namu" data-en="Nail <span class='accent'>Formulas</span>" data-uk="<span class='accent'>Формули</span> нігтів">Nail <span class="accent">Formulas</span></div><p class="feature-desc uk-namu" data-en="Shape, gel type, color codes, brand, finish. Track nail designs per visit so you can replicate exactly." data-uk="Форма, тип гелю, коди кольорів, бренд, фінішне покриття. Фіксуйте дизайн для точного повторення.">Shape, gel type, color codes, brand, finish. Track nail designs per visit so you can replicate exactly.</p></div>
+      <div class="feature"><div class="feature-num">04</div><div class="feature-title uk-namu" data-en="Today's <span class='accent'>Schedule</span>" data-uk="Розклад <span class='accent'>сьогодні</span>">Today's <span class="accent">Schedule</span></div><p class="feature-desc uk-namu" data-en="Your day at a glance — each appointment shows the client's last service, alerts, and key preferences upfront." data-uk="Ваш день з першого погляду — кожний запис показує останню послугу та попередження.">Your day at a glance — each appointment shows the client's last service, alerts, and key preferences upfront.</p></div>
+      <div class="feature"><div class="feature-num">05</div><div class="feature-title uk-namu" data-en="<span class='accent'>Alerts</span> & Flags" data-uk="<span class='accent'>Попередження</span> та позначки"><span class="accent">Alerts</span> & Flags</div><p class="feature-desc uk-namu" data-en="Mark sensitivities, allergies, patch test results that surface automatically before every appointment." data-uk="Позначайте чутливості та алергії, що автоматично з'являються перед кожним записом.">Mark sensitivities, allergies, patch test results that surface automatically before every appointment.</p></div>
+      <div class="feature"><div class="feature-num">06</div><div class="feature-title uk-namu" data-en="Visit <span class='accent'>History</span>" data-uk="Історія <span class='accent'>візитів</span>">Visit <span class="accent">History</span></div><p class="feature-desc uk-namu" data-en="A full timeline of every service — fills, sets, changes, notes. Your client's story, always at your fingertips." data-uk="Повна хронологія кожної послуги — наповнення, сети, зміни, нотатки.">A full timeline of every service — fills, sets, changes, notes. Your client's story, always at your fingertips.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="proof-section">
+  <div class="proof-inner">
+    <p class="eyebrow uk-namu" data-en="Early feedback" data-uk="Перші відгуки">Early feedback</p>
+    <h2 class="section-title uk-namu" data-en="Artists who tried it first." data-uk="Майстри, які спробували першими.">Artists who tried it first.</h2>
+    <div class="proof-grid">
+      <div class="proof-card"><div class="proof-stars">★★★★★</div><p class="proof-text uk-namu" data-en='"I used to screenshot lash maps and scroll back months to find them. HerSets is the first thing built for how I actually work."' data-uk='"Раніше я робила скриншоти карт вій і гортала місяці назад. HerSets — перше, що створено для того, як я реально працюю."'>"I used to screenshot lash maps and scroll back months to find them. HerSets is the first thing built for how I actually work."</p><div class="proof-author">Valentina R.</div><div class="proof-role uk-namu" data-en="Lash artist · 4 years · Los Angeles" data-uk="Леш-майстер · 4 роки · Лос-Анджелес">Lash artist · 4 years · Los Angeles</div></div>
+      <div class="proof-card"><div class="proof-stars">★★★★★</div><p class="proof-text uk-namu" data-en='"The alert system alone is worth it. I have two clients with latex sensitivities and I used to rely on memory. Now it's right there."' data-uk='"Лише система попереджень варта свого. Двоє клієнтів з алергією на латекс — раніше покладалася на пам\'ять."'>"The alert system alone is worth it. I have two clients with latex sensitivities and I used to rely on memory. Now it's right there."</p><div class="proof-author">Nadia K.</div><div class="proof-role uk-namu" data-en="Nail tech · 6 years · Chicago" data-uk="Нейл-майстер · 6 років · Чикаго">Nail tech · 6 years · Chicago</div></div>
+      <div class="proof-card"><div class="proof-stars">★★★★★</div><p class="proof-text uk-namu" data-en='"I feel so much more professional walking into appointments. My clients feel remembered. That's the whole point of what we do."' data-uk='"Тепер я почуваюся набагато більш професійно. Клієнти відчувають, що їх пам\'ятають. Саме для цього ми й працюємо."'>"I feel so much more professional walking into appointments. My clients feel remembered. That's the whole point of what we do."</p><div class="proof-author">Bianca T.</div><div class="proof-role uk-namu" data-en="Lash & nail artist · Miami" data-uk="Леш та нейл-майстер · Маямі">Lash & nail artist · Miami</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- EARLY ACCESS -->
+<div class="early-bg" id="signup">
+  <div class="early-inner">
+    <p class="early-eyebrow uk-namu" data-en="Limited early access" data-uk="Обмежений ранній доступ">Limited early access</p>
+    <h2 class="early-title uk-namu" data-en="Get in early.<br/>Get 30% off." data-uk="Приєднайтесь<br/>раніше. Знижка 30%.">Get in early.<br/>Get 30% off.</h2>
+    <p class="early-sub uk-namu" data-en="HerSets is launching soon. Sign up now to lock in your early access discount — 30% off your first year, forever. No credit card needed." data-uk="HerSets незабаром запускається. Зареєструйтеся зараз — 30% на перший рік, назавжди. Картка не потрібна.">HerSets is launching soon. Sign up now to lock in your early access discount — 30% off your first year, forever. No credit card needed.</p>
+    <div id="early-form-wrap">
+      <div class="early-form">
+        <input type="email" id="early-email" data-en-placeholder="Enter your email" data-uk-placeholder="Введіть ваш email" placeholder="Enter your email" autocomplete="email" />
+        <button onclick="handleSignup('early')" class="uk-namu" data-en="Reserve My Spot →" data-uk="Зайняти місце →">Reserve My Spot →</button>
+      </div>
+    </div>
+    <div class="form-success" id="early-success" style="margin-top:20px;">
+      <p class="form-success-title uk-namu" data-en="You're in." data-uk="Ви в списку.">You're in.</p>
+      <p class="form-success-sub uk-namu" data-en="We'll email your 30% discount when HerSets launches." data-uk="Ми надішлемо знижку 30% при запуску.">We'll email your 30% discount when HerSets launches.</p>
+    </div>
+    <div class="early-perks">
+      <span class="early-perk uk-namu" data-en="30% off at launch" data-uk="30% знижки при запуску">30% off at launch</span>
+      <span class="early-perk uk-namu" data-en="No credit card required" data-uk="Без кредитної картки">No credit card required</span>
+      <span class="early-perk uk-namu" data-en="First access to new features" data-uk="Перший доступ до функцій">First access to new features</span>
+      <span class="early-perk uk-namu" data-en="Cancel anytime" data-uk="Скасування будь-коли">Cancel anytime</span>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <!-- <div class="footer-logo">Her<span>Sets</span></div> -->
+   <div class="footer-logo">
+    <img style="height: 80px; width: 80px;" src="Logo para Estudio Creativo Dibujado a Mano Trendy Moderno Blanco y Negro (3).png"/>
+   </div>
+  <div class="footer-text uk-namu" data-en="Built for lash & nail artists.<br/>© 2025 HerSets. All rights reserved." data-uk="Створено для леш- та нейл-майстрів.<br/>© 2025 HerSets. Всі права захищено.">Built for lash & nail artists.<br/>© 2025 HerSets. All rights reserved.</div>
+</footer>
+
+<script>
+  let currentLang = 'en';
+
+  function setLang(lang) {
+    currentLang = lang;
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-uk').classList.toggle('active', lang === 'uk');
+
+    // Toggle Namu font on body
+    document.body.classList.toggle('lang-uk', lang === 'uk');
+
+    // Swap all data-en / data-uk text
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const val = el.getAttribute('data-' + lang);
+      if (val !== null) el.innerHTML = val;
+    });
+
+    // Placeholders
+    document.querySelectorAll('[data-en-placeholder]').forEach(el => {
+      const val = el.getAttribute('data-' + lang + '-placeholder');
+      if (val) el.placeholder = val;
+    });
+  }
+
+  async function handleSignup(source) {
+    const emailInput = document.getElementById('early-email');
+    const formWrap = document.getElementById('early-form-wrap');
+    const success = document.getElementById('early-success');
+    const email = (emailInput.value || '').trim();
+    if (!email || !email.includes('@')) {
+      emailInput.style.borderColor = '#ff6b6b';
+      emailInput.focus();
+      return;
+    }
+    console.log('Signup:', email);
+
+    formWrap.style.display = 'none';
+    success.style.display = 'block';
+    try {
+    const response = await fetch('https://formspree.io/f/xojonjpj', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        email: email,
+        source: source || 'landing-page'
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error('Formspree submission failed');
+    }
+
+    formWrap.style.display = 'none';
+    success.style.display = 'block';
+
+  } catch (error) {
+    console.error(error);
+    alert('Something went wrong. Please try again.');
+  }
+}
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && document.activeElement.id === 'early-email') handleSignup('early');
+  });
+</script>
+</body>
+</html>
