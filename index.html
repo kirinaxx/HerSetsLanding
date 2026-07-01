@@ -368,7 +368,7 @@
     /* ── 5-PHONE SHOWCASE ── */
     .phones-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 16px;
       margin-top: 56px;
       align-items: start;
@@ -590,6 +590,26 @@
     .feature-title .accent { color: var(--pink); }
     .feature-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.7; }
 
+    /* ── TEMPLATES ── */
+    .templates-section { background: var(--bg); }
+    .templates-inner { padding: 96px 48px; max-width: 1200px; margin: 0 auto; }
+    .templates-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 56px; }
+    .tpl-card { background: var(--bg2); border: 1px solid var(--border); padding: 36px 32px; position: relative; transition: background .2s; }
+    .tpl-card:hover { background: var(--bg3); }
+    .tpl-card.tpl-custom { background: var(--ink); border-color: var(--ink); grid-column: span 3; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 32px; }
+    .tpl-icon { font-size: 26px; margin-bottom: 16px; }
+    .tpl-num { font-family: 'Inter Tight', sans-serif; font-weight: 900; font-size: 44px; color: var(--border2); line-height: 1; margin-bottom: 14px; }
+    .tpl-title { font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 15px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--ink); margin-bottom: 8px; }
+    .tpl-title .accent { color: var(--pink-d); }
+    .tpl-desc { font-size: 13px; color: var(--ink3); line-height: 1.7; }
+    .tpl-fields { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 14px; }
+    .tpl-field { font-size: 9px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; padding: 3px 8px; background: var(--bg); border: 1px solid var(--border2); color: var(--ink2); border-radius: 2px; }
+    .tpl-custom .tpl-title { color: #fff; }
+    .tpl-custom .tpl-desc { color: rgba(255,255,255,0.5); }
+    .tpl-custom .tpl-field { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.45); }
+    .tpl-custom-cta { background: var(--pink-d); color: #fff; font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; padding: 16px 28px; cursor: pointer; white-space: nowrap; border: none; flex-shrink: 0; }
+    .tpl-custom-cta:hover { background: #a83f67; }
+
     /* ── TESTIMONIALS ── */
     .proof-section { padding: 96px 48px; background: var(--bg2); }
     .proof-inner { max-width: 1200px; margin: 0 auto; }
@@ -632,6 +652,10 @@
       .phones-grid { grid-template-columns: repeat(2, 1fr); }
       .proof-grid { grid-template-columns: 1fr; }
       .features-grid { grid-template-columns: 1fr; }
+      .templates-grid { grid-template-columns: 1fr; }
+      .tpl-card.tpl-custom { grid-column: span 1; grid-template-columns: 1fr; }
+      .tpl-custom-cta { width: 100%; text-align: center; }
+      .discipline-grid { grid-template-columns: 1fr !important; }
       nav { padding: 0 20px; }
       .nav-links { display: none; }
       .hero-left, .detail-section, .problem-section, .features-inner, .proof-section, .early-inner { padding-left: 24px; padding-right: 24px; }
@@ -645,7 +669,6 @@
       /* Prevent any element from blowing out horizontal scroll */
       html, body { overflow-x: hidden; }
       .phones-grid { grid-template-columns: 1fr 1fr; }
-      .phone-col:last-child { display: none; }
       /* Scale down large display headlines so Ukrainian long words fit */
       .hero-headline { font-size: clamp(40px, 12vw, 80px); letter-spacing: -1px; }
       .detail-headline { font-size: clamp(26px, 8.5vw, 60px); letter-spacing: -0.5px; word-break: break-word; overflow-wrap: break-word; }
@@ -817,111 +840,20 @@
 
   <div class="phones-grid" id="manifesto">
 
-    <!-- 1: CLIENTS -->
+    <!-- 1: LASH MAP -->
     <div class="phone-col">
       <div class="iphone-sm">
         <div class="iphone-sm-inner">
           <div class="iphone-sm-island"></div>
-          <div class="sm-status">
-            <span class="sm-time">9:41</span>
-            <span class="sm-icons">●●● ▮▮</span>
-          </div>
-          <div class="sm-screen">
-            <div class="sm-header-black">
-              <div class="sm-title uk-namu" data-en="CLIENTS" data-uk="КЛІЄНТИ">CLIENTS</div>
-              <div class="sm-sub uk-namu" data-en="28 clients · 3 need follow-up" data-uk="28 клієнтів · 3 потребують уваги">28 clients · 3 need follow-up</div>
-            </div>
-            <div class="sm-body">
-              <div class="sm-search uk-namu" data-en="Search name, tag, color, curl..." data-uk="Пошук імені, тегу, кольору...">Search name, tag, color, curl...</div>
-              <div class="sm-filter-row">
-                <div class="sm-filter active uk-namu" data-en="All" data-uk="Всі">All</div>
-                <div class="sm-filter uk-namu" data-en="Lash" data-uk="Вії">Lash</div>
-                <div class="sm-filter uk-namu" data-en="Nail" data-uk="Нігті">Nail</div>
-                <div class="sm-filter uk-namu" data-en="VIP" data-uk="VIP">VIP</div>
-                <div class="sm-filter uk-namu" data-en="Due" data-uk="Пора">Due</div>
-              </div>
-              <div class="sm-client-card">
-                <div class="sm-client-row">
-                  <div class="sm-avatar" style="background:var(--pink-l);color:var(--pink-d);">ML</div>
-                  <div>
-                    <div class="sm-client-name">Maria L.</div>
-                    <div class="sm-client-sub uk-namu" data-en="Vol. fill · June 28 today" data-uk="Об. наповнення · 28 черв.">Vol. fill · June 28 today</div>
-                  </div>
-                </div>
-                <div class="sm-tags">
-                  <span class="sm-tag pink" data-en="Lash" data-uk="Вії">Lash</span>
-                  <span class="sm-tag muted">C curl · cat eye</span>
-                  <span class="sm-tag warn" data-en="Retention" data-uk="Утримання">Retention</span>
-                </div>
-              </div>
-              <div class="sm-client-card">
-                <div class="sm-client-row">
-                  <div class="sm-avatar" style="background:var(--bg2);color:var(--ink2);">JM</div>
-                  <div>
-                    <div class="sm-client-name">Jessica M.</div>
-                    <div class="sm-client-sub uk-namu" data-en="Gel-X · June 28 today" data-uk="Gel-X · 28 черв.">Gel-X · June 28 today</div>
-                  </div>
-                </div>
-                <div class="sm-tags">
-                  <span class="sm-tag muted" data-en="Nail" data-uk="Нігті">Nail</span>
-                  <span class="sm-tag muted">Almond · OPI</span>
-                  <span class="sm-tag warn" data-en="No acetone" data-uk="Без ацетону">No acetone</span>
-                </div>
-              </div>
-              <div class="sm-client-card" style="opacity:0.7">
-                <div class="sm-client-row">
-                  <div class="sm-avatar" style="background:var(--bg3);color:var(--ink3);">AK</div>
-                  <div>
-                    <div class="sm-client-name">Aisha K. <span class="sm-tag new" style="font-size:3.5px;padding:1px 3px;background:var(--pink);color:var(--ink);">NEW</span></div>
-                    <div class="sm-client-sub uk-namu" data-en="Hybrid fill · first visit" data-uk="Гібрид · перший візит">Hybrid fill · first visit</div>
-                  </div>
-                </div>
-                <div class="sm-tags">
-                  <span class="sm-tag pink">Lash</span>
-                  <span class="sm-tag muted" data-en="Patch test done" data-uk="Тест зроблено">Patch test done</span>
-                </div>
-              </div>
-              <div class="sm-client-card" style="opacity:0.5">
-                <div class="sm-client-row">
-                  <div class="sm-avatar" style="background:var(--pink-l);color:var(--pink-d);">PL</div>
-                  <div>
-                    <div class="sm-client-name">Priya L.</div>
-                    <div class="sm-client-sub uk-namu" data-en="Last visit Jun 8" data-uk="Остання 8 черв.">Last visit Jun 8</div>
-                  </div>
-                </div>
-                <div class="sm-tags">
-                  <span class="sm-tag muted">Nail</span>
-                  <span class="sm-tag warn" data-en="Balance due" data-uk="Заборгованість">Balance due</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="sm-tab-bar">
-            <div class="sm-tab"><div class="sm-tab-icon">☀️</div><div class="sm-tab-lbl uk-namu" data-en="TODAY" data-uk="СЬОГОДНІ">TODAY</div></div>
-            <div class="sm-tab active"><div class="sm-tab-icon">👤</div><div class="sm-tab-lbl uk-namu" data-en="CLIENTS" data-uk="КЛІЄНТИ">CLIENTS</div></div>
-            <div class="sm-tab"><div class="sm-tab-icon">📅</div><div class="sm-tab-lbl uk-namu" data-en="BOOK" data-uk="ЗАПИС">BOOK</div></div>
-            <div class="sm-tab"><div class="sm-tab-icon">⚙️</div><div class="sm-tab-lbl uk-namu" data-en="SETTINGS" data-uk="НАЛАШ.">SETTINGS</div></div>
-          </div>
-        </div>
-      </div>
-      <div class="phone-col-label uk-namu" data-en="Clients" data-uk="Клієнти">Clients</div>
-      <div class="phone-col-desc uk-namu" data-en="Search by name, tag, color or curl. Filter by lash, nail, VIP or due." data-uk="Пошук за іменем, тегом, кольором або вигином.">Search by name, tag, color or curl. Filter by lash, nail, VIP or due.</div>
-    </div>
-
-    <!-- 2: LASH MAP -->
-    <div class="phone-col">
-      <div class="iphone-sm">
-        <div class="iphone-sm-inner">
-          <div class="iphone-sm-island"></div>
-          <div class="sm-status"><span class="sm-time">9:41</span><span class="sm-icons">●●● ▮▮</span></div>
+          <div class="sm-status"><span class="sm-time">9:41</span><span class="sm-icons">&#9679;&#9679;&#9679; &#9646;&#9646;</span></div>
           <div class="sm-screen">
             <div class="sm-lm-header">
-              <span class="sm-lm-back">←</span>
+              <span class="sm-lm-back">&#8592;</span>
               <div>
                 <div class="sm-lm-title uk-namu" data-en="LASH MAP" data-uk="КАРТА ВІЙ">LASH MAP</div>
                 <div style="font-size:4.5px;color:var(--ink3);" class="uk-namu" data-en="Maria L. · Fill #12 · tap zone to edit" data-uk="Марія Л. · №12">Maria L. · Fill #12 · tap zone to edit</div>
               </div>
-              <span class="sm-lm-action">↔</span>
+              <span class="sm-lm-action">&#8596;</span>
             </div>
             <div class="sm-lm-body">
               <div class="sm-lm-eyebrow uk-namu" data-en="Eye diagram — L eye" data-uk="Схема — ліве">Eye diagram — L eye</div>
@@ -956,43 +888,43 @@
                 </div>
                 <div class="sm-zone-grid">
                   <div class="sm-zone-cell"><div class="sm-zone-lbl uk-namu" data-en="Curl" data-uk="Вигин">Curl</div><div class="sm-zone-val">CC</div></div>
-                  <div class="sm-zone-cell"><div class="sm-zone-lbl uk-namu" data-en="Length" data-uk="Довжина">Length</div><div class="sm-zone-val">10–12mm</div></div>
+                  <div class="sm-zone-cell"><div class="sm-zone-lbl uk-namu" data-en="Length" data-uk="Довжина">Length</div><div class="sm-zone-val">10&ndash;12mm</div></div>
                   <div class="sm-zone-cell"><div class="sm-zone-lbl uk-namu" data-en="Diameter" data-uk="Діаметр">Diameter</div><div class="sm-zone-val">0.05</div></div>
                   <div class="sm-zone-cell"><div class="sm-zone-lbl uk-namu" data-en="Fan" data-uk="Пучок">Fan</div><div class="sm-zone-val">5D</div></div>
                 </div>
-                <div class="sm-color-cell" style="margin-bottom:3px;"><div class="sm-zone-lbl uk-namu" data-en="Color" data-uk="Колір">Color</div><div class="sm-zone-val" style="font-size:6px;" data-en="Black · faux mink · matte" data-uk="Чорний · матовий">Black · faux mink · matte</div></div>
+                <div class="sm-color-cell" style="margin-bottom:3px;"><div class="sm-zone-lbl uk-namu" data-en="Color" data-uk="Колір">Color</div><div class="sm-zone-val" style="font-size:6px;" class="uk-namu" data-en="Black · faux mink · matte" data-uk="Чорний · матовий">Black · faux mink · matte</div></div>
                 <div class="sm-zone-btns">
                   <div class="sm-zone-btn ghost uk-namu" data-en="+ ADD SECTION" data-uk="+ СЕКЦІЮ">+ ADD SECTION</div>
                   <div class="sm-zone-btn solid uk-namu" data-en="SAVE ZONE" data-uk="ЗБЕРЕГТИ">SAVE ZONE</div>
                 </div>
               </div>
               <div class="sm-btm-btns">
-                <div class="sm-btm-btn ghost uk-namu" data-en="← REFERENCE" data-uk="← ОГЛЯД">← REFERENCE</div>
-                <div class="sm-btm-btn pink uk-namu" data-en="NEXT: FILL NOTES →" data-uk="ДАЛІ →">NEXT: FILL NOTES →</div>
+                <div class="sm-btm-btn ghost uk-namu" data-en="&#8592; REFERENCE" data-uk="&#8592; ОГЛЯД">&#8592; REFERENCE</div>
+                <div class="sm-btm-btn pink uk-namu" data-en="NEXT: FILL NOTES &#8594;" data-uk="ДАЛІ &#8594;">NEXT: FILL NOTES &#8594;</div>
               </div>
             </div>
           </div>
           <div class="sm-tab-bar">
-            <div class="sm-tab"><div class="sm-tab-icon">☀️</div><div class="sm-tab-lbl uk-namu" data-en="TODAY" data-uk="СЬОГОДНІ">TODAY</div></div>
-            <div class="sm-tab active"><div class="sm-tab-icon">👤</div><div class="sm-tab-lbl uk-namu" data-en="CLIENTS" data-uk="КЛІЄНТИ">CLIENTS</div></div>
-            <div class="sm-tab"><div class="sm-tab-icon">📅</div><div class="sm-tab-lbl uk-namu" data-en="BOOK" data-uk="ЗАПИС">BOOK</div></div>
-            <div class="sm-tab"><div class="sm-tab-icon">⚙️</div><div class="sm-tab-lbl uk-namu" data-en="SETTINGS" data-uk="НАЛАШ.">SETTINGS</div></div>
+            <div class="sm-tab"><div class="sm-tab-icon">&#9728;</div><div class="sm-tab-lbl uk-namu" data-en="TODAY" data-uk="СЬОГОДНІ">TODAY</div></div>
+            <div class="sm-tab active"><div class="sm-tab-icon">&#128100;</div><div class="sm-tab-lbl uk-namu" data-en="CLIENTS" data-uk="КЛІЄНТИ">CLIENTS</div></div>
+            <div class="sm-tab"><div class="sm-tab-icon">&#128197;</div><div class="sm-tab-lbl uk-namu" data-en="BOOK" data-uk="ЗАПИС">BOOK</div></div>
+            <div class="sm-tab"><div class="sm-tab-icon">&#9881;</div><div class="sm-tab-lbl uk-namu" data-en="SETTINGS" data-uk="НАЛАШ.">SETTINGS</div></div>
           </div>
         </div>
       </div>
       <div class="phone-col-label uk-namu" data-en="Lash Map" data-uk="Карта вій">Lash Map</div>
-      <div class="phone-col-desc uk-namu" data-en="A real eye diagram. Tap zones to log curl, length and retention." data-uk="Справжня схема ока. Натискайте зони для запису.">A real eye diagram. Tap zones to log curl, length and retention.</div>
+      <div class="phone-col-desc uk-namu" data-en="Five zones, per-zone curl, length, diameter and adhesive. A full eye diagram that replaces photos and guesswork." data-uk="П'ять зон. Вигин, довжина, діаметр та клей — повна схема ока.">Five zones, per-zone curl, length, diameter and adhesive. A full eye diagram that replaces photos and guesswork.</div>
     </div>
 
-    <!-- 3: NAIL DESIGN -->
+    <!-- 2: NAIL DESIGN -->
     <div class="phone-col">
       <div class="iphone-sm">
         <div class="iphone-sm-inner">
           <div class="iphone-sm-island"></div>
-          <div class="sm-status"><span class="sm-time">12:22 PM</span><span class="sm-icons">●●● ▮▮</span></div>
+          <div class="sm-status"><span class="sm-time">12:22 PM</span><span class="sm-icons">&#9679;&#9679;&#9679; &#9646;&#9646;</span></div>
           <div class="sm-screen">
             <div class="sm-lm-header">
-              <span class="sm-lm-back">←</span>
+              <span class="sm-lm-back">&#8592;</span>
               <div>
                 <div class="sm-lm-title uk-namu" data-en="DESIGN BUILDER" data-uk="ДИЗАЙН БІЛДЕР">DESIGN BUILDER</div>
                 <div style="font-size:4.5px;color:var(--ink3);" class="uk-namu" data-en="Jessica M. · Visit 8" data-uk="Джесіка М. · Візит 8">Jessica M. · Visit 8</div>
@@ -1001,17 +933,17 @@
             <div class="sm-lm-body">
               <div class="sm-lm-eyebrow uk-namu" data-en="Per finger design" data-uk="Дизайн пальця">Per finger design</div>
               <div class="sm-nd-finger-row">
-                <div class="sm-nd-finger"><div style="font-size:6px;">👍</div><div class="sm-nd-finger-lbl" data-en="THUMB" data-uk="ВЕЛИКИЙ">THUMB</div></div>
-                <div class="sm-nd-finger"><div style="font-size:6px;">☝️</div><div class="sm-nd-finger-lbl" data-en="INDEX" data-uk="ВКАЗ.">INDEX</div></div>
-                <div class="sm-nd-finger"><div style="font-size:6px;">🖕</div><div class="sm-nd-finger-lbl" data-en="MIDDLE" data-uk="СЕРЕД.">MIDDLE</div></div>
-                <div class="sm-nd-finger active" style="background:var(--pink-l);border-color:var(--pink);"><div style="font-size:6px;">💍</div><div class="sm-nd-finger-lbl" style="color:var(--pink-d);" data-en="RING" data-uk="БЕЗІМ.">RING</div></div>
-                <div class="sm-nd-finger"><div style="font-size:6px;">🤙</div><div class="sm-nd-finger-lbl" data-en="PINKY" data-uk="МІЗИН.">PINKY</div></div>
+                <div class="sm-nd-finger"><div style="font-size:6px;">&#128077;</div><div class="sm-nd-finger-lbl uk-namu" data-en="THUMB" data-uk="ВЕЛ.">THUMB</div></div>
+                <div class="sm-nd-finger"><div style="font-size:6px;">&#9757;</div><div class="sm-nd-finger-lbl uk-namu" data-en="INDEX" data-uk="ВКАЗ.">INDEX</div></div>
+                <div class="sm-nd-finger"><div style="font-size:6px;">&#128405;</div><div class="sm-nd-finger-lbl uk-namu" data-en="MIDDLE" data-uk="СЕР.">MIDDLE</div></div>
+                <div class="sm-nd-finger active" style="background:var(--pink-l);border-color:var(--pink);"><div style="font-size:6px;">&#128141;</div><div class="sm-nd-finger-lbl" style="color:var(--pink-d);" data-en="RING" data-uk="БЕЗ.">RING</div></div>
+                <div class="sm-nd-finger"><div style="font-size:6px;">&#129304;</div><div class="sm-nd-finger-lbl uk-namu" data-en="PINKY" data-uk="МІЗ.">PINKY</div></div>
               </div>
               <div class="sm-nd-formula">
-                <div class="sm-nd-formula-lbl" data-en="Thumb · Middle · Pinky" data-uk="Великий · Серед. · Мізин.">Thumb · Middle · Pinky</div>
+                <div class="sm-nd-formula-lbl uk-namu" data-en="Thumb · Middle · Pinky" data-uk="Вел. · Сер. · Міз.">Thumb · Middle · Pinky</div>
                 <div class="sm-nd-formula-val">OPI NL H19 · solid</div>
-                <div class="sm-nd-formula-lbl" style="margin-top:3px;" data-en="Ring (accent)" data-uk="Безіменний (акцент)">Ring (accent)</div>
-                <div class="sm-nd-formula-val" data-en="Rose gold chrome" data-uk="Рожеве золото хром">Rose gold chrome</div>
+                <div class="sm-nd-formula-lbl" style="margin-top:3px;" class="uk-namu" data-en="Ring (accent)" data-uk="Безімен. (акцент)">Ring (accent)</div>
+                <div class="sm-nd-formula-val uk-namu" data-en="Rose gold chrome" data-uk="Рожеве золото хром">Rose gold chrome</div>
               </div>
               <div class="sm-nd-addons-lbl uk-namu" data-en="Add-ons" data-uk="Доповнення">Add-ons</div>
               <div class="sm-nd-addon-chips">
@@ -1024,144 +956,159 @@
             </div>
           </div>
           <div class="sm-tab-bar">
-            <div class="sm-tab"><div class="sm-tab-icon">☀️</div><div class="sm-tab-lbl uk-namu" data-en="TODAY" data-uk="СЬОГОДНІ">TODAY</div></div>
-            <div class="sm-tab active"><div class="sm-tab-icon">👤</div><div class="sm-tab-lbl uk-namu" data-en="CLIENTS" data-uk="КЛІЄНТИ">CLIENTS</div></div>
-            <div class="sm-tab"><div class="sm-tab-icon">📅</div><div class="sm-tab-lbl uk-namu" data-en="BOOK" data-uk="ЗАПИС">BOOK</div></div>
-            <div class="sm-tab"><div class="sm-tab-icon">⚙️</div><div class="sm-tab-lbl uk-namu" data-en="SETTINGS" data-uk="НАЛАШ.">SETTINGS</div></div>
+            <div class="sm-tab"><div class="sm-tab-icon">&#9728;</div><div class="sm-tab-lbl uk-namu" data-en="TODAY" data-uk="СЬОГОДНІ">TODAY</div></div>
+            <div class="sm-tab active"><div class="sm-tab-icon">&#128100;</div><div class="sm-tab-lbl uk-namu" data-en="CLIENTS" data-uk="КЛІЄНТИ">CLIENTS</div></div>
+            <div class="sm-tab"><div class="sm-tab-icon">&#128197;</div><div class="sm-tab-lbl uk-namu" data-en="BOOK" data-uk="ЗАПИС">BOOK</div></div>
+            <div class="sm-tab"><div class="sm-tab-icon">&#9881;</div><div class="sm-tab-lbl uk-namu" data-en="SETTINGS" data-uk="НАЛАШ.">SETTINGS</div></div>
           </div>
         </div>
       </div>
       <div class="phone-col-label uk-namu" data-en="Nail Design" data-uk="Дизайн нігтів">Nail Design</div>
-      <div class="phone-col-desc uk-namu" data-en="Photos, finish, shape and exact formulas — saved per set." data-uk="Фото, покриття, форма та точні формули — збережені.">Photos, finish, shape and exact formulas — saved per set.</div>
+      <div class="phone-col-desc uk-namu" data-en="Per-finger formulas: gel type, color code, brand, finish. Exact enough to recreate any set from months ago." data-uk="Формули по пальцях: тип гелю, код кольору, бренд, покриття. Точно для повторення.">Per-finger formulas: gel type, color code, brand, finish. Exact enough to recreate any set from months ago.</div>
     </div>
 
-    <!-- 4: CLIENT PROFILE -->
+    <!-- 3: HAIR STYLIST -->
     <div class="phone-col">
       <div class="iphone-sm">
         <div class="iphone-sm-inner">
           <div class="iphone-sm-island"></div>
-          <div class="sm-status" style="background:var(--ink);"><span class="sm-time">9:41</span><span class="sm-icons" style="color:rgba(255,255,255,0.6);">●●● ▮▮</span></div>
+          <div class="sm-status"><span class="sm-time">10:15</span><span class="sm-icons">&#9679;&#9679;&#9679; &#9646;&#9646;</span></div>
           <div class="sm-screen">
-            <div class="sm-profile-hero">
-              <div class="sm-profile-back uk-namu" data-en="← Clients" data-uk="← Клієнти">← Clients</div>
-              <div class="sm-profile-row">
-                <div class="sm-profile-avatar">ML</div>
-                <div>
-                  <div class="sm-profile-name">MARIA L.</div>
-                  <div class="sm-profile-since uk-namu" data-en="Client since Mar 2024" data-uk="З бер. 2024">Client since Mar 2024</div>
-                </div>
-                <span style="margin-left:auto;font-size:10px;color:rgba(255,255,255,0.3);">⋯</span>
+            <div class="sm-lm-header">
+              <span class="sm-lm-back">&#8592;</span>
+              <div>
+                <div class="sm-lm-title uk-namu" data-en="HAIR STYLIST" data-uk="ПЕРУКАР">HAIR STYLIST</div>
+                <div style="font-size:4.5px;color:var(--ink3);" class="uk-namu" data-en="Color record · Jamie T." data-uk="Запис · Джейм.">Color record · Jamie T.</div>
               </div>
-              <div class="sm-stats">
-                <div class="sm-stat"><div class="sm-stat-val">12</div><div class="sm-stat-lbl uk-namu" data-en="FILLS" data-uk="НАПОВН.">FILLS</div></div>
-                <div class="sm-stat"><div class="sm-stat-val">16</div><div class="sm-stat-lbl uk-namu" data-en="MONTHS" data-uk="МІСЯЦІВ">MONTHS</div></div>
-                <div class="sm-stat"><div class="sm-stat-val pink">2</div><div class="sm-stat-lbl uk-namu" data-en="ALERTS" data-uk="ПОПЕР.">ALERTS</div></div>
-              </div>
+              <span class="sm-lm-action">&#10003;</span>
             </div>
-            <div class="sm-tabs">
-              <div class="sm-tab-t active uk-namu" data-en="OVERVIEW" data-uk="ОГЛЯД">OVERVIEW</div>
-              <div class="sm-tab-t uk-namu" data-en="LASH MAP" data-uk="КАРТА">LASH MAP</div>
-              <div class="sm-tab-t uk-namu" data-en="PERSONAL" data-uk="ОСОБ.">PERSONAL</div>
-              <div class="sm-tab-t uk-namu" data-en="PHOTOS" data-uk="ФОТО">PHOTOS</div>
-            </div>
-            <div class="sm-p-body">
-              <div class="sm-p-alert">
-                <span style="font-size:7px;">⚠️</span>
-                <span class="sm-p-alert-text uk-namu" data-en="Sensitive eyes — use sensitive adhesive, reduce fumes near client." data-uk="Чутливі очі — чутливий клей.">Sensitive eyes — use sensitive adhesive, reduce fumes near client.</span>
+            <div class="sm-lm-body">
+              <div class="sm-lm-eyebrow uk-namu" data-en="Hair profile" data-uk="Профіль волосся">Hair profile</div>
+              <div style="display:flex;gap:2px;flex-wrap:wrap;margin-bottom:3px;">
+                <span style="font-size:4.5px;padding:2px 4px;border-radius:2px;background:var(--bg2);color:var(--ink3);" class="uk-namu" data-en="Straight" data-uk="Пряме">Straight</span>
+                <span style="font-size:4.5px;padding:2px 4px;border-radius:2px;background:var(--pink-l);border:1px solid var(--pink-m);color:var(--pink-d);font-weight:700;" class="uk-namu" data-en="Wavy ✓" data-uk="Хвилясте ✓">Wavy ✓</span>
+                <span style="font-size:4.5px;padding:2px 4px;border-radius:2px;background:var(--bg2);color:var(--ink3);">Curly</span>
+                <span style="font-size:4.5px;padding:2px 4px;border-radius:2px;background:var(--bg2);color:var(--ink3);">Coily</span>
               </div>
-              <div class="sm-p-eye uk-namu" data-en="LAST LASH MAP" data-uk="ОСТАННЯ КАРТА">LAST LASH MAP</div>
-              <div class="sm-p-card">
-                <div class="sm-p-field"><span class="sm-p-lbl" data-en="Style" data-uk="Стиль">Style</span><span class="sm-p-val" data-en="Volume · cat eye" data-uk="Об'єм · котяче">Volume · cat eye</span></div>
-                <div class="sm-p-field"><span class="sm-p-lbl" data-en="Curl" data-uk="Вигин">Curl</span><span class="sm-p-val">C curl · 9–13mm</span></div>
-                <div class="sm-p-field"><span class="sm-p-lbl" data-en="Diameter" data-uk="Діаметр">Diameter</span><span class="sm-p-val">0.05mm · 5D fans</span></div>
-                <div class="sm-p-field"><span class="sm-p-lbl" data-en="Adhesive" data-uk="Клей">Adhesive</span><span class="sm-p-val">Belmacil Sensitive</span></div>
+              <div style="font-size:4px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);margin-bottom:2px;" class="uk-namu" data-en="Natural level" data-uk="Рівень">Natural level</div>
+              <div style="display:flex;gap:2px;margin-bottom:5px;">
+                <span style="width:11px;height:11px;border-radius:2px;background:var(--bg2);border:0.5px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:5px;color:var(--ink3);">1</span>
+                <span style="width:11px;height:11px;border-radius:2px;background:var(--bg2);border:0.5px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:5px;color:var(--ink3);">2</span>
+                <span style="width:11px;height:11px;border-radius:2px;background:var(--bg2);border:0.5px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:5px;color:var(--ink3);">3</span>
+                <span style="width:11px;height:11px;border-radius:2px;background:var(--bg2);border:0.5px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:5px;color:var(--ink3);">4</span>
+                <span style="width:11px;height:11px;border-radius:2px;background:var(--bg2);border:0.5px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:5px;color:var(--ink3);">5</span>
+                <span style="width:11px;height:11px;border-radius:2px;background:var(--ink);border:0.5px solid var(--ink);display:flex;align-items:center;justify-content:center;font-size:5px;color:#fff;font-weight:700;">6</span>
+                <span style="width:11px;height:11px;border-radius:2px;background:var(--bg2);border:0.5px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:5px;color:var(--ink3);">7</span>
+                <span style="width:11px;height:11px;border-radius:2px;background:var(--bg2);border:0.5px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:5px;color:var(--ink3);">8</span>
+                <span style="width:11px;height:11px;border-radius:2px;background:var(--bg2);border:0.5px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:5px;color:var(--ink3);">9</span>
+                <span style="width:11px;height:11px;border-radius:2px;background:var(--bg2);border:0.5px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:5px;color:var(--ink3);">10</span>
               </div>
-              <div class="sm-p-eye uk-namu" data-en="VISIT HISTORY" data-uk="ІСТОРІЯ">VISIT HISTORY</div>
-              <div class="sm-visit-card">
-                <div class="sm-visit-row" style="gap:5px;margin-bottom:5px;">
-                  <div class="sm-visit-dot">F12</div>
-                  <div><div class="sm-visit-date uk-namu" data-en="June 28, 2025 · Today" data-uk="28 черв. 2025 · Сьогодні">June 28, 2025 · Today</div><div class="sm-visit-title uk-namu" data-en="Volume fill · cat eye" data-uk="Об'єм · котяче">Volume fill · cat eye</div><div class="sm-visit-date">C curl 9–13mm · Belmacil Sensitive</div></div>
+              <div class="sm-lm-eyebrow uk-namu" data-en="Root formula" data-uk="Коренева формула">Root formula</div>
+              <div style="background:var(--white);border:1px solid var(--pink-m);border-radius:4px;padding:4px 5px;margin-bottom:4px;">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;">
+                  <div class="sm-zone-cell"><div class="sm-zone-lbl uk-namu" data-en="Brand" data-uk="Бренд">Brand</div><div class="sm-zone-val">Wella</div></div>
+                  <div class="sm-zone-cell"><div class="sm-zone-lbl uk-namu" data-en="Shade" data-uk="Відтінок">Shade</div><div class="sm-zone-val">7/1</div></div>
+                  <div class="sm-zone-cell"><div class="sm-zone-lbl uk-namu" data-en="Dev." data-uk="Окисл.">Dev.</div><div class="sm-zone-val">20 vol</div></div>
+                  <div class="sm-zone-cell"><div class="sm-zone-lbl uk-namu" data-en="Time" data-uk="Час">Time</div><div class="sm-zone-val">30 min</div></div>
                 </div>
-                <div class="sm-visit-row" style="gap:5px;margin-bottom:5px;opacity:0.7;">
-                  <div class="sm-visit-dot" style="background:var(--bg2);border-color:var(--border2);color:var(--ink3);">F11</div>
-                  <div><div class="sm-visit-date uk-namu" data-en="June 7, 2025" data-uk="7 черв. 2025">June 7, 2025</div><div class="sm-visit-title uk-namu" data-en="Volume fill · cat eye" data-uk="Об'єм · котяче">Volume fill · cat eye</div><div class="sm-visit-date" data-en="Retention good · 3 weeks" data-uk="Добре утримання · 3 тижні">Retention good · 3 weeks</div></div>
-                </div>
-                <div class="sm-visit-row" style="gap:5px;opacity:0.5;">
-                  <div class="sm-visit-dot" style="background:var(--bg2);border-color:var(--border2);color:var(--ink3);">F10</div>
-                  <div><div class="sm-visit-date uk-namu" data-en="May 17, 2025" data-uk="17 трав. 2025">May 17, 2025</div><div class="sm-visit-title uk-namu" data-en="Volume fill" data-uk="Об'єм">Volume fill</div><div class="sm-visit-date" data-en="Adjusted outer corner shorter" data-uk="Скоротили зовн. кут">Adjusted outer corner shorter</div></div>
-                </div>
+              </div>
+              <div class="sm-lm-eyebrow uk-namu" data-en="Hair mapping" data-uk="Картування">Hair mapping</div>
+              <div style="background:var(--white);border:1px solid var(--border);border-radius:4px;padding:4px;">
+                <svg viewBox="0 0 130 95" width="100%" style="height:52px;" xmlns="http://www.w3.org/2000/svg">
+                  <ellipse cx="65" cy="52" rx="46" ry="40" fill="none" stroke="#0D0D0D" stroke-width="1" opacity="0.15"/>
+                  <ellipse cx="65" cy="20" rx="25" ry="15" fill="#FCF0F6" stroke="#E8A0BC" stroke-width="1.2"/>
+                  <text x="65" y="23" font-size="6" font-weight="700" fill="#C4507A" text-anchor="middle" font-family="Inter Tight,sans-serif">CROWN</text>
+                  <ellipse cx="65" cy="47" rx="20" ry="12" fill="#F5F1EE" stroke="#D4C8BE" stroke-width="0.8"/>
+                  <text x="65" y="50" font-size="5" fill="#888" text-anchor="middle" font-family="Inter Tight,sans-serif">FRONT</text>
+                  <ellipse cx="24" cy="55" rx="13" ry="18" fill="#F5F1EE" stroke="#D4C8BE" stroke-width="0.8"/>
+                  <text x="24" y="58" font-size="5" fill="#888" text-anchor="middle" font-family="Inter Tight,sans-serif">L</text>
+                  <ellipse cx="106" cy="55" rx="13" ry="18" fill="#F5F1EE" stroke="#D4C8BE" stroke-width="0.8"/>
+                  <text x="106" y="58" font-size="5" fill="#888" text-anchor="middle" font-family="Inter Tight,sans-serif">R</text>
+                  <circle cx="43" cy="37" r="8" fill="#FCF0F6" stroke="#E8A0BC" stroke-width="1.2"/>
+                  <text x="43" y="40" font-size="7" font-weight="700" fill="#C4507A" text-anchor="middle" font-family="Inter Tight,sans-serif">$</text>
+                  <circle cx="87" cy="37" r="8" fill="#FCF0F6" stroke="#E8A0BC" stroke-width="1.2"/>
+                  <text x="87" y="40" font-size="7" font-weight="700" fill="#C4507A" text-anchor="middle" font-family="Inter Tight,sans-serif">$</text>
+                </svg>
               </div>
             </div>
           </div>
           <div class="sm-tab-bar">
-            <div class="sm-tab"><div class="sm-tab-icon">☀️</div><div class="sm-tab-lbl uk-namu" data-en="TODAY" data-uk="СЬОГОДНІ">TODAY</div></div>
-            <div class="sm-tab active"><div class="sm-tab-icon">👤</div><div class="sm-tab-lbl uk-namu" data-en="CLIENTS" data-uk="КЛІЄНТИ">CLIENTS</div></div>
-            <div class="sm-tab"><div class="sm-tab-icon">📅</div><div class="sm-tab-lbl uk-namu" data-en="BOOK" data-uk="ЗАПИС">BOOK</div></div>
-            <div class="sm-tab"><div class="sm-tab-icon">⚙️</div><div class="sm-tab-lbl uk-namu" data-en="SETTINGS" data-uk="НАЛАШ.">SETTINGS</div></div>
+            <div class="sm-tab"><div class="sm-tab-icon">&#9728;</div><div class="sm-tab-lbl uk-namu" data-en="TODAY" data-uk="СЬОГОДНІ">TODAY</div></div>
+            <div class="sm-tab active"><div class="sm-tab-icon">&#128100;</div><div class="sm-tab-lbl uk-namu" data-en="CLIENTS" data-uk="КЛІЄНТИ">CLIENTS</div></div>
+            <div class="sm-tab"><div class="sm-tab-icon">&#128197;</div><div class="sm-tab-lbl uk-namu" data-en="BOOK" data-uk="ЗАПИС">BOOK</div></div>
+            <div class="sm-tab"><div class="sm-tab-icon">&#9881;</div><div class="sm-tab-lbl uk-namu" data-en="SETTINGS" data-uk="НАЛАШ.">SETTINGS</div></div>
           </div>
         </div>
       </div>
-      <div class="phone-col-label uk-namu" data-en="Client Profile" data-uk="Профіль клієнта">Client Profile</div>
-      <div class="phone-col-desc uk-namu" data-en="Service history, sensitivities and personal details, organized." data-uk="Історія, чутливості та особисті деталі — організовані.">Service history, sensitivities and personal details, organized.</div>
+      <div class="phone-col-label uk-namu" data-en="Hair Stylist" data-uk="Перукар">Hair Stylist</div>
+      <div class="phone-col-desc uk-namu" data-en="Hair profile, natural level, color formulas per section, and a head map for placement. Your colorist brain, organized." data-uk="Профіль волосся, рівень, формули кольору та карта голови — все в одному записі.">Hair profile, natural level, color formulas per section, and a head map for placement. Your colorist brain, organized.</div>
     </div>
 
-    <!-- 5: BOOKING -->
+    <!-- 4: ESTHETICIAN -->
     <div class="phone-col">
       <div class="iphone-sm">
         <div class="iphone-sm-inner">
           <div class="iphone-sm-island"></div>
-          <div class="sm-status"><span class="sm-time">9:41</span><span class="sm-icons">●●● ▮▮</span></div>
+          <div class="sm-status"><span class="sm-time">2:30 PM</span><span class="sm-icons">&#9679;&#9679;&#9679; &#9646;&#9646;</span></div>
           <div class="sm-screen">
-            <div class="sm-book-header">
-              <div class="sm-book-title uk-namu" data-en="MY CALENDAR" data-uk="МІЙ КАЛЕНДАР">MY CALENDAR</div>
-              <div class="sm-book-sub">June 2025</div>
+            <div class="sm-lm-header">
+              <span class="sm-lm-back">&#8592;</span>
+              <div>
+                <div class="sm-lm-title uk-namu" data-en="ESTHETICIAN" data-uk="КОСМЕТОЛОГ">ESTHETICIAN</div>
+                <div style="font-size:4.5px;color:var(--ink3);" class="uk-namu" data-en="Skin journal · Maria L." data-uk="Щоденник · Марія Л.">Skin journal · Maria L.</div>
+              </div>
+              <span class="sm-lm-action">&#10003;</span>
             </div>
-            <div class="sm-book-body">
-              <div class="sm-cal-header">
-                <span class="sm-cal-nav">‹</span>
-                <span class="sm-cal-month uk-namu" data-en="JUNE 2025" data-uk="ЧЕРВЕНЬ 2025">JUNE 2025</span>
-                <span class="sm-cal-nav">›</span>
+            <div class="sm-lm-body">
+              <div class="sm-lm-eyebrow uk-namu" data-en="Skin type" data-uk="Тип шкіри">Skin type</div>
+              <div style="display:flex;gap:2px;flex-wrap:wrap;margin-bottom:4px;">
+                <span style="font-size:4.5px;padding:2px 4px;border-radius:2px;background:var(--bg2);color:var(--ink3);" class="uk-namu" data-en="Normal" data-uk="Нормальна">Normal</span>
+                <span style="font-size:4.5px;padding:2px 4px;border-radius:2px;background:var(--pink-l);border:1px solid var(--pink-m);color:var(--pink-d);font-weight:700;" class="uk-namu" data-en="Combo ✓" data-uk="Комбінована ✓">Combo ✓</span>
+                <span style="font-size:4.5px;padding:2px 4px;border-radius:2px;background:var(--bg2);color:var(--ink3);" class="uk-namu" data-en="Oily" data-uk="Жирна">Oily</span>
+                <span style="font-size:4.5px;padding:2px 4px;border-radius:2px;background:var(--bg2);color:var(--ink3);" class="uk-namu" data-en="Dry" data-uk="Суха">Dry</span>
               </div>
-              <div class="sm-cal-grid">
-                <div class="sm-cal-day-hdr">S</div><div class="sm-cal-day-hdr">M</div><div class="sm-cal-day-hdr">T</div><div class="sm-cal-day-hdr">W</div><div class="sm-cal-day-hdr">T</div><div class="sm-cal-day-hdr">F</div><div class="sm-cal-day-hdr">S</div>
-                <div class="sm-cal-day">25</div><div class="sm-cal-day">26</div><div class="sm-cal-day">27</div><div class="sm-cal-day has-appt">28</div><div class="sm-cal-day today">28</div><div class="sm-cal-day">29</div><div class="sm-cal-day">30</div>
-                <div class="sm-cal-day">1</div><div class="sm-cal-day has-appt">2</div><div class="sm-cal-day">3</div><div class="sm-cal-day has-appt">4</div><div class="sm-cal-day">5</div><div class="sm-cal-day has-appt">6</div><div class="sm-cal-day">7</div>
-                <div class="sm-cal-day has-appt">8</div><div class="sm-cal-day">9</div><div class="sm-cal-day has-appt">10</div><div class="sm-cal-day">11</div><div class="sm-cal-day has-appt">12</div><div class="sm-cal-day">13</div><div class="sm-cal-day">14</div>
+              <div class="sm-lm-eyebrow uk-namu" data-en="Main concerns" data-uk="Проблеми">Main concerns</div>
+              <div style="display:flex;gap:2px;flex-wrap:wrap;margin-bottom:4px;">
+                <span style="font-size:4.5px;padding:2px 4px;border-radius:2px;background:var(--pink-l);border:1px solid var(--pink-m);color:var(--pink-d);font-weight:700;" class="uk-namu" data-en="Pigmentation ✓" data-uk="Пігментація ✓">Pigmentation ✓</span>
+                <span style="font-size:4.5px;padding:2px 4px;border-radius:2px;background:var(--pink-l);border:1px solid var(--pink-m);color:var(--pink-d);font-weight:700;" class="uk-namu" data-en="Dehydration ✓" data-uk="Зневоднення ✓">Dehydration ✓</span>
+                <span style="font-size:4.5px;padding:2px 4px;border-radius:2px;background:var(--bg2);color:var(--ink3);" class="uk-namu" data-en="Fine lines" data-uk="Зморшки">Fine lines</span>
               </div>
-              <div class="sm-section-lbl uk-namu" data-en="JUNE 28 · TODAY" data-uk="28 ЧЕРВ. · СЬОГОДНІ">JUNE 28 · TODAY</div>
-              <div class="sm-book-appt">
-                <div class="sm-book-time">10:00 AM</div>
-                <div class="sm-book-info">
-                  <div class="sm-book-client">Maria L.</div>
-                  <div class="sm-book-svc uk-namu" data-en="Volume fill · 90 min" data-uk="Об. наповнення · 90 хв">Volume fill · 90 min</div>
-                </div>
+              <div class="sm-lm-eyebrow uk-namu" data-en="Skin analysis map" data-uk="Карта аналізу">Skin analysis map</div>
+              <div style="background:var(--white);border:1px solid var(--border);border-radius:4px;padding:4px;margin-bottom:4px;">
+                <svg viewBox="0 0 100 100" width="100%" style="height:55px;" xmlns="http://www.w3.org/2000/svg">
+                  <ellipse cx="50" cy="55" rx="28" ry="38" fill="none" stroke="#0D0D0D" stroke-width="1" opacity="0.15"/>
+                  <ellipse cx="50" cy="22" rx="17" ry="11" fill="#FCF0F6" stroke="#E8A0BC" stroke-width="1"/>
+                  <text x="50" y="25" font-size="5.5" font-weight="700" fill="#C4507A" text-anchor="middle" font-family="Inter Tight,sans-serif">FOREHEAD</text>
+                  <ellipse cx="20" cy="60" rx="11" ry="13" fill="#F5F1EE" stroke="#D4C8BE" stroke-width="0.8"/>
+                  <text x="20" y="58" font-size="3.8" fill="#888" text-anchor="middle" font-family="Inter Tight,sans-serif">L CHEEK</text>
+                  <ellipse cx="80" cy="60" rx="11" ry="13" fill="#F5F1EE" stroke="#D4C8BE" stroke-width="0.8"/>
+                  <text x="80" y="58" font-size="3.8" fill="#888" text-anchor="middle" font-family="Inter Tight,sans-serif">R CHEEK</text>
+                  <ellipse cx="50" cy="53" rx="10" ry="13" fill="#EBF4EF" stroke="#8FAF9F" stroke-width="1.2"/>
+                  <text x="50" y="55" font-size="4.5" font-weight="700" fill="#4E8C7A" text-anchor="middle" font-family="Inter Tight,sans-serif">T-ZONE</text>
+                  <ellipse cx="50" cy="82" rx="13" ry="9" fill="#F5F1EE" stroke="#D4C8BE" stroke-width="0.8"/>
+                  <text x="50" y="85" font-size="5" fill="#888" text-anchor="middle" font-family="Inter Tight,sans-serif">CHIN</text>
+                </svg>
               </div>
-              <div class="sm-book-appt">
-                <div class="sm-book-time">12:00 PM</div>
-                <div class="sm-book-info">
-                  <div class="sm-book-client">Jessica M.</div>
-                  <div class="sm-book-svc uk-namu" data-en="Gel-X refill · 80 min" data-uk="Gel-X · 80 хв">Gel-X refill · 80 min</div>
-                </div>
+              <div class="sm-lm-eyebrow uk-namu" data-en="Treatment" data-uk="Процедура">Treatment</div>
+              <div style="display:flex;gap:2px;flex-wrap:wrap;margin-bottom:3px;">
+                <span style="font-size:4.5px;padding:2px 5px;border-radius:2px;background:var(--pink-l);border:1px solid var(--pink-m);color:var(--pink-d);font-weight:700;" class="uk-namu" data-en="Brightening Facial ✓" data-uk="Освітлюючий ✓">Brightening Facial ✓</span>
               </div>
-              <div class="sm-book-appt" style="opacity:0.6">
-                <div class="sm-book-time">2:30 PM</div>
-                <div class="sm-book-info">
-                  <div class="sm-book-client">Aisha K.</div>
-                  <div class="sm-book-svc uk-namu" data-en="Hybrid fill · 75 min" data-uk="Гібрид · 75 хв">Hybrid fill · 75 min</div>
-                </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;">
+                <div class="sm-zone-cell"><div class="sm-zone-lbl uk-namu" data-en="Peel" data-uk="Пілінг">Peel</div><div class="sm-zone-val" style="font-size:5.5px;">30% Lactic</div></div>
+                <div class="sm-zone-cell"><div class="sm-zone-lbl">LED</div><div class="sm-zone-val" style="font-size:5.5px;">Red · anti-aging</div></div>
               </div>
             </div>
           </div>
           <div class="sm-tab-bar">
-            <div class="sm-tab"><div class="sm-tab-icon">☀️</div><div class="sm-tab-lbl uk-namu" data-en="TODAY" data-uk="СЬОГОДНІ">TODAY</div></div>
-            <div class="sm-tab"><div class="sm-tab-icon">👤</div><div class="sm-tab-lbl uk-namu" data-en="CLIENTS" data-uk="КЛІЄНТИ">CLIENTS</div></div>
-            <div class="sm-tab active"><div class="sm-tab-icon">📅</div><div class="sm-tab-lbl uk-namu" data-en="BOOK" data-uk="ЗАПИС">BOOK</div></div>
-            <div class="sm-tab"><div class="sm-tab-icon">⚙️</div><div class="sm-tab-lbl uk-namu" data-en="SETTINGS" data-uk="НАЛАШ.">SETTINGS</div></div>
+            <div class="sm-tab"><div class="sm-tab-icon">&#9728;</div><div class="sm-tab-lbl uk-namu" data-en="TODAY" data-uk="СЬОГОДНІ">TODAY</div></div>
+            <div class="sm-tab active"><div class="sm-tab-icon">&#128100;</div><div class="sm-tab-lbl uk-namu" data-en="CLIENTS" data-uk="КЛІЄНТИ">CLIENTS</div></div>
+            <div class="sm-tab"><div class="sm-tab-icon">&#128197;</div><div class="sm-tab-lbl uk-namu" data-en="BOOK" data-uk="ЗАПИС">BOOK</div></div>
+            <div class="sm-tab"><div class="sm-tab-icon">&#9881;</div><div class="sm-tab-lbl uk-namu" data-en="SETTINGS" data-uk="НАЛАШ.">SETTINGS</div></div>
           </div>
         </div>
       </div>
-      <div class="phone-col-label uk-namu" data-en="Booking" data-uk="Запис">Booking</div>
-      <div class="phone-col-desc uk-namu" data-en="Salon-wide view of the week, color coded by service type." data-uk="Перегляд тижня по всьому салону, розфарбований за типом послуги.">Salon-wide view of the week, color coded by service type.</div>
+      <div class="phone-col-label uk-namu" data-en="Esthetician" data-uk="Косметолог">Esthetician</div>
+      <div class="phone-col-desc uk-namu" data-en="Skin type, concerns, face analysis map, treatment steps and homecare plan — a full skin journal per visit." data-uk="Тип шкіри, проблеми, карта обличчя, процедура та домашній догляд — повний щоденник.">Skin type, concerns, face analysis map, treatment steps and homecare plan — a full skin journal per visit.</div>
     </div>
 
   </div><!-- /phones-grid -->
@@ -1237,6 +1184,297 @@
     </div>
   </div>
 
+</div>
+
+<!-- FOR EVERY DISCIPLINE -->
+<div style="background:var(--bg2);">
+  <div style="padding:96px 48px;max-width:1200px;margin:0 auto;">
+    <p class="eyebrow uk-namu" data-en="New disciplines" data-uk="Нові напрямки">New disciplines</p>
+    <h2 class="section-title uk-namu" data-en="Not just lash &amp; nail." data-uk="Не лише вії та нігті.">Not just lash &amp; nail.</h2>
+    <p style="font-size:15px;color:var(--ink3);line-height:1.7;max-width:540px;margin-top:8px;margin-bottom:56px;" class="uk-namu" data-en="HerSets now includes dedicated record cards for hair stylists, hair extension specialists, and estheticians — each built around how that discipline actually works." data-uk="HerSets тепер включає картки для перукарів, майстрів з нарощування волосся та косметологів — кожна створена під конкретний напрямок.">HerSets now includes dedicated record cards for hair stylists, hair extension specialists, and estheticians — each built around how that discipline actually works.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;" class="discipline-grid">
+
+      <!-- Hair Stylist -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:20px;">
+        <div class="iphone-sm" style="--sw:160px;">
+          <div class="iphone-sm-inner">
+            <div class="iphone-sm-island"></div>
+            <div class="sm-status"><span class="sm-time">10:15</span><span class="sm-icons">●●● ▮▮</span></div>
+            <div class="sm-screen">
+              <div class="sm-lm-header">
+                <span class="sm-lm-back">←</span>
+                <div>
+                  <div class="sm-lm-title uk-namu" data-en="HAIR STYLIST" data-uk="ПЕРУКАР">HAIR STYLIST</div>
+                  <div style="font-size:4.5px;color:var(--ink3);" class="uk-namu" data-en="Color record · Jamie T." data-uk="Запис · Джейм.">Color record · Jamie T.</div>
+                </div>
+              </div>
+              <div class="sm-lm-body">
+                <div class="sm-lm-eyebrow uk-namu" data-en="Hair history" data-uk="Хімічна історія">Hair history</div>
+                <div style="display:flex;gap:2px;flex-wrap:wrap;margin-bottom:4px;">
+                  <span style="font-size:4.5px;padding:2px 4px;border-radius:2px;background:var(--pink-l);border:1px solid var(--pink-m);color:var(--pink-d);font-weight:700;" class="uk-namu" data-en="Balayage ✓" data-uk="Балаяж ✓">Balayage ✓</span>
+                  <span style="font-size:4.5px;padding:2px 4px;border-radius:2px;background:var(--pink-l);border:1px solid var(--pink-m);color:var(--pink-d);font-weight:700;" class="uk-namu" data-en="Olaplex ✓" data-uk="Оlaplex ✓">Olaplex ✓</span>
+                  <span style="font-size:4.5px;padding:2px 4px;border-radius:2px;background:var(--bg2);color:var(--ink3);" class="uk-namu" data-en="Virgin hair" data-uk="Незафарбоване">Virgin hair</span>
+                  <span style="font-size:4.5px;padding:2px 4px;border-radius:2px;background:var(--bg2);color:var(--ink3);">Keratin</span>
+                </div>
+                <div class="sm-lm-eyebrow uk-namu" data-en="Hair goals" data-uk="Цілі клієнта">Hair goals</div>
+                <div style="display:flex;gap:2px;flex-wrap:wrap;margin-bottom:4px;">
+                  <span style="font-size:4.5px;padding:2px 4px;border-radius:2px;background:var(--pink-l);border:1px solid var(--pink-m);color:var(--pink-d);font-weight:700;" class="uk-namu" data-en="More blonde ✓" data-uk="Більше блонду ✓">More blonde ✓</span>
+                  <span style="font-size:4.5px;padding:2px 4px;border-radius:2px;background:var(--pink-l);border:1px solid var(--pink-m);color:var(--pink-d);font-weight:700;" class="uk-namu" data-en="Less warmth ✓" data-uk="Менше тепла ✓">Less warmth ✓</span>
+                </div>
+                <div class="sm-lm-eyebrow uk-namu" data-en="Toner formula" data-uk="Тонер">Toner formula</div>
+                <div style="background:var(--white);border:1px solid var(--pink-m);border-radius:4px;padding:4px 5px;margin-bottom:4px;">
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;">
+                    <div class="sm-zone-cell"><div class="sm-zone-lbl uk-namu" data-en="Brand" data-uk="Бренд">Brand</div><div class="sm-zone-val">Redken</div></div>
+                    <div class="sm-zone-cell"><div class="sm-zone-lbl uk-namu" data-en="Shade" data-uk="Відтінок">Shade</div><div class="sm-zone-val">09T</div></div>
+                    <div class="sm-zone-cell"><div class="sm-zone-lbl uk-namu" data-en="Dev." data-uk="Окисл.">Dev.</div><div class="sm-zone-val">10 vol</div></div>
+                    <div class="sm-zone-cell"><div class="sm-zone-lbl uk-namu" data-en="Time" data-uk="Час">Time</div><div class="sm-zone-val">15 min</div></div>
+                  </div>
+                </div>
+                <div style="background:var(--bg2);border-radius:3px;padding:5px;font-size:5px;color:var(--ink3);" class="uk-namu" data-en="Next: Root touch-up in 8 weeks. Watch brassiness on ends." data-uk="Далі: корені через 8 тижнів. Слідкувати за рудиною на кінцях.">Next: Root touch-up in 8 weeks. Watch brassiness on ends.</div>
+              </div>
+            </div>
+            <div class="sm-tab-bar">
+              <div class="sm-tab"><div class="sm-tab-icon">☀️</div><div class="sm-tab-lbl uk-namu" data-en="TODAY" data-uk="СЬОГОДНІ">TODAY</div></div>
+              <div class="sm-tab active"><div class="sm-tab-icon">👤</div><div class="sm-tab-lbl uk-namu" data-en="CLIENTS" data-uk="КЛІЄНТИ">CLIENTS</div></div>
+              <div class="sm-tab"><div class="sm-tab-icon">📅</div><div class="sm-tab-lbl uk-namu" data-en="BOOK" data-uk="ЗАПИС">BOOK</div></div>
+              <div class="sm-tab"><div class="sm-tab-icon">⚙️</div><div class="sm-tab-lbl uk-namu" data-en="SETTINGS" data-uk="НАЛАШ.">SETTINGS</div></div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:0.8px;color:var(--ink);margin-bottom:6px;" class="uk-namu" data-en="Hair Stylist" data-uk="Перукар">Hair Stylist</div>
+          <p style="font-size:13px;color:var(--ink3);line-height:1.65;" class="uk-namu" data-en="Full color record card. Hair profile, natural level, chemical history, formulas for root / mid-length / toner, head map for color placement, and next-visit notes. One tap duplicates the formula for returning clients." data-uk="Повна картка запису кольору. Профіль волосся, рівень, хімічна історія, формули для коренів/середини/тонера, карта голови та нотатки на наступний візит.">Full color record card. Hair profile, natural level, chemical history, formulas for root / mid-length / toner, head map for color placement, and next-visit notes. One tap duplicates the formula for returning clients.</p>
+        </div>
+      </div>
+
+      <!-- Hair Extensions -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:20px;">
+        <div class="iphone-sm" style="--sw:160px;">
+          <div class="iphone-sm-inner">
+            <div class="iphone-sm-island"></div>
+            <div class="sm-status"><span class="sm-time">11:00</span><span class="sm-icons">●●● ▮▮</span></div>
+            <div class="sm-screen">
+              <div class="sm-lm-header">
+                <span class="sm-lm-back">←</span>
+                <div>
+                  <div class="sm-lm-title uk-namu" data-en="HAIR EXTENSIONS" data-uk="НАРОЩУВАННЯ">HAIR EXTENSIONS</div>
+                  <div style="font-size:4.5px;color:var(--ink3);" class="uk-namu" data-en="Install record · Jamie T." data-uk="Запис установки · Джейм.">Install record · Jamie T.</div>
+                </div>
+              </div>
+              <div class="sm-lm-body">
+                <div class="sm-lm-eyebrow uk-namu" data-en="Extension type" data-uk="Тип нарощування">Extension type</div>
+                <div style="display:flex;gap:2px;flex-wrap:wrap;margin-bottom:4px;">
+                  <span style="font-size:4.5px;padding:2px 4px;border-radius:2px;background:var(--pink-l);border:1px solid var(--pink-m);color:var(--pink-d);font-weight:700;" class="uk-namu" data-en="Hand Tied ✓" data-uk="Hand Tied ✓">Hand Tied ✓</span>
+                  <span style="font-size:4.5px;padding:2px 4px;border-radius:2px;background:var(--bg2);color:var(--ink3);">Tape-In</span>
+                  <span style="font-size:4.5px;padding:2px 4px;border-radius:2px;background:var(--bg2);color:var(--ink3);">K-Tip</span>
+                  <span style="font-size:4.5px;padding:2px 4px;border-radius:2px;background:var(--bg2);color:var(--ink3);">I-Tip</span>
+                </div>
+                <div class="sm-lm-eyebrow uk-namu" data-en="Color blend" data-uk="Суміш кольорів">Color blend</div>
+                <div style="display:flex;gap:2px;flex-wrap:wrap;margin-bottom:4px;">
+                  <span style="font-size:4.5px;padding:2px 5px;border-radius:2px;background:var(--pink-l);border:1px solid var(--pink-m);color:var(--pink-d);font-weight:700;">18 ✓</span>
+                  <span style="font-size:4.5px;padding:2px 5px;border-radius:2px;background:var(--pink-l);border:1px solid var(--pink-m);color:var(--pink-d);font-weight:700;">22 ✓</span>
+                  <span style="font-size:4.5px;padding:2px 5px;border-radius:2px;background:var(--pink-l);border:1px solid var(--pink-m);color:var(--pink-d);font-weight:700;">60 ✓</span>
+                  <span style="font-size:4.5px;padding:2px 5px;border-radius:2px;background:var(--bg2);color:var(--ink3);">613</span>
+                  <span style="font-size:4.5px;padding:2px 5px;border-radius:2px;background:var(--bg2);color:var(--ink3);">4</span>
+                </div>
+                <div style="background:var(--bg2);border-radius:3px;padding:4px 5px;margin-bottom:4px;font-size:5px;font-weight:700;color:var(--pink-d);" class="uk-namu" data-en="Blend: 18 / 22 / 60" data-uk="Суміш: 18 / 22 / 60">Blend: 18 / 22 / 60</div>
+                <div class="sm-lm-eyebrow uk-namu" data-en="Installation map" data-uk="Карта установки">Installation map</div>
+                <div style="background:var(--white);border:1px solid var(--border);border-radius:4px;padding:4px;margin-bottom:4px;">
+                  <svg viewBox="0 0 130 80" width="100%" style="height:44px;" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="65" cy="42" rx="50" ry="38" fill="none" stroke="#0D0D0D" stroke-width="1" opacity="0.12"/>
+                    <line x1="35" y1="20" x2="95" y2="20" stroke="#C4507A" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="45" cy="20" r="3" fill="#E8A0BC"/>
+                    <circle cx="65" cy="20" r="3" fill="#E8A0BC"/>
+                    <circle cx="85" cy="20" r="3" fill="#E8A0BC"/>
+                    <text x="100" y="23" font-size="5.5" fill="#C4507A" font-family="Inter Tight,sans-serif" font-weight="700">Row 1</text>
+                    <line x1="30" y1="35" x2="100" y2="35" stroke="#C4507A" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="40" cy="35" r="3" fill="#E8A0BC"/>
+                    <circle cx="65" cy="35" r="3" fill="#E8A0BC"/>
+                    <circle cx="90" cy="35" r="3" fill="#E8A0BC"/>
+                    <text x="104" y="38" font-size="5.5" fill="#C4507A" font-family="Inter Tight,sans-serif" font-weight="700">Row 2</text>
+                    <line x1="32" y1="50" x2="98" y2="50" stroke="#D4C8BE" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 2"/>
+                    <text x="104" y="53" font-size="5.5" fill="#aaa" font-family="Inter Tight,sans-serif">Row 3</text>
+                    <line x1="36" y1="65" x2="94" y2="65" stroke="#D4C8BE" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 2"/>
+                    <text x="98" y="68" font-size="5.5" fill="#aaa" font-family="Inter Tight,sans-serif">Row 4</text>
+                  </svg>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;">
+                  <div class="sm-zone-cell"><div class="sm-zone-lbl uk-namu" data-en="Length" data-uk="Довжина">Length</div><div class="sm-zone-val">20"</div></div>
+                  <div class="sm-zone-cell"><div class="sm-zone-lbl uk-namu" data-en="Weight" data-uk="Вага">Weight</div><div class="sm-zone-val">100 g</div></div>
+                </div>
+              </div>
+            </div>
+            <div class="sm-tab-bar">
+              <div class="sm-tab"><div class="sm-tab-icon">☀️</div><div class="sm-tab-lbl uk-namu" data-en="TODAY" data-uk="СЬОГОДНІ">TODAY</div></div>
+              <div class="sm-tab active"><div class="sm-tab-icon">👤</div><div class="sm-tab-lbl uk-namu" data-en="CLIENTS" data-uk="КЛІЄНТИ">CLIENTS</div></div>
+              <div class="sm-tab"><div class="sm-tab-icon">📅</div><div class="sm-tab-lbl uk-namu" data-en="BOOK" data-uk="ЗАПИС">BOOK</div></div>
+              <div class="sm-tab"><div class="sm-tab-icon">⚙️</div><div class="sm-tab-lbl uk-namu" data-en="SETTINGS" data-uk="НАЛАШ.">SETTINGS</div></div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:0.8px;color:var(--ink);margin-bottom:6px;" class="uk-namu" data-en="Hair Extensions" data-uk="Нарощування волосся">Hair Extensions</div>
+          <p style="font-size:13px;color:var(--ink3);line-height:1.65;" class="uk-namu" data-en="Installation record for every method — hand tied, tape-in, K-tip, and more. Tracks extension type, brand, color blend formula, row-by-row installation map, length, weight, and maintenance products." data-uk="Картка установки для будь-якого методу. Відстежує тип, бренд, формулу суміші кольорів, карту рядів, довжину, вагу та засоби для догляду.">Installation record for every method — hand tied, tape-in, K-tip, and more. Tracks extension type, brand, color blend formula, row-by-row installation map, length, weight, and maintenance products.</p>
+        </div>
+      </div>
+
+      <!-- Esthetician -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:20px;">
+        <div class="iphone-sm" style="--sw:160px;">
+          <div class="iphone-sm-inner">
+            <div class="iphone-sm-island"></div>
+            <div class="sm-status"><span class="sm-time">2:30 PM</span><span class="sm-icons">●●● ▮▮</span></div>
+            <div class="sm-screen">
+              <div class="sm-lm-header">
+                <span class="sm-lm-back">←</span>
+                <div>
+                  <div class="sm-lm-title uk-namu" data-en="ESTHETICIAN" data-uk="КОСМЕТОЛОГ">ESTHETICIAN</div>
+                  <div style="font-size:4.5px;color:var(--ink3);" class="uk-namu" data-en="Skin journal · Maria L." data-uk="Щоденник · Марія Л.">Skin journal · Maria L.</div>
+                </div>
+              </div>
+              <div class="sm-lm-body">
+                <div class="sm-lm-eyebrow uk-namu" data-en="Skin journey progress" data-uk="Прогрес шкіри">Skin journey progress</div>
+                <div style="background:var(--white);border:1px solid var(--border);border-radius:4px;padding:5px;margin-bottom:4px;">
+                  <div style="font-size:4px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);margin-bottom:5px;" class="uk-namu" data-en="Progress since first visit" data-uk="Прогрес з першого візиту">Progress since first visit</div>
+                  <div style="display:flex;flex-direction:column;gap:4px;">
+                    <div>
+                      <div style="display:flex;justify-content:space-between;margin-bottom:1px;"><span style="font-size:4px;color:var(--ink3);" class="uk-namu" data-en="Hydration" data-uk="Зволоженість">Hydration</span><span style="font-size:4px;font-weight:700;color:var(--pink-d);">+3</span></div>
+                      <div style="background:var(--bg2);border-radius:2px;height:4px;"><div style="background:var(--pink);border-radius:2px;height:4px;width:75%;"></div></div>
+                    </div>
+                    <div>
+                      <div style="display:flex;justify-content:space-between;margin-bottom:1px;"><span style="font-size:4px;color:var(--ink3);" class="uk-namu" data-en="Brightness" data-uk="Сяйво">Brightness</span><span style="font-size:4px;font-weight:700;color:var(--pink-d);">+4</span></div>
+                      <div style="background:var(--bg2);border-radius:2px;height:4px;"><div style="background:var(--pink);border-radius:2px;height:4px;width:85%;"></div></div>
+                    </div>
+                    <div>
+                      <div style="display:flex;justify-content:space-between;margin-bottom:1px;"><span style="font-size:4px;color:var(--ink3);" class="uk-namu" data-en="Pigmentation" data-uk="Пігментація">Pigmentation</span><span style="font-size:4px;font-weight:700;color:var(--sage);">-2</span></div>
+                      <div style="background:var(--bg2);border-radius:2px;height:4px;"><div style="background:var(--sage);border-radius:2px;height:4px;width:55%;"></div></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="sm-lm-eyebrow uk-namu" data-en="Homecare plan" data-uk="Домашній догляд">Homecare plan</div>
+                <div style="display:flex;gap:2px;flex-wrap:wrap;margin-bottom:4px;">
+                  <span style="font-size:4.5px;padding:2px 4px;border-radius:2px;background:var(--pink-l);border:1px solid var(--pink-m);color:var(--pink-d);font-weight:700;" class="uk-namu" data-en="Vit C serum ✓" data-uk="Сироватка Vit C ✓">Vit C serum ✓</span>
+                  <span style="font-size:4.5px;padding:2px 4px;border-radius:2px;background:var(--pink-l);border:1px solid var(--pink-m);color:var(--pink-d);font-weight:700;" class="uk-namu" data-en="SPF 50 ✓" data-uk="SPF 50 ✓">SPF 50 ✓</span>
+                  <span style="font-size:4.5px;padding:2px 4px;border-radius:2px;background:var(--bg2);color:var(--ink3);" class="uk-namu" data-en="Avoid retinol" data-uk="Без ретинолу">Avoid retinol</span>
+                </div>
+                <div class="sm-lm-eyebrow uk-namu" data-en="Next treatment" data-uk="Наступна процедура">Next treatment</div>
+                <div style="display:flex;gap:2px;flex-wrap:wrap;">
+                  <span style="font-size:4.5px;padding:2px 4px;border-radius:2px;background:var(--pink-l);border:1px solid var(--pink-m);color:var(--pink-d);font-weight:700;" class="uk-namu" data-en="Chemical Peel ✓" data-uk="Хімічний пілінг ✓">Chemical Peel ✓</span>
+                  <span style="font-size:4.5px;padding:2px 4px;border-radius:2px;background:var(--bg2);color:var(--ink3);" class="uk-namu" data-en="In 3 weeks" data-uk="Через 3 тижні">In 3 weeks</span>
+                </div>
+              </div>
+            </div>
+            <div class="sm-tab-bar">
+              <div class="sm-tab"><div class="sm-tab-icon">☀️</div><div class="sm-tab-lbl uk-namu" data-en="TODAY" data-uk="СЬОГОДНІ">TODAY</div></div>
+              <div class="sm-tab active"><div class="sm-tab-icon">👤</div><div class="sm-tab-lbl uk-namu" data-en="CLIENTS" data-uk="КЛІЄНТИ">CLIENTS</div></div>
+              <div class="sm-tab"><div class="sm-tab-icon">📅</div><div class="sm-tab-lbl uk-namu" data-en="BOOK" data-uk="ЗАПИС">BOOK</div></div>
+              <div class="sm-tab"><div class="sm-tab-icon">⚙️</div><div class="sm-tab-lbl uk-namu" data-en="SETTINGS" data-uk="НАЛАШ.">SETTINGS</div></div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:0.8px;color:var(--ink);margin-bottom:6px;" class="uk-namu" data-en="Esthetician" data-uk="Косметолог">Esthetician</div>
+          <p style="font-size:13px;color:var(--ink3);line-height:1.65;" class="uk-namu" data-en="Full skin journal with Fitzpatrick scale, skin analysis map, medical history, treatment parameters, product protocol, and skin journey progress tracking across visits." data-uk="Повний шкірний щоденник зі шкалою Фітцпатрика, картою аналізу, медичною історією, параметрами процедури та відстеженням прогресу шкіри між візитами.">Full skin journal with Fitzpatrick scale, skin analysis map, medical history, treatment parameters, product protocol, and skin journey progress tracking across visits.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- TEMPLATES -->
+<div class="templates-section" id="templates">
+  <div class="templates-inner">
+    <p class="eyebrow uk-namu" data-en="Built-in templates" data-uk="Вбудовані шаблони">Built-in templates</p>
+    <h2 class="section-title uk-namu" data-en="Five templates. Ready on day one." data-uk="П'ять шаблонів. Готові з першого дня.">Five templates. <span style="color:var(--pink-d)">Ready</span> on day one.</h2>
+    <p style="font-size:15px;color:var(--ink3);line-height:1.7;max-width:540px;margin-top:16px;" class="uk-namu" data-en="No setup, no configuration. Open the app and your templates are waiting — built specifically around how lash and nail artists actually work." data-uk="Жодного налаштування. Відкрийте застосунок — шаблони вже чекають, створені спеціально для майстрів.">No setup, no configuration. Open the app and your templates are waiting — built specifically around how lash and nail artists actually work.</p>
+    <div class="templates-grid">
+
+      <!-- 1: Client Profile -->
+      <div class="tpl-card">
+        <div class="tpl-num">01</div>
+        <div class="tpl-title uk-namu" data-en="Client <span class='accent'>Profile</span>" data-uk="Профіль <span class='accent'>клієнта</span>">Client <span class="accent">Profile</span></div>
+        <p class="tpl-desc uk-namu" data-en="Everything about a client in one place. Name, contact, skin type, eye shape, allergies, patch test results, and personal notes. The profile updates automatically after every visit so it always reflects who your client is today." data-uk="Все про клієнта в одному місці. Ім'я, контакт, тип шкіри, форма очей, алергії, результати тесту та особисті нотатки. Профіль оновлюється після кожного візиту.">Everything about a client in one place. Name, contact, skin type, eye shape, allergies, patch test results, and personal notes. The profile updates automatically after every visit so it always reflects who your client is today.</p>
+        <div class="tpl-fields">
+          <span class="tpl-field uk-namu" data-en="Contact" data-uk="Контакт">Contact</span>
+          <span class="tpl-field uk-namu" data-en="Allergies" data-uk="Алергії">Allergies</span>
+          <span class="tpl-field uk-namu" data-en="Patch test" data-uk="Тест">Patch test</span>
+          <span class="tpl-field uk-namu" data-en="Eye shape" data-uk="Форма ока">Eye shape</span>
+          <span class="tpl-field uk-namu" data-en="Notes" data-uk="Нотатки">Notes</span>
+        </div>
+      </div>
+
+      <!-- 2: Service Record Maps -->
+      <div class="tpl-card">
+        <div class="tpl-num">02</div>
+        <div class="tpl-title uk-namu" data-en="Service <span class='accent'>Maps</span>" data-uk="Схеми <span class='accent'>послуг</span>">Service <span class="accent">Maps</span></div>
+        <p class="tpl-desc uk-namu" data-en="Visual diagrams built for each discipline. Lash artists get a 5-zone eye map with curl, length and diameter per zone. Hair stylists get a top-down head map for color placement — crown, front, sides, nape, money piece. Estheticians get a face analysis map with zones for forehead, cheeks, T-zone and chin. Every discipline gets a diagram that matches how you actually think about the work." data-uk="Візуальні схеми для кожного напрямку. Майстри вій — карта ока з 5 зонами. Перукарі — карта голови (тім'я, чоло, скроні, потилиця, money piece). Косметологи — карта аналізу обличчя. Кожен напрямок отримує схему, яка відображає реальну роботу.">Visual diagrams built for each discipline. Lash artists get a 5-zone eye map with curl, length and diameter per zone. Hair stylists get a top-down head map for color placement — crown, front, sides, nape, money piece. Estheticians get a face analysis map with zones for forehead, cheeks, T-zone and chin. Every discipline gets a diagram that matches how you actually think about the work.</p>
+        <div class="tpl-fields">
+          <span class="tpl-field uk-namu" data-en="Lash eye map" data-uk="Карта ока">Lash eye map</span>
+          <span class="tpl-field uk-namu" data-en="Hair head map" data-uk="Карта голови">Hair head map</span>
+          <span class="tpl-field uk-namu" data-en="Skin face map" data-uk="Карта обличчя">Skin face map</span>
+          <span class="tpl-field uk-namu" data-en="Extension row map" data-uk="Карта рядів">Extension row map</span>
+        </div>
+      </div>
+
+      <!-- 3: Service Formulas -->
+      <div class="tpl-card">
+        <div class="tpl-num">03</div>
+        <div class="tpl-title uk-namu" data-en="Service <span class='accent'>Formulas</span>" data-uk="Формули <span class='accent'>послуг</span>">Service <span class="accent">Formulas</span></div>
+        <p class="tpl-desc uk-namu" data-en="Every discipline has its own formula fields. Nail: per-finger color code, gel type, brand, finish, add-ons. Hair color: root / mid-length / toner formulas with brand, shade, developer and timing. Hair extensions: color blend (multiple shades), brand, length, weight. Esthetician: peel percentage, LED settings, active ingredients. The fields match the service — not a generic notes box." data-uk="Кожен напрямок має власні поля формул. Нігті: код кольору, гель, бренд, покриття. Кольорування волосся: коренева/середина/тонер з брендом, відтінком, окислювачем та часом. Нарощування: формула суміші кольорів, бренд, довжина, вага. Косметологія: концентрація пілінгу, налаштування LED, активні компоненти.">Every discipline has its own formula fields. Nail: per-finger color code, gel type, brand, finish, add-ons. Hair color: root / mid-length / toner formulas with brand, shade, developer and timing. Hair extensions: color blend (multiple shades), brand, length, weight. Esthetician: peel percentage, LED settings, active ingredients. The fields match the service — not a generic notes box.</p>
+        <div class="tpl-fields">
+          <span class="tpl-field uk-namu" data-en="Nail formula" data-uk="Формула нігтів">Nail formula</span>
+          <span class="tpl-field uk-namu" data-en="Hair color formula" data-uk="Формула кольору">Hair color formula</span>
+          <span class="tpl-field uk-namu" data-en="Extension blend" data-uk="Суміш кольорів">Extension blend</span>
+          <span class="tpl-field uk-namu" data-en="Skin treatment params" data-uk="Параметри процедури">Skin treatment params</span>
+        </div>
+      </div>
+
+      <!-- 4: Visit Notes -->
+      <div class="tpl-card">
+        <div class="tpl-num">04</div>
+        <div class="tpl-title uk-namu" data-en="Visit <span class='accent'>Notes</span>" data-uk="Нотатки <span class='accent'>візиту</span>">Visit <span class="accent">Notes</span></div>
+        <p class="tpl-desc uk-namu" data-en="A per-appointment record of what happened at each session — service type, products used, retention observations, client feedback, and anything worth remembering. Builds into a full timeline you can scroll through before any appointment." data-uk="Запис кожного сеансу — тип послуги, продукти, спостереження за утриманням та відгук клієнта. Перетворюється на повну хронологію.">A per-appointment record of what happened at each session — service type, products used, retention observations, client feedback, and anything worth remembering. Builds into a full timeline you can scroll through before any appointment.</p>
+        <div class="tpl-fields">
+          <span class="tpl-field uk-namu" data-en="Service type" data-uk="Тип послуги">Service type</span>
+          <span class="tpl-field uk-namu" data-en="Products used" data-uk="Продукти">Products used</span>
+          <span class="tpl-field uk-namu" data-en="Retention" data-uk="Утримання">Retention</span>
+          <span class="tpl-field uk-namu" data-en="Client feedback" data-uk="Відгук">Client feedback</span>
+        </div>
+      </div>
+
+      <!-- 5: Weekly Schedule -->
+      <div class="tpl-card">
+        <div class="tpl-num">05</div>
+        <div class="tpl-title uk-namu" data-en="Weekly <span class='accent'>Schedule</span>" data-uk="Тижневий <span class='accent'>розклад</span>">Weekly <span class="accent">Schedule</span></div>
+        <p class="tpl-desc uk-namu" data-en="A color-coded weekly view of all your appointments — sorted by service type, duration, and client. See lash fills, nail sets, and new clients all at a glance. Tap any slot to pull up the client's full profile before they arrive." data-uk="Тижневий вигляд усіх записів із розфарбуванням за типом послуги. Натисніть будь-який слот, щоб відкрити повний профіль клієнта до їхнього приходу.">A color-coded weekly view of all your appointments — sorted by service type, duration, and client. See lash fills, nail sets, and new clients all at a glance. Tap any slot to pull up the client's full profile before they arrive.</p>
+        <div class="tpl-fields">
+          <span class="tpl-field uk-namu" data-en="Day &amp; time" data-uk="День та час">Day &amp; time</span>
+          <span class="tpl-field uk-namu" data-en="Service" data-uk="Послуга">Service</span>
+          <span class="tpl-field uk-namu" data-en="Duration" data-uk="Тривалість">Duration</span>
+          <span class="tpl-field uk-namu" data-en="Client name" data-uk="Клієнт">Client name</span>
+          <span class="tpl-field uk-namu" data-en="Color tag" data-uk="Колір">Color tag</span>
+        </div>
+      </div>
+
+      <!-- Custom Template CTA -->
+      <div class="tpl-card tpl-custom">
+        <div>
+          <div class="tpl-title uk-namu" data-en="Build your own <span class='accent' style='color:var(--pink)'>template</span>" data-uk="Створіть свій <span class='accent' style='color:var(--pink)'>шаблон</span>">Build your own <span class="accent" style="color:var(--pink)">template</span></div>
+          <p class="tpl-desc uk-namu" data-en="Not every artist works the same way. Add the fields you actually use, name them what makes sense to you, and save your template to reuse with any client. Whether it's a specific threading technique, a brow tint formula, or a hybrid combo you've refined over years — it lives in HerSets, exactly the way you designed it." data-uk="Не всі майстри працюють однаково. Додайте власні поля, назвіть їх так, як вам зручно, і зберігайте шаблон для будь-якого клієнта. Ваша техніка, ваша формула — у HerSets, так, як ви самі придумали.">Not every artist works the same way. Add the fields you actually use, name them what makes sense to you, and save your template to reuse with any client. Whether it's a specific threading technique, a brow tint formula, or a hybrid combo you've refined over years — it lives in HerSets, exactly the way you designed it.</p>
+          <div class="tpl-fields" style="margin-top:16px;">
+            <span class="tpl-field uk-namu" data-en="Custom fields" data-uk="Власні поля">Custom fields</span>
+            <span class="tpl-field uk-namu" data-en="Your naming" data-uk="Ваші назви">Your naming</span>
+            <span class="tpl-field uk-namu" data-en="Reusable" data-uk="Повторне використання">Reusable</span>
+            <span class="tpl-field uk-namu" data-en="Any service" data-uk="Будь-яка послуга">Any service</span>
+          </div>
+        </div>
+        <button class="tpl-custom-cta uk-namu" onclick="document.getElementById('signup').scrollIntoView({behavior:'smooth'})" data-en="JOIN WAITLIST" data-uk="ДО СПИСКУ ОЧІКУВАННЯ">JOIN WAITLIST</button>
+      </div>
+
+    </div>
+  </div>
 </div>
 
 <!-- PROBLEM -->
