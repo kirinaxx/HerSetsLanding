@@ -644,6 +644,9 @@
     .footer-logo { font-family: 'Inter Tight', sans-serif; font-weight: 900; font-size: 16px; letter-spacing: 3px; text-transform: uppercase; color: #fff; }
     .footer-logo span { color: var(--pink); }
     .footer-text { display: flex; flex-direction: column; font-size: 11px; color: rgba(255,255,255,0.28); text-align: right; line-height: 1.6; }
+    .footer-legal { display: flex; flex-wrap: wrap; gap: 6px 20px; justify-content: flex-end; margin-top: 10px; }
+    .footer-legal a { font-size: 10px; color: rgba(255,255,255,0.35); text-decoration: none; letter-spacing: 0.4px; transition: color .2s; }
+    .footer-legal a:hover { color: rgba(255,255,255,0.7); }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
@@ -1375,7 +1378,16 @@
    <div class="footer-logo">
     <img style="height: 80px; width: 80px;" src="Logo para Estudio Creativo Dibujado a Mano Trendy Moderno Blanco y Negro (3).png"/>
    </div>
-  <div class="footer-text uk-namu" data-en="Built for lash & nail artists.<br/>© 2025 HerSets. All rights reserved." data-uk="Створено для леш- та нейл-майстрів.<br/>© 2025 HerSets. Всі права захищено.">Built for lash & nail artists.<br/>© 2025 HerSets. All rights reserved.</div>
+  <div style="text-align:right;">
+    <div class="footer-text uk-namu" data-en="Built for lash & nail artists.<br/>© 2025 HerSets. All rights reserved." data-uk="Створено для леш- та нейл-майстрів.<br/>© 2025 HerSets. Всі права захищено.">Built for lash & nail artists.<br/>© 2025 HerSets. All rights reserved.</div>
+    <div class="footer-legal">
+      <a href="legal/Privacy_Policy.html" class="uk-namu" data-en="Privacy Policy" data-uk="Політика конфіденційності">Privacy Policy</a>
+      <a href="legal/Terms_of_Service.html" class="uk-namu" data-en="Terms of Service" data-uk="Умови використання">Terms of Service</a>
+      <a href="legal/Cookie_Policy.html" class="uk-namu" data-en="Cookie Policy" data-uk="Політика cookies">Cookie Policy</a>
+      <a href="legal/Account_Deletion_Policy.html" class="uk-namu" data-en="Account Deletion" data-uk="Видалення акаунту">Account Deletion</a>
+      <a href="legal/Support_Contact.html" class="uk-namu" data-en="Support" data-uk="Підтримка">Support</a>
+    </div>
+  </div>
 </footer>
 
 <script>
