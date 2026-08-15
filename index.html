@@ -638,6 +638,11 @@
     .form-success { display: none; }
     .form-success-title { font-family: 'Inter Tight', sans-serif; font-weight: 900; font-size: 22px; text-transform: uppercase; color: var(--pink); margin-bottom: 6px; }
     .form-success-sub { font-size: 12px; color: rgba(255,255,255,0.4); }
+    .download-btns { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-bottom: 40px; }
+    .download-btn-apple { display: inline-block; background: #fff; color: #111; padding: 16px 36px; font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; transition: background .2s, transform .15s; }
+    .download-btn-apple:hover { background: var(--pink); color: #fff; transform: translateY(-2px); }
+    .download-btn-android { display: inline-block; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.2); padding: 10px 24px; }
+    .android-soon { display: inline-block; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(0,0,0,0.35); border: 1px solid rgba(0,0,0,0.15); padding: 9px 20px; margin-top: 4px; }
 
     /* ── FOOTER ── */
     footer { background: var(--ink); padding: 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 48px; }
@@ -698,14 +703,14 @@
     <a href="#features" class="nav-link" data-en="Features" data-uk="Функції">Features</a>
     <a href="#app" class="nav-link" data-en="The App" data-uk="Додаток">The App</a>
     <a href="#manifesto" class="nav-link" data-en="Manifesto" data-uk="Маніфест">Manifesto</a>
-    <a href="#signup" class="nav-link" data-en="Waitlist" data-uk="Список очікування">Waitlist</a>
+    <a href="#download" class="nav-link" data-en="Download" data-uk="Завантажити">Download</a>
   </div>
   <div class="nav-right">
     <div class="lang-toggle">
       <button class="lang-btn active" onclick="setLang('en')" id="btn-en">EN</button>
       <button class="lang-btn" onclick="setLang('uk')" id="btn-uk">UA</button>
     </div>
-    <a href="#signup" class="nav-cta uk-namu" data-en="Get Early Access" data-uk="Ранній доступ">Get Early Access</a>
+    <a href="https://apps.apple.com/us/app/hersets/id6792172295" target="_blank" class="nav-cta uk-namu" data-en="Download Now" data-uk="Завантажити">Download Now</a>
   </div>
 </nav>
 
@@ -721,7 +726,8 @@
     </h1>
     <p class="hero-sub uk-namu" data-en="HerSets is the digital notebook for beauty artists. Every client's preferences, formulas, maps, photos and history — in one place built for the way you actually work." data-uk="HerSets — цифровий блокнот для б'юті-майстрів. Побажання, формули, карти, фото та історія кожного клієнта — в одному місці, створеному для вашого стилю роботи.">HerSets is the digital notebook for beauty artists. Every client's preferences, formulas, maps, photos and history — in one place built for the way you actually work.</p>
     <div class="hero-btns" id="hero-form-wrap">
-      <a href="#signup" class="btn-primary uk-namu" data-en="Join the Waitlist" data-uk="До списку очікування">Join the Waitlist</a>
+      <a href="https://apps.apple.com/us/app/hersets/id6792172295" target="_blank" class="btn-primary uk-namu" data-en="Download on App Store" data-uk="Завантажити в App Store">Download on App Store</a>
+      <span class="android-soon uk-namu" data-en="Android — Coming Soon" data-uk="Android — Незабаром">Android — Coming Soon</span>
       <a href="#app" class="btn-ghost uk-namu" data-en="See the App" data-uk="Переглянути додаток">See the App</a>
     </div>
     <div class="form-success" id="hero-success" style="margin-top:16px;">
@@ -1223,7 +1229,7 @@
             <span class="tpl-field uk-namu" data-en="Any service" data-uk="Будь-яка послуга">Any service</span>
           </div>
         </div>
-        <button class="tpl-custom-cta uk-namu" onclick="document.getElementById('signup').scrollIntoView({behavior:'smooth'})" data-en="JOIN WAITLIST" data-uk="ДО СПИСКУ ОЧІКУВАННЯ">JOIN WAITLIST</button>
+        <a href="https://apps.apple.com/us/app/hersets/id6792172295" target="_blank" class="tpl-custom-cta uk-namu" data-en="DOWNLOAD NOW" data-uk="ЗАВАНТАЖИТИ">DOWNLOAD NOW</a>
       </div>
 
     </div>
@@ -1276,26 +1282,20 @@
   </div>
 </div>
 
-<!-- EARLY ACCESS -->
-<div class="early-bg" id="signup">
+<!-- DOWNLOAD -->
+<div class="early-bg" id="download">
   <div class="early-inner">
-    <p class="early-eyebrow uk-namu" data-en="Limited early access" data-uk="Обмежений ранній доступ">Limited early access</p>
-    <h2 class="early-title uk-namu" data-en="Get in early.<br/>Get 30% off." data-uk="Приєднайтесь<br/>раніше. Знижка 30%.">Get in early.<br/>Get 30% off.</h2>
-    <p class="early-sub uk-namu" data-en="HerSets is launching soon. Sign up now to lock in your early access discount — 30% off your first year, forever. No credit card needed." data-uk="HerSets незабаром запускається. Зареєструйтеся зараз — 30% на перший рік, назавжди. Картка не потрібна.">HerSets is launching soon. Sign up now to lock in your early access discount — 30% off your first year, forever. No credit card needed.</p>
-    <div id="early-form-wrap">
-      <div class="early-form">
-        <input type="email" id="early-email" data-en-placeholder="Enter your email" data-uk-placeholder="Введіть ваш email" placeholder="Enter your email" autocomplete="email" />
-        <button onclick="handleSignup('early')" class="uk-namu" data-en="Reserve My Spot →" data-uk="Зайняти місце →">Reserve My Spot →</button>
-      </div>
-    </div>
-    <div class="form-success" id="early-success" style="margin-top:20px;">
-      <p class="form-success-title uk-namu" data-en="You're in." data-uk="Ви в списку.">You're in.</p>
-      <p class="form-success-sub uk-namu" data-en="We'll email your 30% discount when HerSets launches." data-uk="Ми надішлемо знижку 30% при запуску.">We'll email your 30% discount when HerSets launches.</p>
+    <p class="early-eyebrow uk-namu" data-en="Now available on iOS" data-uk="Вже доступно на iOS">Now available on iOS</p>
+    <h2 class="early-title uk-namu" data-en="Download<br/>HerSets." data-uk="Завантажте<br/>HerSets.">Download<br/>HerSets.</h2>
+    <p class="early-sub uk-namu" data-en="The digital notebook for beauty artists is here. Every client's preferences, formulas, maps, and history — in one place built for the way you work." data-uk="Цифровий блокнот для б'юті-майстрів вже тут. Побажання, формули, карти та історія — в одному місці, створеному для вас.">The digital notebook for beauty artists is here. Every client's preferences, formulas, maps, and history — in one place built for the way you work.</p>
+    <div class="download-btns">
+      <a href="https://apps.apple.com/us/app/hersets/id6792172295" target="_blank" class="download-btn-apple uk-namu" data-en="Download on the App Store" data-uk="Завантажити в App Store">Download on the App Store</a>
+      <span class="download-btn-android uk-namu" data-en="Android — Coming Soon" data-uk="Android — Незабаром">Android — Coming Soon</span>
     </div>
     <div class="early-perks">
-      <span class="early-perk uk-namu" data-en="30% off at launch" data-uk="30% знижки при запуску">30% off at launch</span>
-      <span class="early-perk uk-namu" data-en="No credit card required" data-uk="Без кредитної картки">No credit card required</span>
-      <span class="early-perk uk-namu" data-en="First access to new features" data-uk="Перший доступ до функцій">First access to new features</span>
+      <span class="early-perk uk-namu" data-en="Free to try" data-uk="Безкоштовно">Free to try</span>
+      <span class="early-perk uk-namu" data-en="No setup needed" data-uk="Без налаштувань">No setup needed</span>
+      <span class="early-perk uk-namu" data-en="Built for beauty artists" data-uk="Для б'юті-майстрів">Built for beauty artists</span>
       <span class="early-perk uk-namu" data-en="Cancel anytime" data-uk="Скасування будь-коли">Cancel anytime</span>
     </div>
   </div>
