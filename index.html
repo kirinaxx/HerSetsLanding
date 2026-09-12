@@ -68,11 +68,24 @@
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
+      background: transparent;
+      border-bottom: none;
       display: flex; align-items: center;
       padding: 0 40px; height: 56px; gap: 0;
+      transition: background 0.25s ease, color 0.2s ease;
     }
+    nav.nav-dark .nav-link { color: rgba(255,255,255,0.5); }
+    nav.nav-dark .nav-link:hover,
+    nav.nav-dark .nav-link.active { color: #fff; }
+    nav.nav-dark .lang-btn { color: rgba(255,255,255,0.6); }
+    nav.nav-dark .lang-btn.active { background: rgba(255,255,255,0.15); color: #fff; }
+    nav.nav-dark .nav-cta { background: #fff; color: var(--ink); }
+    nav.nav-pink .nav-link { color: rgba(255,255,255,0.7); }
+    nav.nav-pink .nav-link:hover,
+    nav.nav-pink .nav-link.active { color: #fff; }
+    nav.nav-pink .lang-btn { color: rgba(255,255,255,0.7); }
+    nav.nav-pink .lang-btn.active { background: rgba(255,255,255,0.2); color: #fff; }
+    nav.nav-pink .nav-cta { background: #fff; color: var(--pink-d); }
     .nav-logo {
       display: flex; align-items: center; gap: 10px;
       margin-right: 48px; flex-shrink: 0;
@@ -92,8 +105,10 @@
       font-weight: 700; font-size: 10px;
       letter-spacing: 2px; text-transform: uppercase;
       color: var(--ink3); text-decoration: none;
+      transition: color 0.2s ease;
     }
     .nav-link:hover { color: var(--ink); }
+    .nav-link.active { color: var(--pink-d); }
     .nav-right { display: flex; align-items: center; gap: 16px; margin-left: auto; }
     .lang-toggle { display: flex; align-items: center; gap: 2px; background: rgba(13,13,13,0.07); border-radius: 3px; padding: 2px; }
     .lang-btn {
@@ -108,6 +123,7 @@
       font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
       padding: 9px 22px; border: none; cursor: pointer; text-decoration: none;
       display: inline-block; white-space: nowrap;
+      transition: background 0.2s ease, color 0.2s ease;
     }
     .nav-cta:hover { background: var(--pink-d); }
 
@@ -620,6 +636,56 @@
     .proof-author { font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--ink); }
     .proof-role { font-size: 10px; color: var(--ink3); margin-top: 2px; }
 
+    /* ── TEMPLATE BUILDER SECTION ── */
+    .tpl-builder-section { padding: 96px 48px; background: var(--bg); }
+    .tpl-builder-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .tpl-builder-text { }
+    .tpl-builder-text .section-title { margin-bottom: 20px; }
+    .tpl-builder-text p { font-size: 15px; color: var(--ink3); line-height: 1.75; max-width: 440px; margin-bottom: 28px; }
+    .tpl-builder-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+    .tpl-builder-pill { font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 14px; border: 1px solid var(--border); color: var(--ink3); }
+    .tpl-builder-phone { display: flex; justify-content: center; }
+    .tpl-builder-phone .iphone-sm { --sw: 220px; }
+
+    /* ── SALON VIEW SECTION ── */
+    .salon-section { padding: 96px 48px; background: var(--ink); }
+    .salon-inner { max-width: 1200px; margin: 0 auto; }
+    .salon-header { margin-bottom: 64px; }
+    .salon-header .eyebrow { color: rgba(255,255,255,0.4); }
+    .salon-header .section-title { color: #fff; }
+    .salon-header p { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.75; max-width: 540px; margin-top: 16px; }
+    .salon-devices { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: end; }
+    .salon-device-label { font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 16px; }
+    .salon-ipad { border-radius: 20px; overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,0.6); width: 100%; }
+    .salon-ipad img { width: 100%; display: block; }
+    .salon-phone-wrap { display: flex; flex-direction: column; align-items: center; }
+    .salon-phone-wrap .iphone-sm { --sw: 180px; }
+    .salon-points { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 56px; }
+    .salon-point { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 20px; }
+    .salon-point-title { font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--pink); margin-bottom: 8px; }
+    .salon-point-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.65; }
+
+    /* ── SPECIALTIES SECTION ── */
+    .spec-section { padding: 80px 48px; background: var(--pink-l); }
+    .spec-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .spec-phone { display: flex; justify-content: center; }
+    .spec-phone .iphone-sm { --sw: 200px; }
+    .spec-text .section-title { margin-bottom: 16px; }
+    .spec-text p { font-size: 15px; color: var(--ink3); line-height: 1.75; max-width: 440px; margin-bottom: 28px; }
+    .spec-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .spec-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--ink2); line-height: 1.5; }
+    .spec-list li::before { content: '✦'; color: var(--pink-d); font-size: 10px; flex-shrink: 0; margin-top: 4px; }
+
+    /* ── MINI FAQ ── */
+    .mini-faq-section { padding: 80px 48px; background: var(--bg2); }
+    .mini-faq-inner { max-width: 800px; margin: 0 auto; }
+    .mini-faq-inner .section-title { margin-bottom: 40px; }
+    .mini-faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
+    .mini-faq-q { font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 15px; color: var(--ink); margin-bottom: 8px; }
+    .mini-faq-a { font-size: 14px; color: var(--ink3); line-height: 1.7; }
+    .mini-faq-more { display: inline-flex; align-items: center; gap: 8px; margin-top: 36px; font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--pink-d); padding-bottom: 2px; }
+    .mini-faq-more:hover { color: var(--pink-d); }
+
     /* ── EARLY ACCESS ── */
     .early-bg { background: var(--pink-d); }
     .early-inner { padding: 96px 48px; max-width: 800px; margin: 0 auto; text-align: center; }
@@ -672,6 +738,14 @@
       .early-form { flex-direction: column; }
       .early-form input { border-right: 1px solid rgba(255,255,255,0.28); }
       .landscape-showcase { margin: 32px 24px 0; }
+      .tpl-builder-inner { grid-template-columns: 1fr; gap: 40px; padding: 0; }
+      .tpl-builder-section { padding: 64px 24px; }
+      .salon-section { padding: 64px 24px; }
+      .salon-devices { grid-template-columns: 1fr; }
+      .salon-points { grid-template-columns: 1fr; gap: 20px; }
+      .spec-inner { grid-template-columns: 1fr; gap: 40px; }
+      .spec-section { padding: 64px 24px; }
+      .mini-faq-section { padding: 64px 24px; }
     }
     @media (max-width: 540px) {
       /* Prevent any element from blowing out horizontal scroll */
@@ -697,12 +771,14 @@
 <nav>
   <div class="nav-logo">
     <!-- <div class="nav-logo-mark">HS</div> -->
-    <img class="nav-logo-mark" src="Logo para Estudio Creativo Dibujado a Mano Trendy Moderno Blanco y Negro (3).png">
+    <img class="nav-logo-mark" src="assets/logo/hersets_h_standalone_transparent.png">
   </div>
   <div class="nav-links">
-    <a href="#features" class="nav-link" data-en="Features" data-uk="Функції">Features</a>
     <a href="#app" class="nav-link" data-en="The App" data-uk="Додаток">The App</a>
+    <a href="#templates" class="nav-link" data-en="Templates" data-uk="Шаблони">Templates</a>
+    <a href="#salon" class="nav-link" data-en="Salon View" data-uk="Вид салону">Salon View</a>
     <a href="#manifesto" class="nav-link" data-en="Manifesto" data-uk="Маніфест">Manifesto</a>
+    <a href="#features" class="nav-link" data-en="Features" data-uk="Функції">Features</a>
     <a href="#download" class="nav-link" data-en="Download" data-uk="Завантажити">Download</a>
   </div>
   <div class="nav-right">
@@ -715,7 +791,7 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero" id="app">
+<section class="hero">
   <div class="hero-left">
     <div class="hero-issue">
       <div class="hero-issue-dot"></div>
@@ -740,7 +816,7 @@
   <div class="hero-right">
     <div class="iphone">
       <div class="iphone-inner">
-        <img src="screenshots/TodayScreenshot.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;border-radius:inherit;">
+        <img src="screenshots/TodayNew.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;border-radius:inherit;">
       </div>
     </div>
     <div class="hero-vol" aria-hidden="true">VOL. I · FORMULAS</div>
@@ -770,13 +846,13 @@
 </div>
 
 <!-- EVERY DETAIL + 5 PHONES -->
-<div class="detail-section" id="features">
+<div class="detail-section" id="app">
   <h2 class="detail-headline uk-namu">
     <span data-en="Every detail." data-uk="Кожна деталь.">Every detail.</span><br/>
     <em class="remembered uk-namu" data-en="Remembered." data-uk="Запам'ятована.">Remembered.</em>
   </h2>
 
-  <div class="phones-grid" id="manifesto">
+  <div class="phones-grid">
 
     <!-- 1: LASH MAP -->
     <div class="phone-col">
@@ -1236,8 +1312,101 @@
   </div>
 </div>
 
+<!-- TEMPLATE BUILDER -->
+<div class="tpl-builder-section" id="builder">
+  <div class="tpl-builder-inner">
+    <div class="tpl-builder-text">
+      <p class="eyebrow uk-namu" data-en="Custom templates" data-uk="Власні шаблони">Custom templates</p>
+      <h2 class="section-title uk-namu" data-en="Build it<br/>your way." data-uk="Створіть<br/>по-своєму.">Build it<br/>your way.</h2>
+      <p class="uk-namu" data-en="No two artists work the same way. HerSets lets you customize every template — add dropdown options, create entirely new fields, and name everything the way you think about your work. Your personalized template loads every time you open a session." data-uk="Немає двох однакових майстрів. HerSets дозволяє налаштовувати кожен шаблон — додавати варіанти, створювати нові поля та називати все так, як ви думаєте про свою роботу. Ваш шаблон завантажується кожного разу.">No two artists work the same way. HerSets lets you customize every template — add dropdown options, create entirely new fields, and name everything the way you think about your work. Your personalized template loads every time you open a session.</p>
+      <div class="tpl-builder-pills">
+        <span class="tpl-builder-pill uk-namu" data-en="Add custom dropdowns" data-uk="Власні дропдауни">Add custom dropdowns</span>
+        <span class="tpl-builder-pill uk-namu" data-en="Create new fields" data-uk="Нові поля">Create new fields</span>
+        <span class="tpl-builder-pill uk-namu" data-en="Lash · Nail · Skin · Makeup" data-uk="Вії · Нігті · Шкіра · Макіяж">Lash · Nail · Skin · Makeup</span>
+        <span class="tpl-builder-pill uk-namu" data-en="Reuse across all clients" data-uk="Для всіх клієнтів">Reuse across all clients</span>
+      </div>
+    </div>
+    <div class="tpl-builder-phone">
+      <div class="iphone-sm" style="--sw:220px;">
+        <div class="iphone-sm-inner">
+          <div class="iphone-sm-island"></div>
+          <img src="screenshots/TemplateBuilder.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SALON VIEW -->
+<div class="salon-section" id="salon">
+  <div class="salon-inner">
+    <div class="salon-header">
+      <p class="eyebrow uk-namu" data-en="Salon view" data-uk="Вигляд салону">Salon view</p>
+      <h2 class="section-title uk-namu" data-en="Every chair.<br/>Every artist.<br/><span style='color:var(--pink)'>One screen.</span>" data-uk="Кожне крісло.<br/>Кожен майстер.<br/><span style='color:var(--pink)'>Один екран.</span>">Every chair.<br/>Every artist.<br/><span style="color:var(--pink)">One screen.</span></h2>
+      <p class="uk-namu" data-en="Even if it's just you and one pedicure chair — knowing exactly who's coming, when, and what they need changes how your whole day feels. Salon View shows every artist's schedule side by side, so nothing slips through and no one's double-booked." data-uk="Навіть якщо у вас лише одне крісло для педикюру — знати, хто приходить, коли і що їм потрібно, змінює весь ваш день. Вигляд салону показує розклад кожного майстра поруч, щоб нічого не загубилося.">Even if it's just you and one pedicure chair — knowing exactly who's coming, when, and what they need changes how your whole day feels. Salon View shows every artist's schedule side by side, so nothing slips through and no one's double-booked.</p>
+    </div>
+    <div class="salon-devices">
+      <div class="salon-phone-wrap">
+        <div class="salon-device-label uk-namu" data-en="iPhone" data-uk="iPhone">iPhone</div>
+        <div class="iphone-sm" style="--sw:180px;">
+          <div class="iphone-sm-inner">
+            <div class="iphone-sm-island"></div>
+            <img src="screenshots/SalonPhone.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="salon-device-label uk-namu" data-en="iPad" data-uk="iPad">iPad</div>
+        <div class="salon-ipad">
+          <img src="screenshots/SalonIPad.png" alt="Salon View on iPad">
+        </div>
+      </div>
+    </div>
+    <div class="salon-points">
+      <div class="salon-point">
+        <div class="salon-point-title uk-namu" data-en="Solo artist" data-uk="Незалежний майстер">Solo artist</div>
+        <div class="salon-point-desc uk-namu" data-en="One chair, full control. See your whole day in a single glance — no mental juggling." data-uk="Одне крісло, повний контроль. Весь день з першого погляду.">One chair, full control. See your whole day in a single glance — no mental juggling.</div>
+      </div>
+      <div class="salon-point">
+        <div class="salon-point-title uk-namu" data-en="Shared suite" data-uk="Спільна студія">Shared suite</div>
+        <div class="salon-point-desc uk-namu" data-en="Multiple artists, color-coded columns. See who has clients and when without interrupting anyone." data-uk="Кілька майстрів, кольорові колонки. Бачте зайнятість без зайвих запитань.">Multiple artists, color-coded columns. See who has clients and when without interrupting anyone.</div>
+      </div>
+      <div class="salon-point">
+        <div class="salon-point-title uk-namu" data-en="Day & week" data-uk="День та тиждень">Day &amp; week</div>
+        <div class="salon-point-desc uk-namu" data-en="Switch between day and week view to plan ahead or focus on what's in front of you right now." data-uk="Перемикайтесь між днем та тижнем для планування або фокусу на сьогодні.">Switch between day and week view to plan ahead or focus on what's in front of you right now.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SPECIALTIES -->
+<div class="spec-section">
+  <div class="spec-inner">
+    <div class="spec-phone">
+      <div class="iphone-sm" style="--sw:200px;">
+        <div class="iphone-sm-inner">
+          <div class="iphone-sm-island"></div>
+          <img src="screenshots/Specialties.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+        </div>
+      </div>
+    </div>
+    <div class="spec-text">
+      <p class="eyebrow uk-namu" data-en="Multiple specialties" data-uk="Кілька спеціальностей">Multiple specialties</p>
+      <h2 class="section-title uk-namu" data-en="You do more<br/>than one thing.<br/><em style='font-style:normal;color:var(--pink-d)'>So does HerSets.</em>" data-uk="Ви робите<br/>більше одного.<br/><em style='font-style:normal;color:var(--pink-d)'>HerSets теж.</em>">You do more<br/>than one thing.<br/><em style="font-style:normal;color:var(--pink-d)">So does HerSets.</em></h2>
+      <p class="uk-namu" data-en="Most beauty artists wear more than one hat. Toggle on the specialties you offer and HerSets adapts — the right session templates, maps, and fields show up automatically for each service." data-uk="Більшість майстрів займаються кількома напрямками. Увімкніть потрібні спеціальності — правильні шаблони, карти та поля з'являться автоматично.">Most beauty artists wear more than one hat. Toggle on the specialties you offer and HerSets adapts — the right session templates, maps, and fields show up automatically for each service.</p>
+      <ul class="spec-list">
+        <li class="uk-namu" data-en="<strong>Lash</strong> — extensions, lifts, maps, curl records" data-uk="<strong>Вії</strong> — нарощування, ламінування, карти"><strong>Lash</strong> — extensions, lifts, maps, curl records</li>
+        <li class="uk-namu" data-en="<strong>Nail</strong> — gel, acrylic, nail art, per-finger formulas" data-uk="<strong>Нігті</strong> — гель, акрил, формули"><strong>Nail</strong> — gel, acrylic, nail art, per-finger formulas</li>
+        <li class="uk-namu" data-en="<strong>Esthetics</strong> — skin analysis, facials, peels, LED" data-uk="<strong>Косметологія</strong> — аналіз шкіри, пілінги, LED"><strong>Esthetics</strong> — skin analysis, facials, peels, LED</li>
+        <li class="uk-namu" data-en="<strong>Hair</strong> — color, cuts, extensions, placement maps" data-uk="<strong>Волосся</strong> — колір, стрижки, карти розміщення"><strong>Hair</strong> — color, cuts, extensions, placement maps</li>
+        <li class="uk-namu" data-en="<strong>Makeup</strong> — formula, face chart, products" data-uk="<strong>Макіяж</strong> — формула, карта обличчя, продукти"><strong>Makeup</strong> — formula, face chart, products</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 <!-- PROBLEM -->
-<div style="background:var(--bg2);">
+<div id="manifesto" style="background:var(--bg2);">
   <div class="problem-section">
     <p class="eyebrow uk-namu" data-en="The problem" data-uk="Проблема">The problem</p>
     <h2 class="section-title uk-namu" data-en="Your client details are everywhere." data-uk="Деталі ваших клієнтів — скрізь.">Your client details are everywhere.</h2>
@@ -1282,6 +1451,31 @@
   </div>
 </div>
 
+<!-- MINI FAQ -->
+<div class="mini-faq-section">
+  <div class="mini-faq-inner">
+    <p class="eyebrow uk-namu" data-en="Quick answers" data-uk="Швидкі відповіді">Quick answers</p>
+    <h2 class="section-title uk-namu" data-en="Common questions." data-uk="Поширені запитання.">Common questions.</h2>
+    <div class="mini-faq-item">
+      <div class="mini-faq-q uk-namu" data-en="Does HerSets replace my booking app?" data-uk="Чи замінює HerSets мій сервіс бронювання?">Does HerSets replace my booking app?</div>
+      <div class="mini-faq-a uk-namu" data-en="It can — HerSets has a built-in booking page with SMS appointment reminders. Or use it alongside your existing platform (Square, Vagaro, GlossGenius) as your dedicated client notes hub." data-uk="Може — у HerSets є власна сторінка бронювання зі SMS-нагадуваннями. Або використовуйте поруч з вашою поточною платформою.">It can — HerSets has a built-in booking page with SMS appointment reminders. Or use it alongside your existing platform (Square, Vagaro, GlossGenius) as your dedicated client notes hub.</div>
+    </div>
+    <div class="mini-faq-item">
+      <div class="mini-faq-q uk-namu" data-en="Is there an Android version?" data-uk="Є версія для Android?">Is there an Android version?</div>
+      <div class="mini-faq-a uk-namu" data-en="HerSets is available now on iPhone. Android is in development — coming soon." data-uk="HerSets доступний на iPhone. Android у розробці — незабаром.">HerSets is available now on iPhone. Android is in development — coming soon.</div>
+    </div>
+    <div class="mini-faq-item">
+      <div class="mini-faq-q uk-namu" data-en="Can I track multiple specialties?" data-uk="Чи можу я відстежувати кілька спеціальностей?">Can I track multiple specialties?</div>
+      <div class="mini-faq-a uk-namu" data-en="Yes. Toggle on as many specialties as you offer — lash, nail, hair, esthetics, makeup — and HerSets shows you the right templates for each." data-uk="Так. Увімкніть стільки спеціальностей, скільки пропонуєте — вії, нігті, волосся, косметологія, макіяж.">Yes. Toggle on as many specialties as you offer — lash, nail, hair, esthetics, makeup — and HerSets shows you the right templates for each.</div>
+    </div>
+    <div class="mini-faq-item">
+      <div class="mini-faq-q uk-namu" data-en="Is my client data private?" data-uk="Чи захищені дані моїх клієнтів?">Is my client data private?</div>
+      <div class="mini-faq-a uk-namu" data-en="Completely. Your client notes, formulas, and photos are yours — never sold or shared. OLROM LLC, California." data-uk="Повністю. Ваші нотатки, формули та фото — лише ваші. OLROM LLC, Каліфорнія.">Completely. Your client notes, formulas, and photos are yours — never sold or shared. OLROM LLC, California.</div>
+    </div>
+    <a href="faq.html" class="mini-faq-more uk-namu" data-en="See all questions →" data-uk="Всі запитання →">See all questions →</a>
+  </div>
+</div>
+
 <!-- DOWNLOAD -->
 <div class="early-bg" id="download">
   <div class="early-inner">
@@ -1305,7 +1499,7 @@
 <footer>
   <!-- <div class="footer-logo">Her<span>Sets</span></div> -->
    <div class="footer-logo">
-    <img style="height: 80px; width: 80px;" src="Logo para Estudio Creativo Dibujado a Mano Trendy Moderno Blanco y Negro (3).png"/>
+    <img style="height: 40px; width: auto;" src="assets/logo/hersets_logo_transparent.png"/>
    </div>
   <div style="text-align:right;">
     <div class="footer-text uk-namu" data-en="Built for beauty artists.<br/>© 2026 HerSets by OLROM LLC. All rights reserved." data-uk="Створено для б'юті-майстрів.<br/>© 2026 HerSets by OLROM LLC. Всі права захищено.">Built for beauty artists.<br/>© 2026 HerSets by OLROM LLC. All rights reserved.</div>
@@ -1387,6 +1581,41 @@
   document.addEventListener('keydown', e => {
     if (e.key === 'Enter' && document.activeElement.id === 'early-email') handleSignup('early');
   });
+
+  // Nav: transparent background that adapts to the section below
+  const nav = document.querySelector('nav');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  // [id, bgColor, theme: 'light'|'dark'|'pink']
+  const navSections = [
+    { id: 'app',        bg: '#F2EDE8', theme: 'light' },
+    { id: 'templates',  bg: '#F2EDE8', theme: 'light' },
+    { id: 'builder',    bg: '#F2EDE8', theme: 'light' },
+    { id: 'salon',      bg: '#0D0D0D', theme: 'dark'  },
+    { id: 'manifesto',  bg: '#EDE8E2', theme: 'light' },
+    { id: 'features',   bg: '#0D0D0D', theme: 'dark'  },
+    { id: 'download',   bg: '#C4507A', theme: 'pink'  },
+  ].map(s => ({ ...s, el: document.getElementById(s.id) })).filter(s => s.el);
+
+  function onScroll() {
+    const y = window.scrollY + 80; // trigger slightly before section reaches nav
+    let active = navSections[0];
+    navSections.forEach(s => {
+      if (y >= s.el.offsetTop) active = s;
+    });
+
+    nav.style.background = active.bg;
+    nav.classList.toggle('nav-dark', active.theme === 'dark');
+    nav.classList.toggle('nav-pink', active.theme === 'pink');
+
+    // Active link highlight
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + active.id);
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 </script>
 </body>
 </html>
