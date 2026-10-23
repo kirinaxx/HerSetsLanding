@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls /Users/irynaolkhovyk/Desktop/Work/HerSetsWeb && find /Users/irynaolkhovyk/Desktop/Work -name \"*.png\" -o -name \"*.jpg\" -o -name \"*.jpeg\" | head -30)",
+      "Bash(ls /Users/irynaolkhovyk/Desktop/Work/ 2>/dev/null)",
+      "Bash(mkdir -p /Users/irynaolkhovyk/Desktop/Work/HerSetsWeb/.claude)",
+      "mcp__Claude_Preview__preview_start",
+      "Read(//private/tmp/**)",
+      "Bash(unzip -o \"/Users/irynaolkhovyk/Downloads/namu.zip\" -d namu_font)",
+      "Bash(cp /tmp/namu_font/NAMU-typefaces2019/Desktop/TTF/NAMU-Pro.ttf /Users/irynaolkhovyk/Desktop/Work/HerSetsWeb/fonts/)",
+      "Bash(cp /tmp/namu_font/NAMU-typefaces2019/Desktop/TTF/NAMU-1990.ttf /Users/irynaolkhovyk/Desktop/Work/HerSetsWeb/fonts/)",
+      "Bash(cp /tmp/namu_font/NAMU-typefaces2019/Desktop/OTF/NAMU-Pro.otf /Users/irynaolkhovyk/Desktop/Work/HerSetsWeb/fonts/)",
+      "Bash(cp /tmp/namu_font/NAMU-typefaces2019/Desktop/OTF/NAMU-1990.otf /Users/irynaolkhovyk/Desktop/Work/HerSetsWeb/fonts/)",
+      "Bash(python3 /private/tmp/claude-501/-Users-irynaolkhovyk-Desktop-Work-HerSetsWeb/03e9b681-b6a1-45e3-bb3d-17cd34dbf05b/scratchpad/use_screenshots.py)"
+    ]
+  }
+}
