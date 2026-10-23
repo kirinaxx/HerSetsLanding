@@ -6,6 +6,12 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["serve", "-p", "3456", "."],
       "port": 3456
+    },
+    {
+      "name": "HerSets Python",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "3457"],
+      "port": 3457
     }
   ]
 }
