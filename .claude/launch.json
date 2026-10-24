@@ -10,7 +10,7 @@
     {
       "name": "HerSets Python",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "3457"],
+      "runtimeArgs": ["-I", "-c", "import functools, http.server as s; h = functools.partial(s.SimpleHTTPRequestHandler, directory='/Users/irynaolkhovyk/Desktop/Work/HerSetsWeb'); s.ThreadingHTTPServer(('127.0.0.1', 3457), h).serve_forever()"],
       "port": 3457
     }
   ]

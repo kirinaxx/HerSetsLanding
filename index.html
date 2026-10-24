@@ -4,6 +4,115 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HerSets — The Digital Notebook for Beauty Artists</title>
+  <meta name="description" content="The digital notebook for beauty artists. Client profiles, lash maps, nail formulas and visit history in one place. Free to try on iPhone." />
+  <link rel="canonical" href="https://hersets.app/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="HerSets" />
+  <meta property="og:title" content="HerSets — The Digital Notebook for Beauty Artists" />
+  <meta property="og:description" content="The digital notebook for beauty artists. Client profiles, lash maps, nail formulas and visit history in one place. Free to try on iPhone." />
+  <meta property="og:url" content="https://hersets.app/" />
+  <meta property="og:image" content="https://hersets.app/screenshots/TodayNew.png" />
+  <meta property="og:image:alt" content="HerSets Today screen on iPhone" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="HerSets — The Digital Notebook for Beauty Artists" />
+  <meta name="twitter:description" content="The digital notebook for beauty artists. Client profiles, lash maps, nail formulas and visit history in one place. Free to try on iPhone." />
+  <meta name="twitter:image" content="https://hersets.app/screenshots/TodayNew.png" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "HerSets",
+  "legalName": "OLROM LLC",
+  "url": "https://hersets.app",
+  "logo": "https://hersets.app/assets/logo/hersets_logo_transparent.png",
+  "email": "support@hersets.com"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "HerSets",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "iOS",
+  "description": "The digital notebook for beauty artists. Client profiles, lash maps, nail formulas and visit history in one place. Free to try on iPhone.",
+  "url": "https://hersets.app",
+  "image": "https://hersets.app/screenshots/TodayNew.png",
+  "downloadUrl": "https://apps.apple.com/us/app/hersets/id6792172295",
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Free (up to 10 clients)",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Offer",
+      "name": "Basic (monthly)",
+      "price": "8.99",
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Offer",
+      "name": "Basic (yearly)",
+      "price": "79.99",
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Offer",
+      "name": "SMS Pro (monthly)",
+      "price": "17.99",
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Offer",
+      "name": "SMS Pro (yearly)",
+      "price": "159.99",
+      "priceCurrency": "USD"
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does HerSets replace my booking app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It can — HerSets has a built-in booking page with SMS appointment reminders. Or use it alongside your existing platform (Square, Vagaro, GlossGenius) as your dedicated client notes hub."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there an Android version?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HerSets is available now on iPhone. Android is in development — coming soon."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I track multiple specialties?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Toggle on as many specialties as you offer — lash, nail, hair, esthetics, makeup — and HerSets shows you the right templates for each."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my client data private?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Completely. Your client notes and formulas are yours — never sold or shared. OLROM LLC, California."
+      }
+    }
+  ]
+}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Inter+Tight:ital,wght@0,400;0,700;0,800;0,900;1,700;1,800;1,900&display=swap" rel="stylesheet" />
@@ -657,7 +766,7 @@
     .salon-devices { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: end; }
     .salon-device-label { font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 16px; }
     .salon-ipad { border-radius: 20px; overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,0.6); width: 100%; }
-    .salon-ipad img { width: 100%; display: block; }
+    .salon-ipad img { width: 100%; height: auto; display: block; }
     .salon-phone-wrap { display: flex; flex-direction: column; align-items: center; }
     .salon-phone-wrap .iphone-sm { --sw: 180px; }
     .salon-points { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 56px; }
@@ -786,10 +895,10 @@
     }
     .float-card .fc-title { font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 13px; color: var(--ink); }
     .float-card .fc-sub { font-size: 11px; color: var(--ink3); }
-    .fc-1 { left: -110px; top: 16%; }
-    .fc-2 { left: -150px; top: 52%; }
-    .fc-3 { right: 28px; top: 8%; }
-    .fc-4 { right: 4px; bottom: 12%; }
+    .fc-1 { left: -170px; top: 14%; }
+    .fc-2 { left: -200px; top: 54%; }
+    .fc-3 { right: -8px; top: 3%; }
+    .fc-4 { right: -14px; bottom: 8%; }
 
     /* Second ticker (runs opposite way) */
     .ticker.ticker-rev { background: var(--ink); }
@@ -827,8 +936,8 @@
 
     /* Pricing */
     .pricing-section { padding: 110px 48px; background: var(--bg); }
-    .pricing-inner { max-width: 960px; margin: 0 auto; }
-    .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px; }
+    .pricing-inner { max-width: 1120px; margin: 0 auto; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
     .price-card {
       background: var(--white); border: 1px solid var(--border);
       padding: 36px 32px; display: flex; flex-direction: column; position: relative;
@@ -861,6 +970,12 @@
     .bt-btn.active .bt-save { color: var(--pink); }
     .pa-num.swap { animation: priceswap .35s ease; }
     @keyframes priceswap { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    .price-alt { font-size: 12px; color: var(--ink3); margin-bottom: 14px; min-height: 18px; }
+    .price-card.featured .price-alt { color: rgba(255,255,255,0.6); }
+    .price-alt .alt-y { display: none; }
+    .pricing-section.yearly .price-alt .alt-m { display: none; }
+    .pricing-section.yearly .price-alt .alt-y { display: inline; }
+    .price-anchor { text-align: center; font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 16px; max-width: 560px; margin: 32px auto 0; line-height: 1.4; }
     .price-note { text-align: center; font-size: 12px; color: var(--ink3); margin-top: 28px; }
     @media (max-width: 960px) {
       .float-card { display: none; }
@@ -889,7 +1004,7 @@ analytics.init({
 <nav>
   <div class="nav-logo">
     <!-- <div class="nav-logo-mark">HS</div> -->
-    <img class="nav-logo-mark" src="assets/logo/hersets_h_standalone_transparent.png">
+    <img class="nav-logo-mark" alt="HerSets" width="40" height="40" src="assets/logo/hersets_h_standalone_transparent.png">
   </div>
   <div class="nav-links">
     <a href="#app" class="nav-link" data-en="The App" data-uk="Додаток">The App</a>
@@ -914,12 +1029,12 @@ analytics.init({
   <div class="hero-left">
     <div class="hero-issue">
       <div class="hero-issue-dot"></div>
-      <span class="hero-issue-text uk-namu" data-en="Issue 01 — Summer 2026" data-uk="Випуск 01 — Літо 2026">Issue 01 — Summer 2026</span>
+      <span class="hero-issue-text uk-namu" data-en="For lash, nail, hair, brow &amp; skin artists" data-uk="Для майстрів вій, нігтів, волосся, брів і шкіри">For lash, nail, hair, brow &amp; skin artists</span>
     </div>
     <h1 class="hero-headline uk-namu">
       <span data-en="I'm not<br/>a tech,<br/>I'm an<br/><em class='artist'>artist.</em>" data-uk="Я не<br/>технік,<br/>я —<br/><em class='artist'>художник.</em>">I'm not<br/>a tech,<br/>I'm an<br/><em class="artist">artist.</em></span>
     </h1>
-    <p class="hero-sub uk-namu" data-en="HerSets is the digital notebook for beauty artists. Every client's preferences, formulas, maps, photos and history — in one place built for the way you actually work." data-uk="HerSets — цифровий блокнот для б'юті-майстрів. Побажання, формули, карти, фото та історія кожного клієнта — в одному місці, створеному для вашого стилю роботи.">HerSets is the digital notebook for beauty artists. Every client's preferences, formulas, maps, photos and history — in one place built for the way you actually work.</p>
+    <p class="hero-sub uk-namu" data-en="HerSets is the digital notebook for beauty artists. Every client's preferences, formulas, maps and history — in one place built for the way you actually work." data-uk="HerSets — цифровий блокнот для б'юті-майстрів. Побажання, формули, карти та історія кожного клієнта — в одному місці, створеному для вашого стилю роботи.">HerSets is the digital notebook for beauty artists. Every client's preferences, formulas, maps and history — in one place built for the way you actually work.</p>
     <div class="hero-btns" id="hero-form-wrap">
       <a href="https://apps.apple.com/us/app/hersets/id6792172295" target="_blank" class="btn-primary uk-namu" data-en="Download on App Store" data-uk="Завантажити в App Store">Download on App Store</a>
       <span class="android-soon uk-namu" data-en="Android — Coming Soon" data-uk="Android — Незабаром">Android — Coming Soon</span>
@@ -927,7 +1042,7 @@ analytics.init({
     </div>
     <div class="form-success" id="hero-success" style="margin-top:16px;">
       <p class="form-success-title uk-namu" data-en="You're on the list." data-uk="Ви в списку.">You're on the list.</p>
-      <p class="form-success-sub uk-namu" data-en="We'll email your 30% discount when HerSets launches." data-uk="Ми надішлемо знижку 30% при запуску.">We'll email your 30% discount when HerSets launches.</p>
+      <p class="form-success-sub uk-namu" data-en="Watch your inbox for artist tips and early feature drops." data-uk="Чекайте на листи з порадами для майстрів та новими функціями.">Watch your inbox for artist tips and early feature drops.</p>
     </div>
   </div>
 
@@ -935,13 +1050,13 @@ analytics.init({
   <div class="hero-right">
     <div class="iphone">
       <div class="iphone-inner">
-        <img src="screenshots/TodayNew.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;border-radius:inherit;">
+        <img alt="HerSets Today screen showing the day's appointments and client alerts" srcset="screenshots/sm/TodayNew-480.webp 480w, screenshots/sm/TodayNew-800.webp 800w" sizes="230px" width="1320" height="2868" fetchpriority="high" src="screenshots/TodayNew.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;border-radius:inherit;">
       </div>
     </div>
     <div class="float-card fc-1" data-speed="-0.10" aria-hidden="true"><div class="fc-tag uk-namu" data-en="Lash map" data-uk="Карта вій">Lash map</div><div class="fc-title uk-namu" data-en="Saved to client" data-uk="Збережено в картці">Saved to client</div><div class="fc-sub uk-namu" data-en="Volume · 0.07 · 12mm" data-uk="Обʼєм · 0.07 · 12мм">Volume · 0.07 · 12mm</div></div>
     <div class="float-card fc-2" data-speed="0.08" aria-hidden="true"><div class="fc-tag uk-namu" data-en="Alert" data-uk="Увага">Alert</div><div class="fc-title uk-namu" data-en="Sensitivity noted" data-uk="Чутливість відмічена">Sensitivity noted</div><div class="fc-sub uk-namu" data-en="Shown before every visit" data-uk="Видно перед кожним візитом">Shown before every visit</div></div>
     <div class="float-card fc-3" data-speed="-0.16" aria-hidden="true"><div class="fc-tag uk-namu" data-en="Formula" data-uk="Формула">Formula</div><div class="fc-title uk-namu" data-en="Ready to recreate" data-uk="Готово до повтору">Ready to recreate</div><div class="fc-sub uk-namu" data-en="Exactly as last time" data-uk="Точно як минулого разу">Exactly as last time</div></div>
-    <div class="float-card fc-4" data-speed="0.14" aria-hidden="true"><div class="fc-tag uk-namu" data-en="Visit history" data-uk="Історія візитів">Visit history</div><div class="fc-title uk-namu" data-en="Every visit, kept" data-uk="Кожен візит збережено">Every visit, kept</div><div class="fc-sub uk-namu" data-en="Photos and notes" data-uk="Фото та нотатки">Photos and notes</div></div>
+    <div class="float-card fc-4" data-speed="0.14" aria-hidden="true"><div class="fc-tag uk-namu" data-en="Visit history" data-uk="Історія візитів">Visit history</div><div class="fc-title uk-namu" data-en="Every visit, kept" data-uk="Кожен візит збережено">Every visit, kept</div><div class="fc-sub uk-namu" data-en="Notes and formulas" data-uk="Нотатки та формули">Notes and formulas</div></div>
     <div class="hero-vol" aria-hidden="true">VOL. I · FORMULAS</div>
   </div>
 </section>
@@ -955,7 +1070,6 @@ analytics.init({
     <span class="ticker-item uk-namu" data-en="Visit history" data-uk="Історія візитів">Visit history</span>
     <span class="ticker-item uk-namu" data-en="Sensitivities" data-uk="Чутливість">Sensitivities</span>
     <span class="ticker-item uk-namu" data-en="Product notes" data-uk="Нотатки">Product notes</span>
-    <span class="ticker-item uk-namu" data-en="Progress photos" data-uk="Фото прогресу">Progress photos</span>
     <span class="ticker-item uk-namu" data-en="Service templates" data-uk="Шаблони">Service templates</span>
     <span class="ticker-item uk-namu" data-en="Client records" data-uk="Картки клієнтів">Client records</span>
     <span class="ticker-item uk-namu" data-en="Lash maps" data-uk="Карти вій">Lash maps</span>
@@ -963,7 +1077,6 @@ analytics.init({
     <span class="ticker-item uk-namu" data-en="Visit history" data-uk="Історія візитів">Visit history</span>
     <span class="ticker-item uk-namu" data-en="Sensitivities" data-uk="Чутливість">Sensitivities</span>
     <span class="ticker-item uk-namu" data-en="Product notes" data-uk="Нотатки">Product notes</span>
-    <span class="ticker-item uk-namu" data-en="Progress photos" data-uk="Фото прогресу">Progress photos</span>
     <span class="ticker-item uk-namu" data-en="Service templates" data-uk="Шаблони">Service templates</span>
   </div>
 </div>
@@ -991,7 +1104,7 @@ analytics.init({
     <div class="phone-col">
       <div class="iphone-sm">
         <div class="iphone-sm-inner">
-          <img src="screenshots/LashMapScreenshot.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+          <img alt="HerSets lash map with five zones and per-zone curl, length and diameter" srcset="screenshots/sm/LashMapScreenshot-480.webp 480w, screenshots/sm/LashMapScreenshot-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="1206" height="2622" loading="lazy" decoding="async" src="screenshots/LashMapScreenshot.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
         </div>
       </div>
       <div class="phone-col-label uk-namu" data-en="Lash Map" data-uk="Карта вій">Lash Map</div>
@@ -1002,7 +1115,7 @@ analytics.init({
     <div class="phone-col">
       <div class="iphone-sm">
         <div class="iphone-sm-inner">
-          <img src="screenshots/NailMapScreenshot.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+          <img alt="HerSets nail design screen with per-finger gel formulas" srcset="screenshots/sm/NailMapScreenshot-480.webp 480w, screenshots/sm/NailMapScreenshot-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="1206" height="2622" loading="lazy" decoding="async" src="screenshots/NailMapScreenshot.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
         </div>
       </div>
       <div class="phone-col-label uk-namu" data-en="Nail Design" data-uk="Дизайн нігтів">Nail Design</div>
@@ -1013,7 +1126,7 @@ analytics.init({
     <div class="phone-col">
       <div class="iphone-sm">
         <div class="iphone-sm-inner">
-          <img src="screenshots/HairColorMapScreenshot.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+          <img alt="HerSets hair color map with formulas per section and a head map" srcset="screenshots/sm/HairColorMapScreenshot-480.webp 480w, screenshots/sm/HairColorMapScreenshot-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="1206" height="2622" loading="lazy" decoding="async" src="screenshots/HairColorMapScreenshot.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
         </div>
       </div>
       <div class="phone-col-label uk-namu" data-en="Hair Stylist" data-uk="Перукар">Hair Stylist</div>
@@ -1024,7 +1137,7 @@ analytics.init({
     <div class="phone-col">
       <div class="iphone-sm">
         <div class="iphone-sm-inner">
-          <img src="screenshots/SkinMapScreenshot.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+          <img alt="HerSets esthetician skin map and treatment notes" srcset="screenshots/sm/SkinMapScreenshot-480.webp 480w, screenshots/sm/SkinMapScreenshot-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="1206" height="2622" loading="lazy" decoding="async" src="screenshots/SkinMapScreenshot.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
         </div>
       </div>
       <div class="phone-col-label uk-namu" data-en="Esthetician" data-uk="Косметолог">Esthetician</div>
@@ -1035,7 +1148,7 @@ analytics.init({
     <div class="phone-col">
       <div class="iphone-sm">
         <div class="iphone-sm-inner">
-          <img src="screenshots/BrowSessionScreenshot.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+          <img alt="HerSets brow session with service type, brow shape, arch placement and tail length" srcset="screenshots/sm/BrowSessionScreenshot-480.webp 480w, screenshots/sm/BrowSessionScreenshot-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="921" height="2000" loading="lazy" decoding="async" src="screenshots/BrowSessionScreenshot.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
         </div>
       </div>
       <div class="phone-col-label uk-namu" data-en="Brow Artist" data-uk="Брови">Brow Artist</div>
@@ -1057,11 +1170,11 @@ analytics.init({
       </div>
       <div class="iphone-sm pin-phone">
         <div class="iphone-sm-inner">
-          <img class="active" src="screenshots/LashMapScreenshot.png" alt="Lash map">
-          <img src="screenshots/NailMapScreenshot.png" alt="Nail design">
-          <img src="screenshots/HairColorMapScreenshot.png" alt="Hair color map">
-          <img src="screenshots/SkinMapScreenshot.png" alt="Skin map">
-          <img src="screenshots/BrowSessionScreenshot.png" alt="Brow session">
+          <img alt="HerSets lash map with five zones and per-zone curl, length and diameter" srcset="screenshots/sm/LashMapScreenshot-480.webp 480w, screenshots/sm/LashMapScreenshot-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="1206" height="2622" loading="lazy" decoding="async" class="active" src="screenshots/LashMapScreenshot.png">
+          <img alt="HerSets nail design screen with per-finger gel formulas" srcset="screenshots/sm/NailMapScreenshot-480.webp 480w, screenshots/sm/NailMapScreenshot-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="1206" height="2622" loading="lazy" decoding="async" src="screenshots/NailMapScreenshot.png">
+          <img alt="HerSets hair color map with formulas per section and a head map" srcset="screenshots/sm/HairColorMapScreenshot-480.webp 480w, screenshots/sm/HairColorMapScreenshot-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="1206" height="2622" loading="lazy" decoding="async" src="screenshots/HairColorMapScreenshot.png">
+          <img alt="HerSets esthetician skin map and treatment notes" srcset="screenshots/sm/SkinMapScreenshot-480.webp 480w, screenshots/sm/SkinMapScreenshot-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="1206" height="2622" loading="lazy" decoding="async" src="screenshots/SkinMapScreenshot.png">
+          <img alt="HerSets brow session with service type, brow shape, arch placement and tail length" srcset="screenshots/sm/BrowSessionScreenshot-480.webp 480w, screenshots/sm/BrowSessionScreenshot-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="921" height="2000" loading="lazy" decoding="async" src="screenshots/BrowSessionScreenshot.png">
         </div>
       </div>
     </div>
@@ -1497,7 +1610,7 @@ analytics.init({
       <div class="iphone-sm" style="--sw:220px;">
         <div class="iphone-sm-inner">
           <div class="iphone-sm-island"></div>
-          <img src="screenshots/TemplateBuilder.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+          <img alt="HerSets template builder for custom client record templates" srcset="screenshots/sm/TemplateBuilder-480.webp 480w, screenshots/sm/TemplateBuilder-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="1320" height="2868" loading="lazy" decoding="async" src="screenshots/TemplateBuilder.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
         </div>
       </div>
     </div>
@@ -1518,14 +1631,14 @@ analytics.init({
         <div class="iphone-sm" style="--sw:180px;">
           <div class="iphone-sm-inner">
             <div class="iphone-sm-island"></div>
-            <img src="screenshots/SalonPhone.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+            <img alt="HerSets Salon View on iPhone showing every chair and artist" srcset="screenshots/sm/SalonPhone-480.webp 480w, screenshots/sm/SalonPhone-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="1320" height="2868" loading="lazy" decoding="async" src="screenshots/SalonPhone.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
           </div>
         </div>
       </div>
       <div>
         <div class="salon-device-label uk-namu" data-en="iPad" data-uk="iPad">iPad</div>
         <div class="salon-ipad">
-          <img src="screenshots/SalonIPad.png" alt="Salon View on iPad">
+          <img alt="HerSets Salon View on iPad" srcset="screenshots/sm/SalonIPad-800.webp 800w, screenshots/sm/SalonIPad-1400.webp 1400w" sizes="(max-width: 960px) 100vw, 640px" width="2732" height="2048" loading="lazy" decoding="async" src="screenshots/SalonIPad.png">
         </div>
       </div>
     </div>
@@ -1553,7 +1666,7 @@ analytics.init({
       <div class="iphone-sm" style="--sw:200px;">
         <div class="iphone-sm-inner">
           <div class="iphone-sm-island"></div>
-          <img src="screenshots/Specialties.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+          <img alt="HerSets specialties screen with lash, nail, hair, esthetics and makeup toggles" srcset="screenshots/sm/Specialties-480.webp 480w, screenshots/sm/Specialties-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="1320" height="2868" loading="lazy" decoding="async" src="screenshots/Specialties.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
         </div>
       </div>
     </div>
@@ -1623,20 +1736,33 @@ analytics.init({
 <div class="pricing-section" id="pricing">
   <div class="pricing-inner">
     <p class="eyebrow uk-namu" data-en="Pricing" data-uk="Ціни">Pricing</p>
-    <h2 class="section-title uk-namu" data-en="Two plans.<br/>Free to try." data-uk="Два плани.<br/>Безкоштовно спробувати.">Two plans.<br/>Free to try.</h2>
+    <h2 class="section-title uk-namu" data-en="Start free.<br/>Upgrade when you grow." data-uk="Почніть безкоштовно.<br/>Зростайте з нами.">Start free.<br/>Upgrade when you grow.</h2>
     <div class="billing-toggle" id="billing-toggle" role="group" aria-label="Billing period">
       <button class="bt-btn active uk-namu" data-period="monthly" data-en="Monthly" data-uk="Щомісяця">Monthly</button>
       <button class="bt-btn uk-namu" data-period="yearly" data-en="Yearly <span class='bt-save'>Save 26%</span>" data-uk="Щорічно <span class='bt-save'>−26%</span>">Yearly <span class="bt-save">Save 26%</span></button>
     </div>
     <div class="pricing-grid">
       <div class="price-card">
-        <div class="price-name uk-namu" data-en="Basic" data-uk="Basic">Basic</div>
+        <div class="price-name uk-namu" data-en="Free" data-uk="Безкоштовно">Free</div>
+        <div class="price-amount">$0<small class="uk-namu" data-en=" forever" data-uk=" назавжди"> forever</small></div>
+        <div class="price-alt"></div>
+        <div class="price-tag uk-namu" data-en="Every feature except SMS reminders, free forever. Keep history and take bookings for up to 10 clients." data-uk="Усі функції, крім SMS-нагадувань, безкоштовно назавжди. Історія та бронювання для 10 клієнтів.">Every feature except SMS reminders, free forever. Keep history and take bookings for up to 10 clients.</div>
+        <ul class="price-list">
+          <li class="uk-namu" data-en="Every feature except SMS reminders" data-uk="Усі функції, крім SMS-нагадувань">Every feature except SMS reminders</li>
+          <li class="uk-namu" data-en="Up to 10 clients for visit history" data-uk="До 10 клієнтів в історії візитів">Up to 10 clients for visit history</li>
+          <li class="uk-namu" data-en="Up to 10 clients on your booking page" data-uk="До 10 клієнтів на сторінці бронювання">Up to 10 clients on your booking page</li>
+        </ul>
+        <a href="https://apps.apple.com/us/app/hersets/id6792172295" target="_blank" class="btn-ghost uk-namu" data-en="Start free" data-uk="Почати безкоштовно">Start free</a>
+      </div>
+      <div class="price-card">
+        <div class="price-name uk-namu" data-en="Basic · client records" data-uk="Basic · картки клієнтів">Basic · client records</div>
         <div class="price-amount"><span class="pa-num" data-monthly="8.99" data-yearly="79.99">$8.99</span><small class="pa-per" data-per-m="/mo" data-per-y="/yr">/mo</small></div>
+        <div class="price-alt"><span class="alt-m uk-namu" data-en="or $79.99/yr — save 26%" data-uk="або $79.99/рік — економія 26%">or $79.99/yr — save 26%</span><span class="alt-y uk-namu" data-en="about $6.67/mo, billed yearly" data-uk="близько $6.67/міс, оплата щорічно">about $6.67/mo, billed yearly</span></div>
         <div class="price-tag uk-namu" data-en="Everything you need to keep your clients straight." data-uk="Все, щоб тримати клієнтів в порядку.">Everything you need to keep your clients straight.</div>
         <ul class="price-list">
           <li class="uk-namu" data-en="Client profiles and visit history" data-uk="Профілі клієнтів та історія візитів">Client profiles and visit history</li>
           <li class="uk-namu" data-en="Built-in templates and template builder" data-uk="Вбудовані шаблони та конструктор шаблонів">Built-in templates and template builder</li>
-          <li class="uk-namu" data-en="Progress photos and notes" data-uk="Фото прогресу та нотатки">Progress photos and notes</li>
+          <li class="uk-namu" data-en="Unlimited clients" data-uk="Необмежена кількість клієнтів">Unlimited clients</li>
           <li class="uk-namu" data-en="Booking page" data-uk="Сторінка бронювання">Booking page</li>
           <li class="uk-namu" data-en="Salon view for every chair" data-uk="Вид салону для кожного крісла">Salon view for every chair</li>
         </ul>
@@ -1644,8 +1770,9 @@ analytics.init({
       </div>
       <div class="price-card featured">
         <div class="price-badge uk-namu" data-en="Most popular" data-uk="Найпопулярніший">Most popular</div>
-        <div class="price-name uk-namu" data-en="SMS Pro" data-uk="SMS Pro">SMS Pro</div>
+        <div class="price-name uk-namu" data-en="SMS Pro · with reminders" data-uk="SMS Pro · з нагадуваннями">SMS Pro · with reminders</div>
         <div class="price-amount"><span class="pa-num" data-monthly="17.99" data-yearly="159.99">$17.99</span><small class="pa-per" data-per-m="/mo" data-per-y="/yr">/mo</small></div>
+        <div class="price-alt"><span class="alt-m uk-namu" data-en="or $159.99/yr — save 26%" data-uk="або $159.99/рік — економія 26%">or $159.99/yr — save 26%</span><span class="alt-y uk-namu" data-en="about $13.33/mo, billed yearly" data-uk="близько $13.33/міс, оплата щорічно">about $13.33/mo, billed yearly</span></div>
         <div class="price-tag uk-namu" data-en="Everything in Basic, plus SMS reminders that cut no-shows." data-uk="Все з Basic, плюс SMS-нагадування, що зменшують неявки.">Everything in Basic, plus SMS reminders that cut no-shows.</div>
         <ul class="price-list">
           <li class="uk-namu" data-en="Everything in Basic" data-uk="Все з Basic">Everything in Basic</li>
@@ -1654,10 +1781,20 @@ analytics.init({
         <a href="https://apps.apple.com/us/app/hersets/id6792172295" target="_blank" class="btn-primary uk-namu" data-en="Get SMS Pro" data-uk="Обрати SMS Pro">Get SMS Pro</a>
       </div>
     </div>
+    <p class="price-anchor uk-namu" data-en="Free forever for up to 10 clients. After that, less than one client's fill keeps every formula you've ever mixed." data-uk="Безкоштовно назавжди до 10 клієнтів. Далі — менше, ніж одне нарощування, і всі формули, які ви колись змішували, збережені.">Free forever for up to 10 clients. After that, less than one client's fill keeps every formula you've ever mixed.</p>
     <p class="price-note uk-namu" data-en="Cancel anytime in your App Store subscription settings." data-uk="Скасуйте будь-коли в налаштуваннях підписки App Store.">Cancel anytime in your App Store subscription settings.</p>
   </div>
 </div>
 
+<!-- TODO(proof strip): add once real numbers exist. Needs the live App Store rating + review count and the Product Hunt badge/launch date. Do not publish round or invented figures.
+<div class="proof-strip">
+  <a href="https://apps.apple.com/us/app/hersets/id6792172295">★ X.X on the App Store · N reviews</a>
+  <a href="PRODUCT_HUNT_URL">Launched on Product Hunt · DATE</a>
+</div>
+-->
+<!-- TODO(founder block): needs founder photo, full name, one-paragraph "why I built this" in the manifesto voice, and a public LinkedIn/X link. Place near #manifesto, and add one footer line pointing to it.
+<div class="founder-block">...</div>
+-->
 <!-- MINI FAQ -->
 <div class="mini-faq-section">
   <div class="mini-faq-inner">
@@ -1677,7 +1814,7 @@ analytics.init({
     </div>
     <div class="mini-faq-item">
       <div class="mini-faq-q uk-namu" data-en="Is my client data private?" data-uk="Чи захищені дані моїх клієнтів?">Is my client data private?</div>
-      <div class="mini-faq-a uk-namu" data-en="Completely. Your client notes, formulas, and photos are yours — never sold or shared. OLROM LLC, California." data-uk="Повністю. Ваші нотатки, формули та фото — лише ваші. OLROM LLC, Каліфорнія.">Completely. Your client notes, formulas, and photos are yours — never sold or shared. OLROM LLC, California.</div>
+      <div class="mini-faq-a uk-namu" data-en="Completely. Your client notes and formulas are yours — never sold or shared. OLROM LLC, California." data-uk="Повністю. Ваші нотатки та формули — лише ваші. OLROM LLC, Каліфорнія.">Completely. Your client notes and formulas are yours — never sold or shared. OLROM LLC, California.</div>
     </div>
     <a href="faq.html" class="mini-faq-more uk-namu" data-en="See all questions →" data-uk="Всі запитання →">See all questions →</a>
   </div>
@@ -1706,7 +1843,7 @@ analytics.init({
 <footer>
   <!-- <div class="footer-logo">Her<span>Sets</span></div> -->
    <div class="footer-logo">
-    <img style="height: 40px; width: auto;" src="assets/logo/hersets_logo_transparent.png"/>
+    <img style="height: 40px; width: auto;" alt="HerSets" loading="lazy" src="assets/logo/hersets_logo_transparent.png"/>
    </div>
   <div style="text-align:right;">
     <div class="footer-text uk-namu" data-en="Built for beauty artists.<br/>© 2026 HerSets by OLROM LLC. All rights reserved." data-uk="Створено для б'юті-майстрів.<br/>© 2026 HerSets by OLROM LLC. Всі права захищено.">Built for beauty artists.<br/>© 2026 HerSets by OLROM LLC. All rights reserved.</div>
@@ -1717,6 +1854,7 @@ analytics.init({
       <a href="legal/Account_Deletion_Policy.html" class="uk-namu" data-en="Account Deletion" data-uk="Видалення акаунту">Account Deletion</a>
       <a href="legal/Support_Contact.html" class="uk-namu" data-en="Support" data-uk="Підтримка">Support</a>
         <a href="faq.html" class="uk-namu" data-en="FAQ" data-uk="FAQ">FAQ</a>
+      <a href="vs.html" class="uk-namu" data-en="Compare" data-uk="Порівняння">Compare</a>
     </div>
   </div>
 </footer>
@@ -1829,6 +1967,7 @@ analytics.init({
   document.querySelectorAll('#billing-toggle .bt-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const yearly = btn.dataset.period === 'yearly';
+      document.getElementById('pricing').classList.toggle('yearly', yearly);
       document.querySelectorAll('#billing-toggle .bt-btn').forEach(b => b.classList.toggle('active', b === btn));
       document.querySelectorAll('.pa-num').forEach(n => {
         n.textContent = '$' + (yearly ? n.dataset.yearly : n.dataset.monthly);
