@@ -4,13 +4,22 @@
     {
       "name": "HerSets Landing",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "-p", "3456", "."],
+      "runtimeArgs": [
+        "serve",
+        "-p",
+        "3456",
+        "."
+      ],
       "port": 3456
     },
     {
       "name": "HerSets Python",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-I", "-c", "import functools, http.server as s; h = functools.partial(s.SimpleHTTPRequestHandler, directory='/Users/irynaolkhovyk/Desktop/Work/HerSetsWeb'); s.ThreadingHTTPServer(('127.0.0.1', 3457), h).serve_forever()"],
+      "runtimeArgs": [
+        "-I",
+        "-c",
+        "import functools, http.server as s; h = functools.partial(s.SimpleHTTPRequestHandler, directory='/private/tmp/claude-501/-Users-irynaolkhovyk-Desktop-Work-HerSetsWeb/fc3d8bab-dcb5-46cf-88dd-5eb2e9fb0a2d/scratchpad/site'); s.ThreadingHTTPServer(('127.0.0.1', 3457), h).serve_forever()"
+      ],
       "port": 3457
     }
   ]

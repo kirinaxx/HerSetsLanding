@@ -911,7 +911,7 @@
     .pin-story { display: none; }
     @media (min-width: 961px) {
       .js-motion .phones-grid { display: none; }
-      .js-motion .pin-story { display: block; height: 470vh; position: relative; margin-top: 24px; }
+      .js-motion .pin-story { display: block; height: 470vh; position: relative; margin-top: min(0px, calc((543px - 100vh) / 2 + 24px)); margin-bottom: min(0px, calc((543px - 100vh) / 2 + 24px)); }
       .pin-sticky {
         position: sticky; top: 0; height: 100vh;
         display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 72px;
@@ -926,12 +926,124 @@
       .pin-step-num { font-family: 'Inter Tight', sans-serif; font-weight: 900; font-size: 11px; letter-spacing: 3px; color: var(--pink-d); margin-bottom: 18px; }
       .pin-step-title { font-family: 'Inter Tight', sans-serif; font-weight: 900; font-size: clamp(40px, 5vw, 72px); line-height: .92; text-transform: uppercase; letter-spacing: -1.5px; margin-bottom: 20px; }
       .pin-step-desc { font-size: 16px; line-height: 1.7; color: var(--ink3); max-width: 440px; }
-      .pin-dots { position: absolute; left: 0; bottom: -56px; display: flex; gap: 8px; }
+      .pin-step-cta { margin-top: 26px; align-self: flex-start; }
+    .pin-dots { position: absolute; left: 0; bottom: -56px; display: flex; gap: 8px; }
       .pin-dot { width: 28px; height: 3px; background: var(--border2); transition: background .3s, width .3s; }
       .pin-dot.active { background: var(--pink-d); width: 48px; }
       .pin-phone { --sw: 270px; }
       .pin-phone .iphone-sm-inner img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 0; transform: scale(1.04); transition: opacity .6s ease, transform .8s ease; }
       .pin-phone .iphone-sm-inner img.active { opacity: 1; transform: none; }
+    }
+
+    /* Availability card: animated walkthrough inside the phone */
+    @media (min-width: 961px) {
+      .js-motion #pin-story-how { height: 380vh; }
+      .pin-avail { position: absolute; inset: 0; opacity: 0; transition: opacity .8s ease; }
+      .pin-avail img, .av-tap { will-change: transform, opacity; backface-visibility: hidden; }
+      .pin-avail.active { opacity: 1; }
+      .pin-phone .pin-avail img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 1; transform: none; transition: none; }
+      .pin-phone .pin-avail img.av-b { opacity: 0; }
+      .pin-avail.active .av-flow { animation: avA 14s linear infinite; }
+      .pin-avail.active .av-strip { animation: avScroll 14s linear infinite; }
+      .pin-avail.active .av-b { animation: avB 14s linear infinite; }
+      .av-flow { position: absolute; top: 0; left: 0; width: 100%; aspect-ratio: 921 / 2000; overflow: hidden; background: #F0EAE3; }
+      .av-flow .av-viewport { position: absolute; top: 14.8%; height: 75.8%; left: 0; width: 100%; overflow: hidden; }
+      .pin-phone .pin-avail .av-flow img { position: absolute; inset: auto; left: 0; width: 100%; height: auto; object-fit: fill; opacity: 1; transform: none; transition: none; }
+      .pin-phone .pin-avail .av-flow .av-strip { top: 0; will-change: transform; }
+      .pin-phone .pin-avail .av-flow .av-top { top: 0; }
+      .pin-phone .pin-avail .av-flow .av-bottom { top: 90.75%; }
+      .av-tap { position: absolute; width: 34px; height: 34px; margin: -17px 0 0 -17px; border-radius: 50%; background: rgba(232,160,188,0.55); border: 2px solid var(--pink-d); opacity: 0; pointer-events: none; z-index: 5; }
+      .av-tap-create { left: 50%; top: 96%; }
+      .av-tap-share { left: 70%; top: 23.5%; }
+      .pin-avail.active .av-tap-create { animation: avTapCreate 14s linear infinite; }
+      .pin-avail.active .av-tap-share { animation: avTapShare 14s linear infinite; }
+    }
+    @keyframes avScroll {
+      0%, 10% { transform: translateY(0); animation-timing-function: cubic-bezier(.5,0,.2,1); }
+      36%, 74% { transform: translateY(-51.57%); }
+      75%, 100% { transform: translateY(0); }
+    }
+    @keyframes avA {
+      0%, 55% { opacity: 1; transform: none; filter: blur(0); animation-timing-function: cubic-bezier(.4,0,.2,1); }
+      66% { opacity: 0; transform: scale(1.06); filter: blur(3px); }
+      92% { opacity: 0; transform: scale(1.06); filter: blur(3px); animation-timing-function: cubic-bezier(.3,0,.2,1); }
+      100% { opacity: 1; transform: none; filter: blur(0); }
+    }
+    @keyframes avB {
+      0%, 55% { opacity: 0; transform: scale(.93); filter: blur(4px); animation-timing-function: cubic-bezier(.2,.7,.2,1); }
+      68% { opacity: 1; transform: none; filter: blur(0); }
+      92% { opacity: 1; transform: none; filter: blur(0); animation-timing-function: cubic-bezier(.3,0,.2,1); }
+      100% { opacity: 0; transform: scale(.97); filter: blur(2px); }
+    }
+    @keyframes avTapCreate {
+      0%, 44% { opacity: 0; transform: scale(.5); animation-timing-function: ease-out; }
+      48% { opacity: .95; transform: scale(1); animation-timing-function: ease-in-out; }
+      52% { opacity: .95; transform: scale(.82); animation-timing-function: ease-out; }
+      60% { opacity: 0; transform: scale(1.9); }
+      100% { opacity: 0; transform: scale(1.9); }
+    }
+    @keyframes avTapShare {
+      0%, 78% { opacity: 0; transform: scale(.5); animation-timing-function: ease-out; }
+      82% { opacity: .95; transform: scale(1); animation-timing-function: ease-in-out; }
+      86% { opacity: .95; transform: scale(.82); animation-timing-function: ease-out; }
+      93% { opacity: 0; transform: scale(1.9); }
+      100% { opacity: 0; transform: scale(1.9); }
+    }
+
+    /* Calendar: month view -> week view */
+    @media (min-width: 961px) {
+      .pin-cal { position: absolute; inset: 0; opacity: 0; transition: opacity .8s ease; }
+      .pin-cal.active { opacity: 1; }
+      .pin-phone .pin-cal img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 1; transform: none; transition: none; will-change: transform, opacity; backface-visibility: hidden; }
+      .pin-phone .pin-cal img.cal-b { opacity: 0; }
+      .pin-cal.active .cal-a { animation: calA 10s linear infinite; }
+      .pin-cal.active .cal-b { animation: calB 10s linear infinite; }
+      .av-tap-week { left: 82%; top: 9.7%; }
+      .pin-cal.active .av-tap-week { animation: calTap 10s linear infinite; }
+    }
+    @keyframes calA {
+      0%, 46% { opacity: 1; transform: none; animation-timing-function: cubic-bezier(.4,0,.2,1); }
+      58% { opacity: 0; transform: scale(.98); }
+      90% { opacity: 0; transform: scale(.98); animation-timing-function: cubic-bezier(.3,0,.2,1); }
+      100% { opacity: 1; transform: none; }
+    }
+    @keyframes calB {
+      0%, 46% { opacity: 0; transform: scale(1.02); animation-timing-function: cubic-bezier(.2,.7,.2,1); }
+      60% { opacity: 1; transform: none; }
+      90% { opacity: 1; transform: none; animation-timing-function: cubic-bezier(.3,0,.2,1); }
+      100% { opacity: 0; transform: scale(1.02); }
+    }
+    @keyframes calTap {
+      0%, 30% { opacity: 0; transform: scale(.5); animation-timing-function: ease-out; }
+      36% { opacity: .95; transform: scale(1); animation-timing-function: ease-in-out; }
+      41% { opacity: .95; transform: scale(.82); animation-timing-function: ease-out; }
+      50% { opacity: 0; transform: scale(1.9); }
+      100% { opacity: 0; transform: scale(1.9); }
+    }
+
+    /* Lash map: phone rotates to landscape and shows the reference view */
+    @media (min-width: 961px) {
+      .lash-land-wrap { position: absolute; left: 50%; top: 50%; width: calc(var(--sw) * 6.47 / 3.07 - 12px); height: calc(var(--sw) - 12px); transform: translate(-50%, -50%) rotate(90deg); opacity: 0; pointer-events: none; }
+      .pin-phone .iphone-sm-inner .lash-land-wrap img.lash-land { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 1; transform: none; transition: none; }
+      #pin-story-templates .pin-phone { will-change: transform; }
+      #pin-story-templates[data-step="0"] .pin-phone { animation: lashRot 10s linear infinite; }
+      #pin-story-templates[data-step="0"] .pin-phone .iphone-sm-inner > img:first-child { animation: lashPort 10s linear infinite; }
+      #pin-story-templates[data-step="0"] .lash-land-wrap { animation: lashLand 10s linear infinite; }
+    }
+    @keyframes lashRot {
+      0%, 30% { transform: none; animation-timing-function: cubic-bezier(.55,0,.25,1); }
+      48%, 82% { transform: translateX(44px) rotate(-90deg) scale(.78); animation-timing-function: cubic-bezier(.55,0,.25,1); }
+      98%, 100% { transform: none; }
+    }
+    @keyframes lashPort {
+      0%, 38% { opacity: 1; }
+      44%, 86% { opacity: 0; }
+      92%, 100% { opacity: 1; }
+    }
+    @keyframes lashLand {
+      0%, 38% { opacity: 0; }
+      44%, 86% { opacity: 1; }
+      92%, 100% { opacity: 0; }
     }
 
     /* Pricing */
@@ -1008,7 +1120,7 @@ analytics.init({
   </div>
   <div class="nav-links">
     <a href="#app" class="nav-link" data-en="The App" data-uk="Додаток">The App</a>
-    <a href="#templates" class="nav-link" data-en="Templates" data-uk="Шаблони">Templates</a>
+    <a href="#available" class="nav-link" data-en="Templates" data-uk="Шаблони">Templates</a>
     <a href="#salon" class="nav-link" data-en="Salon View" data-uk="Вид салону">Salon View</a>
     <a href="#manifesto" class="nav-link" data-en="Manifesto" data-uk="Маніфест">Manifesto</a>
     <a href="#features" class="nav-link" data-en="Features" data-uk="Функції">Features</a>
@@ -1091,13 +1203,75 @@ analytics.init({
   </div>
 </div>
 
-<!-- EVERY DETAIL + 5 PHONES -->
+<!-- EVERY DETAIL + HOW IT WORKS -->
 <div class="detail-section" id="app">
-  <h2 class="detail-headline uk-namu">
+  <!-- <p class="eyebrow uk-namu" data-en="See how it works" data-uk="Як це працює">See how it works</p> -->
+  <!-- <h2 class="detail-headline uk-namu">
     <span data-en="Every detail." data-uk="Кожна деталь.">Every detail.</span><br/>
     <em class="remembered uk-namu" data-en="Remembered." data-uk="Запам'ятована.">Remembered.</em>
-  </h2>
+  </h2> -->
 
+  <div class="phones-grid">
+    <div class="phone-col">
+      <div class="iphone-sm"><div class="iphone-sm-inner"><img src="screenshots/TodayNew.png" alt="Recap your day" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;"></div></div>
+      <div class="phone-col-label uk-namu" data-en="Recap your day" data-uk="Підсумок дня">Recap your day</div>
+      <div class="phone-col-desc uk-namu" data-en="Who&#39;s coming, at what time and for which service. Your whole day, at a glance." data-uk="Хто приходить, о котрій і на яку послугу. Весь ваш день одним поглядом.">Who's coming, at what time and for which service. Your whole day, at a glance.</div>
+    </div>
+    <div class="phone-col">
+      <div class="iphone-sm"><div class="iphone-sm-inner"><img src="screenshots/Clients.png" alt="See client details" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;"></div></div>
+      <div class="phone-col-label uk-namu" data-en="See client details" data-uk="Деталі клієнта">See client details</div>
+      <div class="phone-col-desc uk-namu" data-en="Open any client for their full record: preferences, formulas, maps and visit history, ready before they sit down." data-uk="Відкрийте будь-якого клієнта: побажання, формули, карти та історія візитів — ще до того, як вони сядуть у крісло.">Open any client for their full record: preferences, formulas, maps and visit history, ready before they sit down.</div>
+      <a href="#available" class="btn-ghost uk-namu" style="margin-top:8px;" data-en="Ready-to-use templates →" data-uk="Готові шаблони →">Ready-to-use templates →</a>
+    </div>
+    <div class="phone-col">
+      <div class="iphone-sm"><div class="iphone-sm-inner"><img src="screenshots/CalendarScreenshot.png" alt="Stay on top of your calendar" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;"></div></div>
+      <div class="phone-col-label uk-namu" data-en="Stay on top of your calendar" data-uk="Контроль календаря">Stay on top of your calendar</div>
+      <div class="phone-col-desc uk-namu" data-en="Start with the month, switch to the week, and see every appointment, so nothing slips through and no one&#39;s double-booked." data-uk="Почніть з місяця, перейдіть на тиждень і бачте кожен запис — нічого не загубиться і ніхто не буде записаний двічі.">Start with the month, switch to the week, and see every appointment, so nothing slips through and no one's double-booked.</div>
+    </div>
+    <div class="phone-col">
+      <div class="iphone-sm"><div class="iphone-sm-inner"><img src="screenshots/AvailabilityCard1.png" alt="Create availability cards" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;"></div></div>
+      <div class="phone-col-label uk-namu" data-en="Create availability cards" data-uk="Картки доступності">Create availability cards</div>
+      <div class="phone-col-desc uk-namu" data-en="Choose your hours, appointment length and days, then create a card of open slots for new appointments." data-uk="Оберіть години, тривалість візиту та дні — і створіть картку з вільними слотами для нових записів.">Choose your hours, appointment length and days, then create a card of open slots for new appointments.</div>
+    </div>
+  </div><!-- /phones-grid (how it works) -->
+
+  <!-- HOW IT WORKS: pinned feature story -->
+  <div class="pin-story" id="pin-story-how">
+    <div class="pin-sticky">
+      <div class="pin-steps">
+        <div class="pin-step active"><div class="pin-step-num">01 / 04</div><div class="pin-step-title uk-namu" data-en="Recap your day" data-uk="Підсумок дня">Recap your day</div><div class="pin-step-desc uk-namu" data-en="Who&#39;s coming, at what time and for which service. Your whole day, at a glance." data-uk="Хто приходить, о котрій і на яку послугу. Весь ваш день одним поглядом.">Who's coming, at what time and for which service. Your whole day, at a glance.</div></div>
+        <div class="pin-step"><div class="pin-step-num">02 / 04</div><div class="pin-step-title uk-namu" data-en="See client details" data-uk="Деталі клієнта">See client details</div><div class="pin-step-desc uk-namu" data-en="Open any client for their full record: preferences, formulas, maps and visit history, ready before they sit down." data-uk="Відкрийте будь-якого клієнта: побажання, формули, карти та історія візитів — ще до того, як вони сядуть у крісло.">Open any client for their full record: preferences, formulas, maps and visit history, ready before they sit down.</div><a href="#available" class="btn-ghost pin-step-cta uk-namu" data-en="Ready-to-use templates →" data-uk="Готові шаблони →">Ready-to-use templates →</a></div>
+        <div class="pin-step"><div class="pin-step-num">03 / 04</div><div class="pin-step-title uk-namu" data-en="Stay on top of your calendar" data-uk="Контроль календаря">Stay on top of your calendar</div><div class="pin-step-desc uk-namu" data-en="Start with the month, switch to the week, and see every appointment, so nothing slips through and no one&#39;s double-booked." data-uk="Почніть з місяця, перейдіть на тиждень і бачте кожен запис — нічого не загубиться і ніхто не буде записаний двічі.">Start with the month, switch to the week, and see every appointment, so nothing slips through and no one's double-booked.</div></div>
+        <div class="pin-step"><div class="pin-step-num">04 / 04</div><div class="pin-step-title uk-namu" data-en="Create availability cards" data-uk="Картки доступності">Create availability cards</div><div class="pin-step-desc uk-namu" data-en="Pick your hours, appointment length and days, create the card, then save it or share it in one tap for new appointments." data-uk="Оберіть години, тривалість візиту та дні, створіть картку — і збережіть або поділіться нею одним дотиком для нових записів.">Pick your hours, appointment length and days, create the card, then save it or share it in one tap for new appointments.</div></div>
+        <div class="pin-dots"><span class="pin-dot active"></span><span class="pin-dot"></span><span class="pin-dot"></span><span class="pin-dot"></span></div>
+      </div>
+      <div class="iphone-sm pin-phone">
+        <div class="iphone-sm-inner">
+          <img alt="HerSets Today screen with the day's appointments" srcset="screenshots/sm/TodayNew-480.webp 480w, screenshots/sm/TodayNew-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="1320" height="2868" class="active" src="screenshots/TodayNew.png">
+          <img alt="HerSets clients list with search and discipline filters" srcset="screenshots/sm/Clients-480.webp 480w, screenshots/sm/Clients-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="1320" height="2868" loading="lazy" decoding="async" src="screenshots/Clients.png">
+          <div class="pin-cal" aria-label="Calendar walkthrough: month view to week view">
+            <img class="cal-a" alt="HerSets calendar month view" srcset="screenshots/sm/CalendarMonth-480.webp 480w, screenshots/sm/CalendarMonth-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="921" height="2000" loading="lazy" decoding="async" src="screenshots/CalendarMonth.png">
+            <img class="cal-b" alt="HerSets calendar week view" srcset="screenshots/sm/CalendarScreenshot-480.webp 480w, screenshots/sm/CalendarScreenshot-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="921" height="2000" loading="lazy" decoding="async" src="screenshots/CalendarScreenshot.png">
+            <span class="av-tap av-tap-week"></span>
+          </div>
+          <div class="pin-avail" aria-label="Availability card walkthrough">
+            <div class="av-flow">
+              <div class="av-viewport"><img class="av-strip" alt="HerSets availability card: choose hours, appointment length, days and open slots" src="screenshots/sm/avail-strip.webp" width="800" height="2721" loading="lazy" decoding="async"></div>
+              <img class="av-top" alt="" src="screenshots/sm/avail-top.webp" width="921" height="296" loading="lazy" decoding="async">
+              <img class="av-bottom" alt="" src="screenshots/sm/avail-bottom.webp" width="921" height="185" loading="lazy" decoding="async">
+            </div>
+            <img class="av-b" alt="HerSets availability card ready to save or share" srcset="screenshots/sm/AvailabilityCard2-480.webp 480w, screenshots/sm/AvailabilityCard2-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="921" height="2000" loading="lazy" decoding="async" src="screenshots/AvailabilityCard2.png">
+            <span class="av-tap av-tap-create"></span>
+            <span class="av-tap av-tap-share"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- READY-TO-USE TEMPLATES -->
+<div class="detail-section" id="available" style="padding-top:64px;">
   <div class="phones-grid">
 
     <!-- 1: LASH MAP -->
@@ -1158,7 +1332,7 @@ analytics.init({
   </div><!-- /phones-grid -->
 
   <!-- PINNED STORY (desktop): phone stays, screen + text change on scroll -->
-  <div class="pin-story" id="pin-story">
+  <div class="pin-story" id="pin-story-templates">
     <div class="pin-sticky">
       <div class="pin-steps">
         <div class="pin-step active"><div class="pin-step-num">01 / 05</div><div class="pin-step-title uk-namu" data-en="Lash Map" data-uk="Карта вій">Lash Map</div><div class="pin-step-desc uk-namu" data-en="Five zones, per-zone curl, length, diameter and adhesive. A full eye diagram that replaces photos and guesswork." data-uk="П'ять зон. Вигин, довжина, діаметр та клей — повна схема ока.">Five zones, per-zone curl, length, diameter and adhesive. A full eye diagram that replaces photos and guesswork.</div></div>
@@ -1175,81 +1349,12 @@ analytics.init({
           <img alt="HerSets hair color map with formulas per section and a head map" srcset="screenshots/sm/HairColorMapScreenshot-480.webp 480w, screenshots/sm/HairColorMapScreenshot-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="1206" height="2622" loading="lazy" decoding="async" src="screenshots/HairColorMapScreenshot.png">
           <img alt="HerSets esthetician skin map and treatment notes" srcset="screenshots/sm/SkinMapScreenshot-480.webp 480w, screenshots/sm/SkinMapScreenshot-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="1206" height="2622" loading="lazy" decoding="async" src="screenshots/SkinMapScreenshot.png">
           <img alt="HerSets brow session with service type, brow shape, arch placement and tail length" srcset="screenshots/sm/BrowSessionScreenshot-480.webp 480w, screenshots/sm/BrowSessionScreenshot-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="921" height="2000" loading="lazy" decoding="async" src="screenshots/BrowSessionScreenshot.png">
+          <div class="lash-land-wrap"><img class="lash-land" alt="HerSets lash map reference view in landscape" srcset="screenshots/sm/LashMapLandscape-800.webp 800w, screenshots/sm/LashMapLandscape-1400.webp 1400w" sizes="560px" width="2000" height="921" loading="lazy" decoding="async" src="screenshots/LashMapLandscape.png"></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- LANDSCAPE LASH MAP -->
-  <div style="margin-top:56px;">
-    <p style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);font-weight:600;margin-bottom:12px;" class="uk-namu" data-en="Landscape — reference view during appointment" data-uk="Горизонтально — огляд під час роботи">Landscape — reference view during appointment</p>
-    <div class="landscape-showcase" style="background:var(--ink);border-radius:16px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.22);display:flex;align-items:stretch;">
-      <!-- Dark header -->
-      <div style="display:flex;flex-direction:column;width:100%;">
-        <div style="background:var(--ink);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.07);">
-          <span style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:2px;color:#fff;" class="uk-namu" data-en="Reference view" data-uk="Огляд мапи">Reference view</span>
-          <div style="display:flex;gap:6px;align-items:center;">
-            <span style="font-size:8px;font-weight:700;letter-spacing:1px;padding:3px 12px;border-radius:2px;background:var(--pink);color:var(--ink);" class="uk-namu" data-en="L EYE" data-uk="ЛІВЕ">L EYE</span>
-            <span style="font-size:8px;font-weight:700;letter-spacing:1px;padding:3px 12px;border-radius:2px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.45);" class="uk-namu" data-en="R EYE" data-uk="ПРАВЕ">R EYE</span>
-            <span style="font-size:14px;color:rgba(255,255,255,0.28);margin-left:8px;cursor:pointer;">✕</span>
-          </div>
-        </div>
-        <div style="background:var(--bg);padding:20px 24px 18px;display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap;">
-          <div style="flex:1;min-width:260px;">
-            <p style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);font-weight:600;margin-bottom:12px;" class="uk-namu" data-en="LEFT EYE" data-uk="ЛІВЕ ОКО">LEFT EYE</p>
-            <svg viewBox="0 0 480 140" width="100%" style="max-height:140px;" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10,70 Q120,5 240,5 Q360,5 470,70 Q360,135 240,135 Q120,135 10,70 Z" fill="none" stroke="#0D0D0D" stroke-width="1.5" opacity="0.15"/>
-              <!-- Inner -->
-              <path d="M10,70 Q45,32 88,28 Q62,70 88,110 Q45,106 10,70 Z" fill="#FCF0F6" stroke="#E8A0BC" stroke-width="1.5"/>
-              <text x="50" y="68" font-size="11" font-weight="700" fill="#C4507A" text-anchor="middle" font-family="Inter Tight,sans-serif">I</text>
-              <text x="50" y="82" font-size="9" fill="#C4507A" text-anchor="middle" font-family="Inter,sans-serif">C · 7mm</text>
-              <!-- Inner-mid -->
-              <path d="M88,28 Q148,8 240,6 Q220,70 240,134 Q148,132 88,110 Q62,70 88,28 Z" fill="#FDF8FB" stroke="#E8A0BC" stroke-width="1.5"/>
-              <text x="156" y="67" font-size="11" font-weight="700" fill="#C4507A" text-anchor="middle" font-family="Inter Tight,sans-serif">IM</text>
-              <text x="156" y="81" font-size="9" fill="#C4507A" text-anchor="middle" font-family="Inter,sans-serif">C · 9mm</text>
-              <!-- Center (selected) -->
-              <path d="M240,6 Q288,6 326,18 Q314,70 326,122 Q288,134 240,134 Q220,70 240,6 Z" fill="#EBF4EF" stroke="#8FAF9F" stroke-width="3"/>
-              <text x="283" y="67" font-size="11" font-weight="700" fill="#4E8C7A" text-anchor="middle" font-family="Inter Tight,sans-serif">C</text>
-              <text x="283" y="81" font-size="9" fill="#4E8C7A" text-anchor="middle" font-family="Inter,sans-serif">CC · 11mm</text>
-              <!-- Outer-mid -->
-              <path d="M326,18 Q392,32 432,62 Q424,86 404,106 Q378,122 326,122 Q314,70 326,18 Z" fill="#FDF8FB" stroke="#E8A0BC" stroke-width="1.5"/>
-              <text x="388" y="70" font-size="11" font-weight="700" fill="#C4507A" text-anchor="middle" font-family="Inter Tight,sans-serif">OM</text>
-              <text x="388" y="84" font-size="9" fill="#C4507A" text-anchor="middle" font-family="Inter,sans-serif">D · 13mm</text>
-              <!-- Outer -->
-              <path d="M432,62 Q470,67 470,70 Q470,73 432,78 Q424,86 432,62 Z" fill="#FCF0F6" stroke="#E8A0BC" stroke-width="1.5"/>
-              <text x="452" y="72" font-size="9" font-weight="700" fill="#C4507A" text-anchor="middle" font-family="Inter Tight,sans-serif">O</text>
-            </svg>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:8px;min-width:180px;">
-            <div style="display:flex;gap:6px;">
-              <div style="flex:1;background:#fff;border:1px solid var(--border);border-radius:4px;padding:8px 10px;text-align:center;">
-                <div style="font-size:7px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);" class="uk-namu" data-en="Style" data-uk="Стиль">Style</div>
-                <div style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:13px;color:var(--ink);margin-top:2px;" class="uk-namu" data-en="Vol." data-uk="Об.">Vol.</div>
-              </div>
-              <div style="flex:1;background:#fff;border:1px solid var(--border);border-radius:4px;padding:8px 10px;text-align:center;">
-                <div style="font-size:7px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);" class="uk-namu" data-en="Fan" data-uk="Пучок">Fan</div>
-                <div style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:13px;color:var(--ink);margin-top:2px;">5D</div>
-              </div>
-              <div style="flex:1;background:#fff;border:1px solid var(--border);border-radius:4px;padding:8px 10px;text-align:center;">
-                <div style="font-size:7px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);" class="uk-namu" data-en="Diam." data-uk="Діам.">Diam.</div>
-                <div style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:13px;color:var(--ink);margin-top:2px;">0.05</div>
-              </div>
-              <div style="flex:1;background:#fff;border:1px solid var(--border);border-radius:4px;padding:8px 10px;text-align:center;">
-                <div style="font-size:7px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);" class="uk-namu" data-en="Glue" data-uk="Клей">Glue</div>
-                <div style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:10px;color:var(--ink);margin-top:2px;">Belm.</div>
-              </div>
-            </div>
-            <div style="background:var(--pink-l);border:1px solid var(--pink-m);border-radius:4px;padding:8px 10px;font-size:10px;font-weight:600;color:var(--pink-d);" class="uk-namu" data-en="⚠ Sensitive eyes — use sensitive adhesive, reduce fumes near client." data-uk="⚠ Чутливі очі — чутливий клей, менше випарів.">⚠ Sensitive eyes — use sensitive adhesive, reduce fumes near client.</div>
-            <div style="background:var(--bg2);border-radius:4px;padding:8px 10px;">
-              <div style="font-size:7px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);margin-bottom:4px;font-weight:600;" class="uk-namu" data-en="Set details" data-uk="Деталі сету">Set details</div>
-              <div style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--ink);" class="uk-namu" data-en="Volume · Cat eye · Fill #12" data-uk="Об'єм · Котяче · Наповнення #12">Volume · Cat eye · Fill #12</div>
-              <div style="font-size:10px;color:var(--ink3);margin-top:2px;">Maria L. · Jun 28, 2025</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
 </div>
 
@@ -1497,100 +1602,6 @@ analytics.init({
     </div>
   </div>
 </div> -->
-
-<!-- TEMPLATES -->
-<div class="templates-section" id="templates">
-  <div class="templates-inner">
-    <p class="eyebrow uk-namu" data-en="Built-in templates" data-uk="Вбудовані шаблони">Built-in templates</p>
-    <h2 class="section-title uk-namu" data-en="Five templates. Ready on day one." data-uk="П'ять шаблонів. Готові з першого дня.">Five templates. <span style="color:var(--pink-d)">Ready</span> on day one.</h2>
-    <p style="font-size:15px;color:var(--ink3);line-height:1.7;max-width:540px;margin-top:16px;" class="uk-namu" data-en="No setup, no configuration. Open the app and your templates are waiting — built specifically around how beauty artists actually work." data-uk="Жодного налаштування. Відкрийте застосунок — шаблони вже чекають, створені спеціально для б'юті-майстрів.">No setup, no configuration. Open the app and your templates are waiting — built specifically around how beauty artists actually work.</p>
-    <div class="templates-grid">
-
-      <!-- 1: Client Profile -->
-      <div class="tpl-card">
-        <div class="tpl-num">01</div>
-        <div class="tpl-title uk-namu" data-en="Client <span class='accent'>Profile</span>" data-uk="Профіль <span class='accent'>клієнта</span>">Client <span class="accent">Profile</span></div>
-        <p class="tpl-desc uk-namu" data-en="Everything about a client in one place. Name, contact, skin type, eye shape, allergies, patch test results, and personal notes. The profile updates automatically after every visit so it always reflects who your client is today." data-uk="Все про клієнта в одному місці. Ім'я, контакт, тип шкіри, форма очей, алергії, результати тесту та особисті нотатки. Профіль оновлюється після кожного візиту.">Everything about a client in one place. Name, contact, skin type, eye shape, allergies, patch test results, and personal notes. The profile updates automatically after every visit so it always reflects who your client is today.</p>
-        <div class="tpl-fields">
-          <span class="tpl-field uk-namu" data-en="Contact" data-uk="Контакт">Contact</span>
-          <span class="tpl-field uk-namu" data-en="Allergies" data-uk="Алергії">Allergies</span>
-          <span class="tpl-field uk-namu" data-en="Patch test" data-uk="Тест">Patch test</span>
-          <span class="tpl-field uk-namu" data-en="Eye shape" data-uk="Форма ока">Eye shape</span>
-          <span class="tpl-field uk-namu" data-en="Notes" data-uk="Нотатки">Notes</span>
-        </div>
-      </div>
-
-      <!-- 2: Service Record Maps -->
-      <div class="tpl-card">
-        <div class="tpl-num">02</div>
-        <div class="tpl-title uk-namu" data-en="Service <span class='accent'>Maps</span>" data-uk="Схеми <span class='accent'>послуг</span>">Service <span class="accent">Maps</span></div>
-        <p class="tpl-desc uk-namu" data-en="Visual diagrams built for each discipline. Lash artists get a 5-zone eye map with curl, length and diameter per zone. Hair stylists get a top-down head map for color placement — crown, front, sides, nape, money piece. Estheticians get a face analysis map with zones for forehead, cheeks, T-zone and chin. Every discipline gets a diagram that matches how you actually think about the work." data-uk="Візуальні схеми для кожного напрямку. Майстри вій — карта ока з 5 зонами. Перукарі — карта голови (тім'я, чоло, скроні, потилиця, money piece). Косметологи — карта аналізу обличчя. Кожен напрямок отримує схему, яка відображає реальну роботу.">Visual diagrams built for each discipline. Lash artists get a 5-zone eye map with curl, length and diameter per zone. Hair stylists get a top-down head map for color placement — crown, front, sides, nape, money piece. Estheticians get a face analysis map with zones for forehead, cheeks, T-zone and chin. Every discipline gets a diagram that matches how you actually think about the work.</p>
-        <div class="tpl-fields">
-          <span class="tpl-field uk-namu" data-en="Lash eye map" data-uk="Карта ока">Lash eye map</span>
-          <span class="tpl-field uk-namu" data-en="Hair head map" data-uk="Карта голови">Hair head map</span>
-          <span class="tpl-field uk-namu" data-en="Skin face map" data-uk="Карта обличчя">Skin face map</span>
-          <span class="tpl-field uk-namu" data-en="Extension row map" data-uk="Карта рядів">Extension row map</span>
-        </div>
-      </div>
-
-      <!-- 3: Service Formulas -->
-      <div class="tpl-card">
-        <div class="tpl-num">03</div>
-        <div class="tpl-title uk-namu" data-en="Service <span class='accent'>Formulas</span>" data-uk="Формули <span class='accent'>послуг</span>">Service <span class="accent">Formulas</span></div>
-        <p class="tpl-desc uk-namu" data-en="Every discipline has its own formula fields. Nail: per-finger color code, gel type, brand, finish, add-ons. Hair color: root / mid-length / toner formulas with brand, shade, developer and timing. Hair extensions: color blend (multiple shades), brand, length, weight. Esthetician: peel percentage, LED settings, active ingredients. The fields match the service — not a generic notes box." data-uk="Кожен напрямок має власні поля формул. Нігті: код кольору, гель, бренд, покриття. Кольорування волосся: коренева/середина/тонер з брендом, відтінком, окислювачем та часом. Нарощування: формула суміші кольорів, бренд, довжина, вага. Косметологія: концентрація пілінгу, налаштування LED, активні компоненти.">Every discipline has its own formula fields. Nail: per-finger color code, gel type, brand, finish, add-ons. Hair color: root / mid-length / toner formulas with brand, shade, developer and timing. Hair extensions: color blend (multiple shades), brand, length, weight. Esthetician: peel percentage, LED settings, active ingredients. The fields match the service — not a generic notes box.</p>
-        <div class="tpl-fields">
-          <span class="tpl-field uk-namu" data-en="Nail formula" data-uk="Формула нігтів">Nail formula</span>
-          <span class="tpl-field uk-namu" data-en="Hair color formula" data-uk="Формула кольору">Hair color formula</span>
-          <span class="tpl-field uk-namu" data-en="Extension blend" data-uk="Суміш кольорів">Extension blend</span>
-          <span class="tpl-field uk-namu" data-en="Skin treatment params" data-uk="Параметри процедури">Skin treatment params</span>
-        </div>
-      </div>
-
-      <!-- 4: Visit Notes -->
-      <div class="tpl-card">
-        <div class="tpl-num">04</div>
-        <div class="tpl-title uk-namu" data-en="Visit <span class='accent'>Notes</span>" data-uk="Нотатки <span class='accent'>візиту</span>">Visit <span class="accent">Notes</span></div>
-        <p class="tpl-desc uk-namu" data-en="A per-appointment record of what happened at each session — service type, products used, retention observations, client feedback, and anything worth remembering. Builds into a full timeline you can scroll through before any appointment." data-uk="Запис кожного сеансу — тип послуги, продукти, спостереження за утриманням та відгук клієнта. Перетворюється на повну хронологію.">A per-appointment record of what happened at each session — service type, products used, retention observations, client feedback, and anything worth remembering. Builds into a full timeline you can scroll through before any appointment.</p>
-        <div class="tpl-fields">
-          <span class="tpl-field uk-namu" data-en="Service type" data-uk="Тип послуги">Service type</span>
-          <span class="tpl-field uk-namu" data-en="Products used" data-uk="Продукти">Products used</span>
-          <span class="tpl-field uk-namu" data-en="Retention" data-uk="Утримання">Retention</span>
-          <span class="tpl-field uk-namu" data-en="Client feedback" data-uk="Відгук">Client feedback</span>
-        </div>
-      </div>
-
-      <!-- 5: Weekly Schedule -->
-      <div class="tpl-card">
-        <div class="tpl-num">05</div>
-        <div class="tpl-title uk-namu" data-en="Weekly <span class='accent'>Schedule</span>" data-uk="Тижневий <span class='accent'>розклад</span>">Weekly <span class="accent">Schedule</span></div>
-        <p class="tpl-desc uk-namu" data-en="A color-coded weekly view of all your appointments — sorted by service type, duration, and client. See lash fills, nail sets, and new clients all at a glance. Tap any slot to pull up the client's full profile before they arrive." data-uk="Тижневий вигляд усіх записів із розфарбуванням за типом послуги. Натисніть будь-який слот, щоб відкрити повний профіль клієнта до їхнього приходу.">A color-coded weekly view of all your appointments — sorted by service type, duration, and client. See lash fills, nail sets, and new clients all at a glance. Tap any slot to pull up the client's full profile before they arrive.</p>
-        <div class="tpl-fields">
-          <span class="tpl-field uk-namu" data-en="Day &amp; time" data-uk="День та час">Day &amp; time</span>
-          <span class="tpl-field uk-namu" data-en="Service" data-uk="Послуга">Service</span>
-          <span class="tpl-field uk-namu" data-en="Duration" data-uk="Тривалість">Duration</span>
-          <span class="tpl-field uk-namu" data-en="Client name" data-uk="Клієнт">Client name</span>
-          <span class="tpl-field uk-namu" data-en="Color tag" data-uk="Колір">Color tag</span>
-        </div>
-      </div>
-
-      <!-- Custom Template CTA -->
-      <div class="tpl-card tpl-custom">
-        <div>
-          <div class="tpl-title uk-namu" data-en="Build your own <span class='accent' style='color:var(--pink)'>template</span>" data-uk="Створіть свій <span class='accent' style='color:var(--pink)'>шаблон</span>">Build your own <span class="accent" style="color:var(--pink)">template</span></div>
-          <p class="tpl-desc uk-namu" data-en="Not every artist works the same way. Add the fields you actually use, name them what makes sense to you, and save your template to reuse with any client. Whether it's a specific threading technique, a brow tint formula, or a hybrid combo you've refined over years — it lives in HerSets, exactly the way you designed it." data-uk="Не всі майстри працюють однаково. Додайте власні поля, назвіть їх так, як вам зручно, і зберігайте шаблон для будь-якого клієнта. Ваша техніка, ваша формула — у HerSets, так, як ви самі придумали.">Not every artist works the same way. Add the fields you actually use, name them what makes sense to you, and save your template to reuse with any client. Whether it's a specific threading technique, a brow tint formula, or a hybrid combo you've refined over years — it lives in HerSets, exactly the way you designed it.</p>
-          <div class="tpl-fields" style="margin-top:16px;">
-            <span class="tpl-field uk-namu" data-en="Custom fields" data-uk="Власні поля">Custom fields</span>
-            <span class="tpl-field uk-namu" data-en="Your naming" data-uk="Ваші назви">Your naming</span>
-            <span class="tpl-field uk-namu" data-en="Reusable" data-uk="Повторне використання">Reusable</span>
-            <span class="tpl-field uk-namu" data-en="Any service" data-uk="Будь-яка послуга">Any service</span>
-          </div>
-        </div>
-        <a href="https://apps.apple.com/us/app/hersets/id6792172295" target="_blank" class="tpl-custom-cta uk-namu" data-en="DOWNLOAD NOW" data-uk="ЗАВАНТАЖИТИ">DOWNLOAD NOW</a>
-      </div>
-
-    </div>
-  </div>
-</div>
 
 <!-- TEMPLATE BUILDER -->
 <div class="tpl-builder-section" id="builder">
@@ -1934,7 +1945,7 @@ analytics.init({
   // [id, bgColor, theme: 'light'|'dark'|'pink']
   const navSections = [
     { id: 'app',        bg: '#F2EDE8', theme: 'light' },
-    { id: 'templates',  bg: '#F2EDE8', theme: 'light' },
+    { id: 'available',  bg: '#F2EDE8', theme: 'light' },
     { id: 'builder',    bg: '#F2EDE8', theme: 'light' },
     { id: 'salon',      bg: '#0D0D0D', theme: 'dark'  },
     { id: 'manifesto',  bg: '#EDE8E2', theme: 'light' },
@@ -2014,11 +2025,13 @@ analytics.init({
     const floats = [...document.querySelectorAll('.float-card')];
     const hero = document.querySelector('.hero');
     // Pinned phone story
-    const story = document.getElementById('pin-story');
-    const steps = story ? [...story.querySelectorAll('.pin-step')] : [];
-    const dots = story ? [...story.querySelectorAll('.pin-dot')] : [];
-    const shots = story ? [...story.querySelectorAll('.pin-phone img')] : [];
-    let cur = 0;
+    const stories = [...document.querySelectorAll('.pin-story')].map(el => ({
+      el,
+      steps: [...el.querySelectorAll('.pin-step')],
+      dots: [...el.querySelectorAll('.pin-dot')],
+      shots: [...el.querySelectorAll('.pin-phone .iphone-sm-inner > *:not(.lash-land-wrap)')],
+      cur: 0,
+    }));
 
     function tick() {
       if (!desktop()) { floats.forEach(f => f.style.transform = ''); return; }
@@ -2026,18 +2039,23 @@ analytics.init({
       if (hero && y < hero.offsetHeight + 200) {
         floats.forEach(f => { f.style.transform = `translate3d(0, ${y * parseFloat(f.dataset.speed) * -1}px, 0)`; });
       }
-      if (story) {
-        const r = story.getBoundingClientRect();
+      stories.forEach(st => {
+        const r = st.el.getBoundingClientRect();
         const total = r.height - window.innerHeight;
         const p = Math.min(Math.max(-r.top / total, 0), 0.9999);
-        const i = Math.floor(p * steps.length);
-        if (i !== cur) {
-          cur = i;
-          steps.forEach((s, n) => s.classList.toggle('active', n === i));
-          dots.forEach((d, n) => d.classList.toggle('active', n === i));
-          shots.forEach((s, n) => s.classList.toggle('active', n === i));
+        const i = Math.floor(p * st.steps.length);
+        if (i !== st.cur) {
+          st.cur = i;
+          st.steps.forEach((s, n) => s.classList.toggle('active', n === i));
+          st.dots.forEach((d, n) => d.classList.toggle('active', n === i));
+          st.shots.forEach((s, n) => s.classList.toggle('active', n === i));
         }
-      }
+        // Expose the step only while the story is on screen, so step animations
+        // (like the lash map rotation) start fresh when the visitor arrives.
+        const inView = r.top < window.innerHeight * 0.5 && r.bottom > window.innerHeight * 0.5;
+        const want = inView ? String(st.cur) : '';
+        if (st.el.dataset.step !== want) st.el.dataset.step = want;
+      });
     }
     window.addEventListener('scroll', tick, { passive: true });
     window.addEventListener('resize', tick);
