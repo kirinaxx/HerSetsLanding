@@ -907,6 +907,17 @@
     .ticker.ticker-rev .ticker-item::before { color: var(--pink); }
     .ticker:hover .ticker-track { animation-play-state: paused; }
 
+    /* Templates on mobile: one phone per row, like the template builder */
+    @media (max-width: 960px) {
+      #app .phones-grid, #available .phones-grid { grid-template-columns: 1fr; gap: 72px; margin-top: 8px; }
+      #app .phones-grid { margin-top: 40px; }
+      #app .phone-col, #available .phone-col { gap: 22px; align-items: center; text-align: center; }
+      #app .iphone-sm, #available .iphone-sm { --sw: min(230px, 62vw); }
+      #app .phone-col-label, #available .phone-col-label { align-self: center; font-size: 12px; }
+      #app .phone-col-desc, #available .phone-col-desc { align-self: center; font-size: 14px; max-width: 340px; }
+      #app .phone-col.reveal, #available .phone-col.reveal { transition-delay: 0s; }
+    }
+
     /* Pinned phone story */
     .pin-story { display: none; }
     @media (min-width: 961px) {
@@ -1046,6 +1057,40 @@
       92%, 100% { opacity: 0; }
     }
 
+
+    /* Mobile cards: availability walkthrough + lash rotation (plays when the card is on screen) */
+    .phone-col[data-anim] { --ls: .66; }
+    @media (min-width: 540px) { .phone-col[data-anim] { --ls: .9; } }
+    #available { overflow-x: clip; }
+    .mv-av { position: absolute; inset: 0; }
+    .mv-av img, .mv-tap { will-change: transform, opacity; backface-visibility: hidden; }
+    .mv-av > img.mv-b { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 0; }
+    .mv-flow { position: absolute; top: 0; left: 0; width: 100%; aspect-ratio: 921 / 2000; overflow: hidden; background: #F0EAE3; }
+    .mv-viewport { position: absolute; top: 14.8%; height: 75.8%; left: 0; width: 100%; overflow: hidden; }
+    .mv-flow img { position: absolute; left: 0; width: 100%; height: auto; }
+    .mv-flow .mv-strip { top: 0; }
+    .mv-flow .mv-top { top: 0; }
+    .mv-flow .mv-bottom { top: 90.75%; }
+    .mv-tap { position: absolute; width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; background: rgba(232,160,188,0.55); border: 2px solid var(--pink-d); opacity: 0; pointer-events: none; z-index: 5; }
+    .mv-tap-create { left: 50%; top: 96%; }
+    .mv-tap-share { left: 70%; top: 23.5%; }
+    .phone-col.live .mv-flow { animation: avA 14s linear infinite; }
+    .phone-col.live .mv-strip { animation: avScroll 14s linear infinite; }
+    .phone-col.live .mv-b { animation: avB 14s linear infinite; }
+    .phone-col.live .mv-tap-create { animation: avTapCreate 14s linear infinite; }
+    .phone-col.live .mv-tap-share { animation: avTapShare 14s linear infinite; }
+    .mv-land { position: absolute; left: 50%; top: 50%; width: calc(var(--sw) * 6.47 / 3.07 - 12px); height: calc(var(--sw) - 12px); transform: translate(-50%, -50%) rotate(90deg); opacity: 0; pointer-events: none; }
+    .mv-land img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .phone-col[data-anim="lash"] .iphone-sm { will-change: transform; }
+    .phone-col[data-anim="lash"].live .iphone-sm { animation: lashRotM 10s linear infinite; }
+    .phone-col[data-anim="lash"].live .iphone-sm-inner > img { animation: lashPort 10s linear infinite; }
+    .phone-col[data-anim="lash"].live .mv-land { animation: lashLand 10s linear infinite; }
+    @keyframes lashRotM {
+      0%, 15% { transform: none; animation-timing-function: cubic-bezier(.55,0,.25,1); }
+      33%, 82% { transform: rotate(-90deg) scale(var(--ls)); animation-timing-function: cubic-bezier(.55,0,.25,1); }
+      98%, 100% { transform: none; }
+    }
+
     /* Pricing */
     .pricing-section { padding: 110px 48px; background: var(--bg); }
     .pricing-inner { max-width: 1120px; margin: 0 auto; }
@@ -1097,6 +1142,7 @@
     @media (prefers-reduced-motion: reduce) {
       .js-motion .reveal { opacity: 1; transform: none; transition: none; }
       .ticker-track { animation: none; }
+      .phone-col[data-anim] * , .phone-col[data-anim] { animation: none !important; }
     }
   </style>
 <script type="module">
@@ -1228,8 +1274,8 @@ analytics.init({
       <div class="phone-col-label uk-namu" data-en="Stay on top of your calendar" data-uk="Контроль календаря">Stay on top of your calendar</div>
       <div class="phone-col-desc uk-namu" data-en="Start with the month, switch to the week, and see every appointment, so nothing slips through and no one&#39;s double-booked." data-uk="Почніть з місяця, перейдіть на тиждень і бачте кожен запис — нічого не загубиться і ніхто не буде записаний двічі.">Start with the month, switch to the week, and see every appointment, so nothing slips through and no one's double-booked.</div>
     </div>
-    <div class="phone-col">
-      <div class="iphone-sm"><div class="iphone-sm-inner"><img src="screenshots/AvailabilityCard1.png" alt="Create availability cards" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;"></div></div>
+    <div class="phone-col" data-anim="av">
+<div class="iphone-sm"><div class="iphone-sm-inner"><div class="mv-av"><div class="mv-flow"><div class="mv-viewport"><img class="mv-strip" alt="HerSets availability card: choose hours, appointment length, days and open slots" src="screenshots/sm/avail-strip.webp" width="800" height="2721" loading="lazy" decoding="async"></div><img class="mv-top" alt="" src="screenshots/sm/avail-top.webp" width="921" height="296" loading="lazy" decoding="async"><img class="mv-bottom" alt="" src="screenshots/sm/avail-bottom.webp" width="921" height="185" loading="lazy" decoding="async"></div><img class="mv-b" alt="HerSets availability card ready to save or share" srcset="screenshots/sm/AvailabilityCard2-480.webp 480w, screenshots/sm/AvailabilityCard2-800.webp 800w" sizes="(max-width: 960px) 230px, 270px" width="921" height="2000" loading="lazy" decoding="async" src="screenshots/AvailabilityCard2.png"><span class="mv-tap mv-tap-create"></span><span class="mv-tap mv-tap-share"></span></div></div></div>
       <div class="phone-col-label uk-namu" data-en="Create availability cards" data-uk="Картки доступності">Create availability cards</div>
       <div class="phone-col-desc uk-namu" data-en="Choose your hours, appointment length and days, then create a card of open slots for new appointments." data-uk="Оберіть години, тривалість візиту та дні — і створіть картку з вільними слотами для нових записів.">Choose your hours, appointment length and days, then create a card of open slots for new appointments.</div>
     </div>
@@ -1275,21 +1321,22 @@ analytics.init({
   <div class="phones-grid">
 
     <!-- 1: LASH MAP -->
-    <div class="phone-col">
+    <div class="phone-col" data-anim="lash">
       <div class="iphone-sm">
         <div class="iphone-sm-inner">
-          <img alt="HerSets lash map with five zones and per-zone curl, length and diameter" srcset="screenshots/sm/LashMapScreenshot-480.webp 480w, screenshots/sm/LashMapScreenshot-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="1206" height="2622" loading="lazy" decoding="async" src="screenshots/LashMapScreenshot.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+          <img alt="HerSets lash map with five zones and per-zone curl, length and diameter" srcset="screenshots/sm/LashMapScreenshot-480.webp 480w, screenshots/sm/LashMapScreenshot-800.webp 800w" sizes="(max-width: 960px) 230px, 270px" width="1206" height="2622" loading="lazy" decoding="async" src="screenshots/LashMapScreenshot.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+<div class="mv-land"><img alt="HerSets lash map reference view in landscape" srcset="screenshots/sm/LashMapLandscape-800.webp 800w, screenshots/sm/LashMapLandscape-1400.webp 1400w" sizes="560px" width="2000" height="921" loading="lazy" decoding="async" src="screenshots/LashMapLandscape.png"></div>
         </div>
       </div>
       <div class="phone-col-label uk-namu" data-en="Lash Map" data-uk="Карта вій">Lash Map</div>
-      <div class="phone-col-desc uk-namu" data-en="Five zones, per-zone curl, length, diameter and adhesive. A full eye diagram that replaces photos and guesswork." data-uk="П'ять зон. Вигин, довжина, діаметр та клей — повна схема ока.">Five zones, per-zone curl, length, diameter and adhesive. A full eye diagram that replaces photos and guesswork.</div>
+      <div class="phone-col-desc uk-namu" data-en="Five zones, per-zone curl, length, diameter and adhesive. A full eye diagram, no guesswork." data-uk="П'ять зон. Вигин, довжина, діаметр та клей — повна схема ока.">Five zones, per-zone curl, length, diameter and adhesive. A full eye diagram, no guesswork.</div>
     </div>
 
     <!-- 2: NAIL DESIGN -->
     <div class="phone-col">
       <div class="iphone-sm">
         <div class="iphone-sm-inner">
-          <img alt="HerSets nail design screen with per-finger gel formulas" srcset="screenshots/sm/NailMapScreenshot-480.webp 480w, screenshots/sm/NailMapScreenshot-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="1206" height="2622" loading="lazy" decoding="async" src="screenshots/NailMapScreenshot.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+          <img alt="HerSets nail design screen with per-finger gel formulas" srcset="screenshots/sm/NailMapScreenshot-480.webp 480w, screenshots/sm/NailMapScreenshot-800.webp 800w" sizes="(max-width: 960px) 230px, 270px" width="1206" height="2622" loading="lazy" decoding="async" src="screenshots/NailMapScreenshot.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
         </div>
       </div>
       <div class="phone-col-label uk-namu" data-en="Nail Design" data-uk="Дизайн нігтів">Nail Design</div>
@@ -1300,7 +1347,7 @@ analytics.init({
     <div class="phone-col">
       <div class="iphone-sm">
         <div class="iphone-sm-inner">
-          <img alt="HerSets hair color map with formulas per section and a head map" srcset="screenshots/sm/HairColorMapScreenshot-480.webp 480w, screenshots/sm/HairColorMapScreenshot-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="1206" height="2622" loading="lazy" decoding="async" src="screenshots/HairColorMapScreenshot.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+          <img alt="HerSets hair color map with formulas per section and a head map" srcset="screenshots/sm/HairColorMapScreenshot-480.webp 480w, screenshots/sm/HairColorMapScreenshot-800.webp 800w" sizes="(max-width: 960px) 230px, 270px" width="1206" height="2622" loading="lazy" decoding="async" src="screenshots/HairColorMapScreenshot.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
         </div>
       </div>
       <div class="phone-col-label uk-namu" data-en="Hair Stylist" data-uk="Перукар">Hair Stylist</div>
@@ -1311,7 +1358,7 @@ analytics.init({
     <div class="phone-col">
       <div class="iphone-sm">
         <div class="iphone-sm-inner">
-          <img alt="HerSets esthetician skin map and treatment notes" srcset="screenshots/sm/SkinMapScreenshot-480.webp 480w, screenshots/sm/SkinMapScreenshot-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="1206" height="2622" loading="lazy" decoding="async" src="screenshots/SkinMapScreenshot.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+          <img alt="HerSets esthetician skin map and treatment notes" srcset="screenshots/sm/SkinMapScreenshot-480.webp 480w, screenshots/sm/SkinMapScreenshot-800.webp 800w" sizes="(max-width: 960px) 230px, 270px" width="1206" height="2622" loading="lazy" decoding="async" src="screenshots/SkinMapScreenshot.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
         </div>
       </div>
       <div class="phone-col-label uk-namu" data-en="Esthetician" data-uk="Косметолог">Esthetician</div>
@@ -1322,7 +1369,7 @@ analytics.init({
     <div class="phone-col">
       <div class="iphone-sm">
         <div class="iphone-sm-inner">
-          <img alt="HerSets brow session with service type, brow shape, arch placement and tail length" srcset="screenshots/sm/BrowSessionScreenshot-480.webp 480w, screenshots/sm/BrowSessionScreenshot-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="921" height="2000" loading="lazy" decoding="async" src="screenshots/BrowSessionScreenshot.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+          <img alt="HerSets brow session with service type, brow shape, arch placement and tail length" srcset="screenshots/sm/BrowSessionScreenshot-480.webp 480w, screenshots/sm/BrowSessionScreenshot-800.webp 800w" sizes="(max-width: 960px) 230px, 270px" width="921" height="2000" loading="lazy" decoding="async" src="screenshots/BrowSessionScreenshot.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
         </div>
       </div>
       <div class="phone-col-label uk-namu" data-en="Brow Artist" data-uk="Брови">Brow Artist</div>
@@ -1335,7 +1382,7 @@ analytics.init({
   <div class="pin-story" id="pin-story-templates">
     <div class="pin-sticky">
       <div class="pin-steps">
-        <div class="pin-step active"><div class="pin-step-num">01 / 05</div><div class="pin-step-title uk-namu" data-en="Lash Map" data-uk="Карта вій">Lash Map</div><div class="pin-step-desc uk-namu" data-en="Five zones, per-zone curl, length, diameter and adhesive. A full eye diagram that replaces photos and guesswork." data-uk="П'ять зон. Вигин, довжина, діаметр та клей — повна схема ока.">Five zones, per-zone curl, length, diameter and adhesive. A full eye diagram that replaces photos and guesswork.</div></div>
+        <div class="pin-step active"><div class="pin-step-num">01 / 05</div><div class="pin-step-title uk-namu" data-en="Lash Map" data-uk="Карта вій">Lash Map</div><div class="pin-step-desc uk-namu" data-en="Five zones, per-zone curl, length, diameter and adhesive. A full eye diagram, no guesswork." data-uk="П'ять зон. Вигин, довжина, діаметр та клей — повна схема ока.">Five zones, per-zone curl, length, diameter and adhesive. A full eye diagram, no guesswork.</div></div>
         <div class="pin-step"><div class="pin-step-num">02 / 05</div><div class="pin-step-title uk-namu" data-en="Nail Design" data-uk="Дизайн нігтів">Nail Design</div><div class="pin-step-desc uk-namu" data-en="Per-finger formulas: gel type, color code, brand, finish. Exact enough to recreate any set from months ago." data-uk="Формули по пальцях: тип гелю, код кольору, бренд, покриття. Точно для повторення.">Per-finger formulas: gel type, color code, brand, finish. Exact enough to recreate any set from months ago.</div></div>
         <div class="pin-step"><div class="pin-step-num">03 / 05</div><div class="pin-step-title uk-namu" data-en="Hair Stylist" data-uk="Перукар">Hair Stylist</div><div class="pin-step-desc uk-namu" data-en="Hair profile, natural level, color formulas per section, and a head map for placement. Your colorist brain, organized." data-uk="Профіль волосся, рівень, формули кольору та карта голови — все в одному записі.">Hair profile, natural level, color formulas per section, and a head map for placement. Your colorist brain, organized.</div></div>
         <div class="pin-step"><div class="pin-step-num">04 / 05</div><div class="pin-step-title uk-namu" data-en="Esthetician" data-uk="Косметолог">Esthetician</div><div class="pin-step-desc uk-namu" data-en="Skin type, concerns, face analysis map, treatment steps and homecare plan — a full skin journal per visit." data-uk="Тип шкіри, проблеми, карта обличчя, процедура та домашній догляд — повний щоденник.">Skin type, concerns, face analysis map, treatment steps and homecare plan — a full skin journal per visit.</div></div>
@@ -2010,7 +2057,7 @@ analytics.init({
     }
 
     // Reveal on scroll
-    const revealSel = '.detail-headline, .eyebrow, .section-title, .section-body, .tpl-card, .feature, .proof-card, .salon-point, .price-card, .mini-faq-item, .tpl-builder-pill, .spec-text, .landscape-showcase';
+    const revealSel = '.detail-headline, .eyebrow, .section-title, .section-body, .tpl-card, .feature, .proof-card, .salon-point, .price-card, .mini-faq-item, .tpl-builder-pill, .spec-text, .landscape-showcase, #available .phone-col, #app .phone-col';
     const io = new IntersectionObserver(entries => {
       entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
     }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
@@ -2020,6 +2067,13 @@ analytics.init({
       el.classList.add('reveal');
       io.observe(el);
     });
+
+
+    // Mobile cards: start the walkthrough when the card is on screen
+    const liveIO = new IntersectionObserver(entries => {
+      entries.forEach(en => en.target.classList.toggle('live', en.isIntersecting));
+    }, { threshold: 0.6 });
+    document.querySelectorAll('.phone-col[data-anim]').forEach(el => liveIO.observe(el));
 
     // Hero floating cards parallax
     const floats = [...document.querySelectorAll('.float-card')];
