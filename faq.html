@@ -49,7 +49,7 @@
         "name": "Is HerSets available on iPhone?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. HerSets is available now on the iOS App Store for iPhone. Download it at apps.apple.com/us/app/hersets/id6792172295. An Android version is in development and coming soon."
+          "text": "Yes. HerSets is available now on the iOS App Store for iPhone. Download it at apps.apple.com/us/app/hersets/id6792172295. It is also available on Google Play for Android."
         }
       },
       {
@@ -57,7 +57,7 @@
         "name": "Is there an Android version of HerSets?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "HerSets is currently available on iOS (iPhone). An Android version is actively in development and coming soon. Follow HerSets on social media or check the website for updates on the Android launch."
+          "text": "Yes. HerSets is available on Google Play for Android phones, in addition to the App Store for iPhone."
         }
       },
       {
@@ -164,7 +164,7 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "HerSets",
-    "operatingSystem": "iOS",
+    "operatingSystem": "iOS, Android",
     "applicationCategory": "BusinessApplication",
     "description": "Digital notebook for beauty artists. Track client notes, lash maps, nail formulas, hair color records, and full appointment history in one place.",
     "offers": {
@@ -451,11 +451,16 @@
       font-size: 10px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.3);
-      border: 1px solid rgba(255,255,255,0.15);
-      padding: 8px 16px;
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 800;
+      text-decoration: none;
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,0.6);
+      padding: 10px 18px;
       white-space: nowrap;
+      transition: background .15s, color .15s;
     }
+    .android-tag:hover { background: #fff; color: var(--ink); }
 
     /* FOOTER */
     footer {
@@ -682,7 +687,7 @@ analytics.init({
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
         <div class="faq-a" role="region">
-          <p>Not yet — but it's coming. HerSets is currently available on iOS (iPhone). An Android version is actively in development. Follow HerSets on social media or visit <a href="index.html">hersets.app</a> for updates on the Android launch.</p>
+          <p>Yes. HerSets is available on Android. <a href="https://play.google.com/store/apps/details?id=com.kirinax.hersets&amp;hl=en_US" target="_blank" rel="noopener">Get HerSets on Google Play →</a></p>
         </div>
       </div>
 
@@ -788,11 +793,11 @@ analytics.init({
   <div class="faq-cta" role="complementary">
     <div class="faq-cta-text">
       <h2>Ready to try<br/>HerSets?</h2>
-      <p>Download free on iPhone. Android coming soon.</p>
+      <p>Download free on iPhone or Android.</p>
     </div>
     <div class="faq-cta-btns">
       <a href="https://apps.apple.com/us/app/hersets/id6792172295" target="_blank" class="btn-download">Download on the App Store</a>
-      <span class="android-tag">Android — Coming Soon</span>
+      <a href="https://play.google.com/store/apps/details?id=com.kirinax.hersets&amp;hl=en_US" target="_blank" rel="noopener" class="android-tag">Get it on Google Play</a>
     </div>
   </div>
 

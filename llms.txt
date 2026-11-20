@@ -1,6 +1,6 @@
 # HerSets
 
-> HerSets is the digital notebook for beauty artists: an iPhone app that keeps every client's preferences, formulas, maps and visit history in one place. Built for lash, nail, hair, brow, esthetics and makeup artists. Made by OLROM LLC, California.
+> HerSets is the digital notebook for beauty artists: an iPhone and Android app that keeps every client's preferences, formulas, maps and visit history in one place. Built for lash, nail, hair, brow, esthetics and makeup artists. Made by OLROM LLC, California.
 
 ## Pricing
 - Free: every feature except SMS reminders, free forever, for up to 10 clients (visit history and booking page).
@@ -15,4 +15,5 @@
 - [Support](https://hersets.app/legal/Support_Contact.html)
 
 ## Get it
-- [App Store](https://apps.apple.com/us/app/hersets/id6792172295) (Android coming soon)
+- [App Store](https://apps.apple.com/us/app/hersets/id6792172295) 
+- [Google Play](https://play.google.com/store/apps/details?id=com.kirinax.hersets)

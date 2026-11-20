@@ -4,18 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HerSets — The Digital Notebook for Beauty Artists</title>
-  <meta name="description" content="The digital notebook for beauty artists. Client profiles, lash maps, nail formulas and visit history in one place. Free to try on iPhone." />
+  <meta name="description" content="The digital notebook for beauty artists. Client profiles, lash maps, nail formulas and visit history in one place. Free to try on iPhone and Android." />
   <link rel="canonical" href="https://hersets.app/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="HerSets" />
   <meta property="og:title" content="HerSets — The Digital Notebook for Beauty Artists" />
-  <meta property="og:description" content="The digital notebook for beauty artists. Client profiles, lash maps, nail formulas and visit history in one place. Free to try on iPhone." />
+  <meta property="og:description" content="The digital notebook for beauty artists. Client profiles, lash maps, nail formulas and visit history in one place. Free to try on iPhone and Android." />
   <meta property="og:url" content="https://hersets.app/" />
   <meta property="og:image" content="https://hersets.app/screenshots/TodayNew.png" />
   <meta property="og:image:alt" content="HerSets Today screen on iPhone" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="HerSets — The Digital Notebook for Beauty Artists" />
-  <meta name="twitter:description" content="The digital notebook for beauty artists. Client profiles, lash maps, nail formulas and visit history in one place. Free to try on iPhone." />
+  <meta name="twitter:description" content="The digital notebook for beauty artists. Client profiles, lash maps, nail formulas and visit history in one place. Free to try on iPhone and Android." />
   <meta name="twitter:image" content="https://hersets.app/screenshots/TodayNew.png" />
   <script type="application/ld+json">
 {
@@ -34,8 +34,8 @@
   "@type": "SoftwareApplication",
   "name": "HerSets",
   "applicationCategory": "BusinessApplication",
-  "operatingSystem": "iOS",
-  "description": "The digital notebook for beauty artists. Client profiles, lash maps, nail formulas and visit history in one place. Free to try on iPhone.",
+  "operatingSystem": "iOS, Android",
+  "description": "The digital notebook for beauty artists. Client profiles, lash maps, nail formulas and visit history in one place. Free to try on iPhone and Android.",
   "url": "https://hersets.app",
   "image": "https://hersets.app/screenshots/TodayNew.png",
   "downloadUrl": "https://apps.apple.com/us/app/hersets/id6792172295",
@@ -91,7 +91,7 @@
       "name": "Is there an Android version?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "HerSets is available now on iPhone. Android is in development — coming soon."
+        "text": "Yes. HerSets is available on Google Play for Android and on the App Store for iPhone."
       }
     },
     {
@@ -816,7 +816,8 @@
     .download-btns { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-bottom: 40px; }
     .download-btn-apple { display: inline-block; background: #fff; color: #111; padding: 16px 36px; font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; transition: background .2s, transform .15s; }
     .download-btn-apple:hover { background: var(--pink); color: #fff; transform: translateY(-2px); }
-    .download-btn-android { display: inline-block; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.2); padding: 10px 24px; }
+    .download-btn-android { display: inline-block; font-family: 'Inter Tight', sans-serif; font-size: 13px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; color: #fff; border: 1.5px solid rgba(255,255,255,0.6); padding: 14.5px 36px; transition: background .2s, color .2s; }
+    .download-btn-android:hover { background: #fff; color: var(--ink); }
     .android-soon { display: inline-block; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(0,0,0,0.35); border: 1px solid rgba(0,0,0,0.15); padding: 9px 20px; margin-top: 4px; }
 
     /* ── FOOTER ── */
@@ -1195,7 +1196,7 @@ analytics.init({
     <p class="hero-sub uk-namu" data-en="HerSets is the digital notebook for beauty artists. Every client's preferences, formulas, maps and history — in one place built for the way you actually work." data-uk="HerSets — цифровий блокнот для б'юті-майстрів. Побажання, формули, карти та історія кожного клієнта — в одному місці, створеному для вашого стилю роботи.">HerSets is the digital notebook for beauty artists. Every client's preferences, formulas, maps and history — in one place built for the way you actually work.</p>
     <div class="hero-btns" id="hero-form-wrap">
       <a href="https://apps.apple.com/us/app/hersets/id6792172295" target="_blank" class="btn-primary uk-namu" data-en="Download on App Store" data-uk="Завантажити в App Store">Download on App Store</a>
-      <span class="android-soon uk-namu" data-en="Android — Coming Soon" data-uk="Android — Незабаром">Android — Coming Soon</span>
+      <a href="https://play.google.com/store/apps/details?id=com.kirinax.hersets&amp;hl=en_US" target="_blank" rel="noopener" class="btn-ghost uk-namu" data-en="Get it on Google Play" data-uk="Завантажити в Google Play">Get it on Google Play</a>
       <a href="#app" class="btn-ghost uk-namu" data-en="See the App" data-uk="Переглянути додаток">See the App</a>
     </div>
     <div class="form-success" id="hero-success" style="margin-top:16px;">
@@ -1864,7 +1865,7 @@ analytics.init({
     </div>
     <div class="mini-faq-item">
       <div class="mini-faq-q uk-namu" data-en="Is there an Android version?" data-uk="Є версія для Android?">Is there an Android version?</div>
-      <div class="mini-faq-a uk-namu" data-en="HerSets is available now on iPhone. Android is in development — coming soon." data-uk="HerSets доступний на iPhone. Android у розробці — незабаром.">HerSets is available now on iPhone. Android is in development — coming soon.</div>
+      <div class="mini-faq-a uk-namu" data-en="Yes. HerSets is available on Google Play for Android and on the App Store for iPhone." data-uk="Так. HerSets доступний у Google Play для Android та в App Store для iPhone.">Yes. HerSets is available on Google Play for Android and on the App Store for iPhone.</div>
     </div>
     <div class="mini-faq-item">
       <div class="mini-faq-q uk-namu" data-en="Can I track multiple specialties?" data-uk="Чи можу я відстежувати кілька спеціальностей?">Can I track multiple specialties?</div>
@@ -1881,12 +1882,12 @@ analytics.init({
 <!-- DOWNLOAD -->
 <div class="early-bg" id="download">
   <div class="early-inner">
-    <p class="early-eyebrow uk-namu" data-en="Now available on iOS" data-uk="Вже доступно на iOS">Now available on iOS</p>
+    <p class="early-eyebrow uk-namu" data-en="Now available on iOS &amp; Android" data-uk="Вже доступно на iOS та Android">Now available on iOS &amp; Android</p>
     <h2 class="early-title uk-namu" data-en="Download<br/>HerSets." data-uk="Завантажте<br/>HerSets.">Download<br/>HerSets.</h2>
     <p class="early-sub uk-namu" data-en="The digital notebook for beauty artists is here. Every client's preferences, formulas, maps, and history — in one place built for the way you work." data-uk="Цифровий блокнот для б'юті-майстрів вже тут. Побажання, формули, карти та історія — в одному місці, створеному для вас.">The digital notebook for beauty artists is here. Every client's preferences, formulas, maps, and history — in one place built for the way you work.</p>
     <div class="download-btns">
       <a href="https://apps.apple.com/us/app/hersets/id6792172295" target="_blank" class="download-btn-apple uk-namu" data-en="Download on the App Store" data-uk="Завантажити в App Store">Download on the App Store</a>
-      <span class="download-btn-android uk-namu" data-en="Android — Coming Soon" data-uk="Android — Незабаром">Android — Coming Soon</span>
+      <a href="https://play.google.com/store/apps/details?id=com.kirinax.hersets&amp;hl=en_US" target="_blank" rel="noopener" class="download-btn-android uk-namu" data-en="Get it on Google Play" data-uk="Завантажити в Google Play">Get it on Google Play</a>
     </div>
     <div class="early-perks">
       <span class="early-perk uk-namu" data-en="Free to try" data-uk="Безкоштовно">Free to try</span>
