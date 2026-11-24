@@ -42,31 +42,31 @@
   "offers": [
     {
       "@type": "Offer",
-      "name": "Free (up to 10 clients)",
+      "name": "Basic (free, up to 10 clients)",
       "price": "0",
       "priceCurrency": "USD"
     },
     {
       "@type": "Offer",
-      "name": "Basic (monthly)",
+      "name": "Pro (monthly)",
       "price": "8.99",
       "priceCurrency": "USD"
     },
     {
       "@type": "Offer",
-      "name": "Basic (yearly)",
+      "name": "Pro (yearly)",
       "price": "79.99",
       "priceCurrency": "USD"
     },
     {
       "@type": "Offer",
-      "name": "SMS Pro (monthly)",
+      "name": "MAX with SMS Reminders (monthly)",
       "price": "17.99",
       "priceCurrency": "USD"
     },
     {
       "@type": "Offer",
-      "name": "SMS Pro (yearly)",
+      "name": "MAX with SMS Reminders (yearly)",
       "price": "159.99",
       "priceCurrency": "USD"
     }
@@ -829,6 +829,25 @@
     .footer-legal a { font-size: 10px; color: rgba(255,255,255,0.35); text-decoration: none; letter-spacing: 0.4px; transition: color .2s; }
     .footer-legal a:hover { color: rgba(255,255,255,0.7); }
 
+    /* Store badges */
+    .store-badges { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
+    .store-badges a { display: block; line-height: 0; transition: transform .25s cubic-bezier(.2,.7,.2,1), filter .25s; filter: drop-shadow(0 6px 14px rgba(13,13,13,.14)); }
+    .store-badges a:hover { transform: translateY(-3px) scale(1.03); filter: drop-shadow(0 10px 20px rgba(196,80,122,.28)); }
+    .store-badges img { height: 52px; width: auto; display: block; }
+    .hero { grid-template-columns: 1fr auto auto; }
+    .hero-badges { flex-direction: column; align-items: center; justify-content: center; align-self: center; gap: 16px; padding: 0 28px; position: relative; z-index: 2; }
+    .hero-badges img { height: 56px; }
+    .store-badges-download img { height: 60px; }
+    .store-badges-download a { filter: drop-shadow(0 8px 18px rgba(0,0,0,.25)); }
+    .store-badges-footer { justify-content: flex-start; margin-top: 18px; gap: 10px; }
+    .store-badges-footer a { filter: none; }
+    .store-badges-footer img { height: 40px; }
+    .footer-brand { display: flex; flex-direction: column; align-items: flex-start; }
+    @media (max-width: 960px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-badges { flex-direction: row; flex-wrap: wrap; padding: 0 20px 36px; order: 0; }
+      .hero-badges img { height: 48px; }
+    }
     /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
       .hero { grid-template-columns: 1fr; min-height: auto; }
@@ -896,8 +915,8 @@
     }
     .float-card .fc-title { font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 13px; color: var(--ink); }
     .float-card .fc-sub { font-size: 11px; color: var(--ink3); }
-    .fc-1 { left: -170px; top: 14%; }
-    .fc-2 { left: -200px; top: 54%; }
+    .fc-1 { left: -56px; top: 12%; }
+    .fc-2 { left: -64px; top: 66%; }
     .fc-3 { right: -8px; top: 3%; }
     .fc-4 { right: -14px; bottom: 8%; }
 
@@ -942,6 +961,16 @@
     .pin-dots { position: absolute; left: 0; bottom: -56px; display: flex; gap: 8px; }
       .pin-dot { width: 28px; height: 3px; background: var(--border2); transition: background .3s, width .3s; }
       .pin-dot.active { background: var(--pink-d); width: 48px; }
+      .pin-nav { position: absolute; left: 0; bottom: -76px; display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+      .pin-nav .pin-dots { position: static; }
+      .pin-arrow { width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center; background: transparent; color: var(--ink); border: 1.5px solid var(--ink); cursor: pointer; transition: background .2s, color .2s, opacity .2s; }
+      .pin-arrow + .pin-arrow { margin-left: -14px; }
+      .pin-arrow:hover:not(:disabled) { background: var(--ink); color: #fff; }
+      .pin-arrow:disabled { opacity: .25; cursor: default; }
+      .pin-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+      .pin-tab { font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 9px 12px; border: 1px solid var(--border2); background: transparent; color: var(--ink3); cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+      .pin-tab:hover { color: var(--ink); border-color: var(--ink); }
+      .pin-tab.active { background: var(--ink); color: #fff; border-color: var(--ink); }
       .pin-phone { --sw: 270px; }
       .pin-phone .iphone-sm-inner img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 0; transform: scale(1.04); transition: opacity .6s ease, transform .8s ease; }
       .pin-phone .iphone-sm-inner img.active { opacity: 1; transform: none; }
@@ -1092,6 +1121,20 @@
       98%, 100% { transform: none; }
     }
 
+
+    /* Nail design walkthrough (reuses the availability timeline) */
+    .pin-nail .av-flow .av-viewport, .phone-col[data-anim="nail"] .mv-viewport { top: 14.5%; height: 85.5%; }
+    .av-tap-nail, .mv-tap-nail { left: 32.1%; top: 83.4%; }
+    .pin-nail.active .av-strip { animation: ndScroll 14s linear infinite; }
+    .pin-nail.active .av-tap-nail { animation: avTapCreate 14s linear infinite; }
+    .phone-col[data-anim="nail"].live .mv-strip { animation: ndScroll 14s linear infinite; }
+    .phone-col[data-anim="nail"].live .mv-tap-nail { animation: avTapCreate 14s linear infinite; }
+    @keyframes ndScroll {
+      0%, 10% { transform: translateY(0); animation-timing-function: cubic-bezier(.5,0,.2,1); }
+      36%, 74% { transform: translateY(-48.29%); }
+      75%, 100% { transform: translateY(0); }
+    }
+
     /* Pricing */
     .pricing-section { padding: 110px 48px; background: var(--bg); }
     .pricing-inner { max-width: 1120px; margin: 0 auto; }
@@ -1195,8 +1238,6 @@ analytics.init({
     </h1>
     <p class="hero-sub uk-namu" data-en="HerSets is the digital notebook for beauty artists. Every client's preferences, formulas, maps and history — in one place built for the way you actually work." data-uk="HerSets — цифровий блокнот для б'юті-майстрів. Побажання, формули, карти та історія кожного клієнта — в одному місці, створеному для вашого стилю роботи.">HerSets is the digital notebook for beauty artists. Every client's preferences, formulas, maps and history — in one place built for the way you actually work.</p>
     <div class="hero-btns" id="hero-form-wrap">
-      <a href="https://apps.apple.com/us/app/hersets/id6792172295" target="_blank" class="btn-primary uk-namu" data-en="Download on App Store" data-uk="Завантажити в App Store">Download on App Store</a>
-      <a href="https://play.google.com/store/apps/details?id=com.kirinax.hersets&amp;hl=en_US" target="_blank" rel="noopener" class="btn-ghost uk-namu" data-en="Get it on Google Play" data-uk="Завантажити в Google Play">Get it on Google Play</a>
       <a href="#app" class="btn-ghost uk-namu" data-en="See the App" data-uk="Переглянути додаток">See the App</a>
     </div>
     <div class="form-success" id="hero-success" style="margin-top:16px;">
@@ -1204,6 +1245,9 @@ analytics.init({
       <p class="form-success-sub uk-namu" data-en="Watch your inbox for artist tips and early feature drops." data-uk="Чекайте на листи з порадами для майстрів та новими функціями.">Watch your inbox for artist tips and early feature drops.</p>
     </div>
   </div>
+
+  <!-- STORE BADGES (between text and phone) -->
+  <div class="store-badges hero-badges"><a href="https://apps.apple.com/us/app/hersets/id6792172295" target="_blank" rel="noopener" aria-label="Download on the App Store"><img src="assets/badges/appstore.png" alt="Download on the App Store" width="396" height="135"></a><a href="https://play.google.com/store/apps/details?id=com.kirinax.hersets&amp;hl=en_US" target="_blank" rel="noopener" aria-label="Get it on Google Play"><img src="assets/badges/googleplay.png" alt="Get it on Google Play" width="396" height="135"></a></div>
 
   <!-- HERO PHONE: TODAY SCREEN -->
   <div class="hero-right">
@@ -1290,7 +1334,7 @@ analytics.init({
         <div class="pin-step"><div class="pin-step-num">02 / 04</div><div class="pin-step-title uk-namu" data-en="See client details" data-uk="Деталі клієнта">See client details</div><div class="pin-step-desc uk-namu" data-en="Open any client for their full record: preferences, formulas, maps and visit history, ready before they sit down." data-uk="Відкрийте будь-якого клієнта: побажання, формули, карти та історія візитів — ще до того, як вони сядуть у крісло.">Open any client for their full record: preferences, formulas, maps and visit history, ready before they sit down.</div><a href="#available" class="btn-ghost pin-step-cta uk-namu" data-en="Ready-to-use templates →" data-uk="Готові шаблони →">Ready-to-use templates →</a></div>
         <div class="pin-step"><div class="pin-step-num">03 / 04</div><div class="pin-step-title uk-namu" data-en="Stay on top of your calendar" data-uk="Контроль календаря">Stay on top of your calendar</div><div class="pin-step-desc uk-namu" data-en="Start with the month, switch to the week, and see every appointment, so nothing slips through and no one&#39;s double-booked." data-uk="Почніть з місяця, перейдіть на тиждень і бачте кожен запис — нічого не загубиться і ніхто не буде записаний двічі.">Start with the month, switch to the week, and see every appointment, so nothing slips through and no one's double-booked.</div></div>
         <div class="pin-step"><div class="pin-step-num">04 / 04</div><div class="pin-step-title uk-namu" data-en="Create availability cards" data-uk="Картки доступності">Create availability cards</div><div class="pin-step-desc uk-namu" data-en="Pick your hours, appointment length and days, create the card, then save it or share it in one tap for new appointments." data-uk="Оберіть години, тривалість візиту та дні, створіть картку — і збережіть або поділіться нею одним дотиком для нових записів.">Pick your hours, appointment length and days, create the card, then save it or share it in one tap for new appointments.</div></div>
-        <div class="pin-dots"><span class="pin-dot active"></span><span class="pin-dot"></span><span class="pin-dot"></span><span class="pin-dot"></span></div>
+        <div class="pin-nav"><button class="pin-arrow pin-up" type="button" aria-label="Previous"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"><path d="M5 15l7-7 7 7"/></svg></button><button class="pin-arrow pin-down" type="button" aria-label="Next"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"><path d="M5 9l7 7 7-7"/></svg></button><div class="pin-dots"><span class="pin-dot active"></span><span class="pin-dot"></span><span class="pin-dot"></span><span class="pin-dot"></span></div></div>
       </div>
       <div class="iphone-sm pin-phone">
         <div class="iphone-sm-inner">
@@ -1334,10 +1378,10 @@ analytics.init({
     </div>
 
     <!-- 2: NAIL DESIGN -->
-    <div class="phone-col">
+    <div class="phone-col" data-anim="nail">
       <div class="iphone-sm">
         <div class="iphone-sm-inner">
-          <img alt="HerSets nail design screen with per-finger gel formulas" srcset="screenshots/sm/NailMapScreenshot-480.webp 480w, screenshots/sm/NailMapScreenshot-800.webp 800w" sizes="(max-width: 960px) 230px, 270px" width="1206" height="2622" loading="lazy" decoding="async" src="screenshots/NailMapScreenshot.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+          <div class="mv-av"><div class="mv-flow"><div class="mv-viewport"><img class="mv-strip" alt="HerSets nail design session: service, nail details, product formula and nail map" src="screenshots/sm/nail-strip.webp" width="800" height="2873" loading="lazy" decoding="async"></div><img class="mv-top" alt="" src="screenshots/sm/nail-top.webp" width="800" height="252" loading="lazy" decoding="async"></div><img class="mv-b" alt="HerSets nail editor with condition, color name, color code and notes" srcset="screenshots/sm/NailSheet-480.webp 480w, screenshots/sm/NailSheet-800.webp 800w" sizes="(max-width: 960px) 230px, 270px" width="921" height="2000" loading="lazy" decoding="async" src="screenshots/NailSheet.png"><span class="mv-tap mv-tap-nail"></span></div>
         </div>
       </div>
       <div class="phone-col-label uk-namu" data-en="Nail Design" data-uk="Дизайн нігтів">Nail Design</div>
@@ -1388,12 +1432,19 @@ analytics.init({
         <div class="pin-step"><div class="pin-step-num">03 / 05</div><div class="pin-step-title uk-namu" data-en="Hair Stylist" data-uk="Перукар">Hair Stylist</div><div class="pin-step-desc uk-namu" data-en="Hair profile, natural level, color formulas per section, and a head map for placement. Your colorist brain, organized." data-uk="Профіль волосся, рівень, формули кольору та карта голови — все в одному записі.">Hair profile, natural level, color formulas per section, and a head map for placement. Your colorist brain, organized.</div></div>
         <div class="pin-step"><div class="pin-step-num">04 / 05</div><div class="pin-step-title uk-namu" data-en="Esthetician" data-uk="Косметолог">Esthetician</div><div class="pin-step-desc uk-namu" data-en="Skin type, concerns, face analysis map, treatment steps and homecare plan — a full skin journal per visit." data-uk="Тип шкіри, проблеми, карта обличчя, процедура та домашній догляд — повний щоденник.">Skin type, concerns, face analysis map, treatment steps and homecare plan — a full skin journal per visit.</div></div>
         <div class="pin-step"><div class="pin-step-num">05 / 05</div><div class="pin-step-title uk-namu" data-en="Brow Artist" data-uk="Брови">Brow Artist</div><div class="pin-step-desc uk-namu" data-en="Service type, brow shape, arch placement, tail length and a natural brow assessment — every brow session mapped and saved." data-uk="Тип послуги, форма брів, розташування вигину, довжина хвоста та оцінка природних брів — кожна сесія збережена.">Service type, brow shape, arch placement, tail length and a natural brow assessment — every brow session mapped and saved.</div></div>
-        <div class="pin-dots"><span class="pin-dot active"></span><span class="pin-dot"></span><span class="pin-dot"></span><span class="pin-dot"></span><span class="pin-dot"></span></div>
+        <div class="pin-nav"><div class="pin-tabs"><button type="button" class="pin-tab uk-namu active" data-en="Lash" data-uk="Вії">Lash</button><button type="button" class="pin-tab uk-namu" data-en="Nail" data-uk="Нігті">Nail</button><button type="button" class="pin-tab uk-namu" data-en="Hair" data-uk="Волосся">Hair</button><button type="button" class="pin-tab uk-namu" data-en="Esthetician" data-uk="Косметолог">Esthetician</button><button type="button" class="pin-tab uk-namu" data-en="Brow" data-uk="Брови">Brow</button></div></div>
       </div>
       <div class="iphone-sm pin-phone">
         <div class="iphone-sm-inner">
           <img alt="HerSets lash map with five zones and per-zone curl, length and diameter" srcset="screenshots/sm/LashMapScreenshot-480.webp 480w, screenshots/sm/LashMapScreenshot-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="1206" height="2622" loading="lazy" decoding="async" class="active" src="screenshots/LashMapScreenshot.png">
-          <img alt="HerSets nail design screen with per-finger gel formulas" srcset="screenshots/sm/NailMapScreenshot-480.webp 480w, screenshots/sm/NailMapScreenshot-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="1206" height="2622" loading="lazy" decoding="async" src="screenshots/NailMapScreenshot.png">
+          <div class="pin-avail pin-nail" aria-label="Nail design walkthrough: scroll the session form, tap a nail, edit its details">
+            <div class="av-flow">
+              <div class="av-viewport"><img class="av-strip" alt="HerSets nail design session: service, nail details, product formula and nail map" src="screenshots/sm/nail-strip.webp" width="800" height="2873" loading="lazy" decoding="async"></div>
+              <img class="av-top" alt="" src="screenshots/sm/nail-top.webp" width="800" height="252" loading="lazy" decoding="async">
+            </div>
+            <img class="av-b" alt="HerSets nail editor with condition, color name, color code and notes" srcset="screenshots/sm/NailSheet-480.webp 480w, screenshots/sm/NailSheet-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="921" height="2000" loading="lazy" decoding="async" src="screenshots/NailSheet.png">
+            <span class="av-tap av-tap-nail"></span>
+          </div>
           <img alt="HerSets hair color map with formulas per section and a head map" srcset="screenshots/sm/HairColorMapScreenshot-480.webp 480w, screenshots/sm/HairColorMapScreenshot-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="1206" height="2622" loading="lazy" decoding="async" src="screenshots/HairColorMapScreenshot.png">
           <img alt="HerSets esthetician skin map and treatment notes" srcset="screenshots/sm/SkinMapScreenshot-480.webp 480w, screenshots/sm/SkinMapScreenshot-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="1206" height="2622" loading="lazy" decoding="async" src="screenshots/SkinMapScreenshot.png">
           <img alt="HerSets brow session with service type, brow shape, arch placement and tail length" srcset="screenshots/sm/BrowSessionScreenshot-480.webp 480w, screenshots/sm/BrowSessionScreenshot-800.webp 800w" sizes="(max-width: 960px) 150px, 270px" width="921" height="2000" loading="lazy" decoding="async" src="screenshots/BrowSessionScreenshot.png">
@@ -1802,7 +1853,7 @@ analytics.init({
     </div>
     <div class="pricing-grid">
       <div class="price-card">
-        <div class="price-name uk-namu" data-en="Free" data-uk="Безкоштовно">Free</div>
+        <div class="price-name uk-namu" data-en="Basic" data-uk="Basic">Basic</div>
         <div class="price-amount">$0<small class="uk-namu" data-en=" forever" data-uk=" назавжди"> forever</small></div>
         <div class="price-alt"></div>
         <div class="price-tag uk-namu" data-en="Every feature except SMS reminders, free forever. Keep history and take bookings for up to 10 clients." data-uk="Усі функції, крім SMS-нагадувань, безкоштовно назавжди. Історія та бронювання для 10 клієнтів.">Every feature except SMS reminders, free forever. Keep history and take bookings for up to 10 clients.</div>
@@ -1814,7 +1865,7 @@ analytics.init({
         <a href="https://apps.apple.com/us/app/hersets/id6792172295" target="_blank" class="btn-ghost uk-namu" data-en="Start free" data-uk="Почати безкоштовно">Start free</a>
       </div>
       <div class="price-card">
-        <div class="price-name uk-namu" data-en="Basic · client records" data-uk="Basic · картки клієнтів">Basic · client records</div>
+        <div class="price-name uk-namu" data-en="Pro · client records" data-uk="Pro · картки клієнтів">Pro · client records</div>
         <div class="price-amount"><span class="pa-num" data-monthly="8.99" data-yearly="79.99">$8.99</span><small class="pa-per" data-per-m="/mo" data-per-y="/yr">/mo</small></div>
         <div class="price-alt"><span class="alt-m uk-namu" data-en="or $79.99/yr — save 26%" data-uk="або $79.99/рік — економія 26%">or $79.99/yr — save 26%</span><span class="alt-y uk-namu" data-en="about $6.67/mo, billed yearly" data-uk="близько $6.67/міс, оплата щорічно">about $6.67/mo, billed yearly</span></div>
         <div class="price-tag uk-namu" data-en="Everything you need to keep your clients straight." data-uk="Все, щоб тримати клієнтів в порядку.">Everything you need to keep your clients straight.</div>
@@ -1825,23 +1876,23 @@ analytics.init({
           <li class="uk-namu" data-en="Booking page" data-uk="Сторінка бронювання">Booking page</li>
           <li class="uk-namu" data-en="Salon view for every chair" data-uk="Вид салону для кожного крісла">Salon view for every chair</li>
         </ul>
-        <a href="https://apps.apple.com/us/app/hersets/id6792172295" target="_blank" class="btn-ghost uk-namu" data-en="Get Basic" data-uk="Обрати Basic">Get Basic</a>
+        <a href="https://apps.apple.com/us/app/hersets/id6792172295" target="_blank" class="btn-ghost uk-namu" data-en="Get Pro" data-uk="Обрати Pro">Get Pro</a>
       </div>
       <div class="price-card featured">
         <div class="price-badge uk-namu" data-en="Most popular" data-uk="Найпопулярніший">Most popular</div>
-        <div class="price-name uk-namu" data-en="SMS Pro · with reminders" data-uk="SMS Pro · з нагадуваннями">SMS Pro · with reminders</div>
+        <div class="price-name uk-namu" data-en="MAX with SMS Reminders" data-uk="MAX з SMS-нагадуваннями">MAX with SMS Reminders</div>
         <div class="price-amount"><span class="pa-num" data-monthly="17.99" data-yearly="159.99">$17.99</span><small class="pa-per" data-per-m="/mo" data-per-y="/yr">/mo</small></div>
         <div class="price-alt"><span class="alt-m uk-namu" data-en="or $159.99/yr — save 26%" data-uk="або $159.99/рік — економія 26%">or $159.99/yr — save 26%</span><span class="alt-y uk-namu" data-en="about $13.33/mo, billed yearly" data-uk="близько $13.33/міс, оплата щорічно">about $13.33/mo, billed yearly</span></div>
-        <div class="price-tag uk-namu" data-en="Everything in Basic, plus SMS reminders that cut no-shows." data-uk="Все з Basic, плюс SMS-нагадування, що зменшують неявки.">Everything in Basic, plus SMS reminders that cut no-shows.</div>
+        <div class="price-tag uk-namu" data-en="Everything in Pro, plus SMS reminders that cut no-shows." data-uk="Все з Pro, плюс SMS-нагадування, що зменшують неявки.">Everything in Pro, plus SMS reminders that cut no-shows.</div>
         <ul class="price-list">
-          <li class="uk-namu" data-en="Everything in Basic" data-uk="Все з Basic">Everything in Basic</li>
+          <li class="uk-namu" data-en="Everything in Pro" data-uk="Все з Pro">Everything in Pro</li>
           <li class="uk-namu" data-en="SMS appointment reminders" data-uk="SMS-нагадування про візити">SMS appointment reminders</li>
         </ul>
-        <a href="https://apps.apple.com/us/app/hersets/id6792172295" target="_blank" class="btn-primary uk-namu" data-en="Get SMS Pro" data-uk="Обрати SMS Pro">Get SMS Pro</a>
+        <a href="https://apps.apple.com/us/app/hersets/id6792172295" target="_blank" class="btn-primary uk-namu" data-en="Get MAX" data-uk="Обрати MAX">Get MAX</a>
       </div>
     </div>
     <p class="price-anchor uk-namu" data-en="Free forever for up to 10 clients. After that, less than one client's fill keeps every formula you've ever mixed." data-uk="Безкоштовно назавжди до 10 клієнтів. Далі — менше, ніж одне нарощування, і всі формули, які ви колись змішували, збережені.">Free forever for up to 10 clients. After that, less than one client's fill keeps every formula you've ever mixed.</p>
-    <p class="price-note uk-namu" data-en="Cancel anytime in your App Store subscription settings." data-uk="Скасуйте будь-коли в налаштуваннях підписки App Store.">Cancel anytime in your App Store subscription settings.</p>
+    <p class="price-note uk-namu" data-en="Cancel anytime in your App Store or Google Play subscription settings." data-uk="Скасуйте будь-коли в налаштуваннях підписки App Store або Google Play.">Cancel anytime in your App Store or Google Play subscription settings.</p>
   </div>
 </div>
 
@@ -1885,10 +1936,7 @@ analytics.init({
     <p class="early-eyebrow uk-namu" data-en="Now available on iOS &amp; Android" data-uk="Вже доступно на iOS та Android">Now available on iOS &amp; Android</p>
     <h2 class="early-title uk-namu" data-en="Download<br/>HerSets." data-uk="Завантажте<br/>HerSets.">Download<br/>HerSets.</h2>
     <p class="early-sub uk-namu" data-en="The digital notebook for beauty artists is here. Every client's preferences, formulas, maps, and history — in one place built for the way you work." data-uk="Цифровий блокнот для б'юті-майстрів вже тут. Побажання, формули, карти та історія — в одному місці, створеному для вас.">The digital notebook for beauty artists is here. Every client's preferences, formulas, maps, and history — in one place built for the way you work.</p>
-    <div class="download-btns">
-      <a href="https://apps.apple.com/us/app/hersets/id6792172295" target="_blank" class="download-btn-apple uk-namu" data-en="Download on the App Store" data-uk="Завантажити в App Store">Download on the App Store</a>
-      <a href="https://play.google.com/store/apps/details?id=com.kirinax.hersets&amp;hl=en_US" target="_blank" rel="noopener" class="download-btn-android uk-namu" data-en="Get it on Google Play" data-uk="Завантажити в Google Play">Get it on Google Play</a>
-    </div>
+    <div class="store-badges store-badges-download"><a href="https://apps.apple.com/us/app/hersets/id6792172295" target="_blank" rel="noopener" aria-label="Download on the App Store"><img src="assets/badges/appstore.png" alt="Download on the App Store" width="396" height="135"></a><a href="https://play.google.com/store/apps/details?id=com.kirinax.hersets&amp;hl=en_US" target="_blank" rel="noopener" aria-label="Get it on Google Play"><img src="assets/badges/googleplay.png" alt="Get it on Google Play" width="396" height="135"></a></div>
     <div class="early-perks">
       <span class="early-perk uk-namu" data-en="Free to try" data-uk="Безкоштовно">Free to try</span>
       <span class="early-perk uk-namu" data-en="No setup needed" data-uk="Без налаштувань">No setup needed</span>
@@ -1901,8 +1949,11 @@ analytics.init({
 <!-- FOOTER -->
 <footer>
   <!-- <div class="footer-logo">Her<span>Sets</span></div> -->
-   <div class="footer-logo">
-    <img style="height: 40px; width: auto;" alt="HerSets" loading="lazy" src="assets/logo/hersets_logo_transparent.png"/>
+   <div class="footer-brand">
+    <div class="footer-logo">
+     <img style="height: 40px; width: auto;" alt="HerSets" loading="lazy" src="assets/logo/hersets_logo_transparent.png"/>
+    </div>
+    <div class="store-badges store-badges-footer"><a href="https://apps.apple.com/us/app/hersets/id6792172295" target="_blank" rel="noopener" aria-label="Download on the App Store"><img src="assets/badges/appstore.png" alt="Download on the App Store" width="396" height="135" loading="lazy"></a><a href="https://play.google.com/store/apps/details?id=com.kirinax.hersets&amp;hl=en_US" target="_blank" rel="noopener" aria-label="Get it on Google Play"><img src="assets/badges/googleplay.png" alt="Get it on Google Play" width="396" height="135" loading="lazy"></a></div>
    </div>
   <div style="text-align:right;">
     <div class="footer-text uk-namu" data-en="Built for beauty artists.<br/>© 2026 HerSets by OLROM LLC. All rights reserved." data-uk="Створено для б'юті-майстрів.<br/>© 2026 HerSets by OLROM LLC. Всі права захищено.">Built for beauty artists.<br/>© 2026 HerSets by OLROM LLC. All rights reserved.</div>
@@ -2083,10 +2134,27 @@ analytics.init({
     const stories = [...document.querySelectorAll('.pin-story')].map(el => ({
       el,
       steps: [...el.querySelectorAll('.pin-step')],
-      dots: [...el.querySelectorAll('.pin-dot')],
+      dots: [...el.querySelectorAll('.pin-dot, .pin-tab')],
+      up: el.querySelector('.pin-up'),
+      down: el.querySelector('.pin-down'),
       shots: [...el.querySelectorAll('.pin-phone .iphone-sm-inner > *:not(.lash-land-wrap)')],
       cur: 0,
     }));
+
+
+    // Step navigation: arrows and specialty tabs jump to a step of the pinned story
+    function goStep(st, i) {
+      i = Math.max(0, Math.min(st.steps.length - 1, i));
+      const r = st.el.getBoundingClientRect();
+      const total = r.height - window.innerHeight;
+      const y = r.top + window.scrollY + total * ((i + 0.5) / st.steps.length);
+      if (lenis) lenis.scrollTo(y, { duration: 1.2 }); else window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+    stories.forEach(st => {
+      if (st.up) { st.up.disabled = true; st.up.addEventListener('click', () => goStep(st, st.cur - 1)); }
+      if (st.down) st.down.addEventListener('click', () => goStep(st, st.cur + 1));
+      st.dots.forEach((d, n) => { if (d.classList.contains('pin-tab')) d.addEventListener('click', () => goStep(st, n)); });
+    });
 
     function tick() {
       if (!desktop()) { floats.forEach(f => f.style.transform = ''); return; }
@@ -2104,6 +2172,8 @@ analytics.init({
           st.steps.forEach((s, n) => s.classList.toggle('active', n === i));
           st.dots.forEach((d, n) => d.classList.toggle('active', n === i));
           st.shots.forEach((s, n) => s.classList.toggle('active', n === i));
+          if (st.up) st.up.disabled = i === 0;
+          if (st.down) st.down.disabled = i === st.steps.length - 1;
         }
         // Expose the step only while the story is on screen, so step animations
         // (like the lash map rotation) start fresh when the visitor arrives.

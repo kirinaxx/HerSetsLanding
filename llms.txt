@@ -3,9 +3,9 @@
 > HerSets is the digital notebook for beauty artists: an iPhone and Android app that keeps every client's preferences, formulas, maps and visit history in one place. Built for lash, nail, hair, brow, esthetics and makeup artists. Made by OLROM LLC, California.
 
 ## Pricing
-- Free: every feature except SMS reminders, free forever, for up to 10 clients (visit history and booking page).
-- Basic: $8.99/month or $79.99/year. Unlimited clients, templates, template builder, booking page, Salon View.
-- SMS Pro: $17.99/month or $159.99/year. Everything in Basic plus SMS appointment reminders.
+- Basic (free): every feature except SMS reminders, free forever, for up to 10 clients (visit history and booking page).
+- Pro: $8.99/month or $79.99/year. Unlimited clients, templates, template builder, booking page, Salon View.
+- MAX with SMS Reminders: $17.99/month or $159.99/year. Everything in Pro plus SMS appointment reminders.
 - Cancel anytime in App Store subscription settings.
 
 ## Pages
